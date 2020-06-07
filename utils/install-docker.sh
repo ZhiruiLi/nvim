@@ -64,8 +64,8 @@ installcocextensions() { \
 }
 
 cloneconfig() { \
-  echo "Cloning Nvim Mach 2 configuration"
-  git clone https://github.com/ChristianChiarulli/nvim.git ~/.config/nvim
+  echo "Cloning Nvim configuration"
+  git clone https://github.com/zhiruili/nvim.git ~/.config/nvim
 }
 
 moveoldnvim() { \
@@ -128,7 +128,7 @@ installextrapackages() { \
 }
 
 # Welcome
-echo 'Installing Nvim Mach 2'
+echo 'Installing Nvim'
 
 # install pip
 which pip3 > /dev/null && echo "pip installed, moving on..." || asktoinstallpip
@@ -146,7 +146,7 @@ pip3 list | grep pynvim > /dev/null && echo "pynvim installed, moving on..." || 
 # clone config down
 cloneconfig
 
-# echo "Nvim Mach 2 is better with at least ripgrep, ueberzug and ranger"
+# echo "Nvim is better with at least ripgrep, ueberzug and ranger"
 # echo -n "Would you like to install these now?  (y/n)? "
 # read answer
 # [ "$answer" != "${answer#[Yy]}" ] && installextrapackages || echo "not installing extra packages"

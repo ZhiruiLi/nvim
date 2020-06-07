@@ -64,8 +64,8 @@ installcocextensions() { \
 }
 
 cloneconfig() { \
-  echo "Cloning Nvim Mach 2 configuration"
-  git clone https://github.com/ChristianChiarulli/nvim.git ~/.config/nvim
+  echo "Cloning Nvim configuration"
+  git clone https://github.com/zhiruili/nvim.git ~/.config/nvim
 }
 
 moveoldnvim() { \
@@ -99,7 +99,7 @@ asktoinstallpip() { \
 }
 
 installonmac() { \
-  brew install ripgrep fzf ranger
+  brew install ripgrep fzf ranger llvm
 }
 
 pipinstallueberzug() { \
@@ -111,6 +111,7 @@ installonubuntu() { \
   sudo apt install libjpeg8-dev zlib1g-dev python-dev python3-dev libxtst-dev
   pip3 install ueberzug
   pip3 install neovim-remote
+  sudo apt-get install clangd-9 && sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
 }
 
 
@@ -118,6 +119,7 @@ installonarch() { \
   sudo pacman -S install ripgrep fzf ranger
   which yay > /dev/null && yay -S python-ueberzug-git || pipinstallueberzug
   pip3 install neovim-remote
+  echo "WARN! clangd not install automatically"
 }
 
 installextrapackages() { \
@@ -128,7 +130,7 @@ installextrapackages() { \
 }
 
 # Welcome
-echo 'Installing Nvim Mach 2'
+echo 'Installing Nvim'
 
 # install pip
 which pip3 > /dev/null && echo "pip installed, moving on..." || asktoinstallpip
@@ -146,10 +148,10 @@ pip3 list | grep pynvim > /dev/null && echo "pynvim installed, moving on..." || 
 # clone config down
 cloneconfig
 
-# echo "Nvim Mach 2 is better with at least ripgrep, ueberzug and ranger"
-# echo -n "Would you like to install these now?  (y/n)? "
-# read answer
-# [ "$answer" != "${answer#[Yy]}" ] && installextrapackages || echo "not installing extra packages"
+echo "Nvim is better with at least ripgrep, ueberzug and ranger"
+echo -n "Would you like to install these now?  (y/n)? "
+read answer
+[ "$answer" != "${answer#[Yy]}" ] && installextrapackages || echo "not installing extra packages"
 
 # install plugins
 which nvim > /dev/null && installplugins

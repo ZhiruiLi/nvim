@@ -1,9 +1,9 @@
 
 let g:startify_custom_header = [
-        \ '       _  __     _         __  ___         __     ___ ',
-        \ '      / |/ /  __(_)_ _    /  |/  /__ _____/ /    |_  |',
-        \ '     /    / |/ / /  ` \  / /|_/ / _ `/ __/ _ \  / __/ ',
-        \ '    /_/|_/|___/_/_/_/_/ /_/  /_/\_,_/\__/_//_/ /____/ ',
+        \ '       _  __     _        ',
+        \ '      / |/ /  __(_)_ _    ',
+        \ '     /    / |/ / /  ` \   ',
+        \ '    /_/|_/|___/_/_/_/_/   ',
         \]
 
 let g:startify_session_dir = '~/.config/nvim/session'
@@ -26,16 +26,14 @@ let g:startify_session_persistence = 1
 let g:webdevicons_enable_startify = 1
 
 function! StartifyEntryFormat()
-        return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
-    endfunction
+    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+endfunction
 
 let g:startify_bookmarks = [
-            \ { 'c': '~/.config/i3/config' },
             \ { 'i': '~/.config/nvim/init.vim' },
             \ { 'z': '~/.zshrc' },
-            \ '~/Blog',
-            \ '~/Code',
-            \ '~/Pics',
+            \ '~/OneDrive/notes',
+            \ '~/projects',
             \ ]
 
 let g:startify_enable_special = 0
