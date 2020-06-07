@@ -1,8 +1,8 @@
+" imap <C-h> <C-w>h
+" imap <C-j> <C-w>j
+" imap <C-k> <C-w>k
+" imap <C-l> <C-w>l
 
-imap <C-h> <C-w>h
-imap <C-j> <C-w>j
-imap <C-k> <C-w>k
-imap <C-l> <C-w>l
 " g Leader key
 let mapleader=" "
 " let localleader=" "
@@ -64,10 +64,10 @@ else
   " tnoremap <Esc> <C-\><C-n>
 
   " Use alt + hjkl to resize windows
-  nnoremap <silent> <M-j>    :resize -2<CR>
-  nnoremap <silent> <M-k>    :resize +2<CR>
-  nnoremap <silent> <M-h>    :vertical resize -2<CR>
-  nnoremap <silent> <M-l>    :vertical resize +2<CR>
+  " nnoremap <silent> <M-j>    :resize -2<CR>
+  " nnoremap <silent> <M-k>    :resize +2<CR>
+  " nnoremap <silent> <M-h>    :vertical resize -2<CR>
+  " nnoremap <silent> <M-l>    :vertical resize +2<CR>
 endif
 
 " Which Key =====================================================================
@@ -79,9 +79,8 @@ vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
 " Create map to add keys to
 let g:which_key_map =  {}
 " Define a separator
-let g:which_key_sep = '→'
-" set timeoutlen=100
-
+let g:which_key_sep = ':'
+set timeoutlen=100
 
 " Not a fan of floating windows for this
 let g:which_key_use_floating_win = 0
@@ -99,7 +98,7 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 
 
 " Single mappings
-let g:which_key_map['/'] = [ ':Commentary'  , 'comment' ]
+" let g:which_key_map['/'] = [ ':Commentary'  , 'comment' ]
 " let g:which_key_map['.'] = [ ':e $MYVIMRC'                , 'open init' ]
 let g:which_key_map['.'] = [ ':Files'                , 'open files' ]
 let g:which_key_map['/'] = [ ':Rg'                , 'search' ]

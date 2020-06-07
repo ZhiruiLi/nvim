@@ -5,14 +5,14 @@
   "suggest.completionItemKindLabels": {
     "text": "t",
     "method": "m",
-    "function": ""
+    "function": "f"
   },
 
   // diagnostics
-  "diagnostic.errorSign": " ",
-  "diagnostic.warningSign": " ",
-  "diagnostic.infoSign": "",
-  "diagnostic.hintSign": " ",
+  "diagnostic.errorSign": "E",
+  "diagnostic.warningSign": "W",
+  "diagnostic.infoSign": "I",
+  "diagnostic.hintSign": "H",
   "diagnostic.virtualText": true, // this won't work with codelens when error on same line
 
   // "diagnostic.displayByAle": true,
@@ -22,7 +22,7 @@
 
   // list
   "list.indicator": ">",
-  "list.selectedSignText": " ",
+  "list.selectedSignText": "S",
 
   // autoformat
   "coc.preferences.formatOnSaveFiletypes": [
