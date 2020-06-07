@@ -41,7 +41,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Better Syntax Support
     Plug 'sheerun/vim-polyglot'
     " Cool Icons
-    Plug 'ryanoasis/vim-devicons'
+    " Plug 'ryanoasis/vim-devicons'
     " Auto pairs for '(' '[' '{' 
     Plug 'jiangmiao/auto-pairs'
     " Closetags
@@ -55,7 +55,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Status Line
     Plug 'vim-airline/vim-airline'
-    " Plug 'vim-airline/vim-airline-themes'
+    Plug 'vim-airline/vim-airline-themes'
     " Ranger
     " Plug 'francoiscabrol/ranger.vim'
     " Plug 'rbgrouleff/bclose.vim'
