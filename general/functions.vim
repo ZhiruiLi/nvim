@@ -4,6 +4,6 @@ augroup auto_spellcheck
 augroup END
 
 " Remove trailing whitespaces automatically before save
-" augroup strip_ws
-"   autocmd BufWritePre * call utils#stripTrailingWhitespaces()
-" augroup END
+augroup strip_ws
+  autocmd BufWritePre * call utils#stripTrailingWhitespaces()
+augroup END
