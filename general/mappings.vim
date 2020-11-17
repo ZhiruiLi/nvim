@@ -108,7 +108,7 @@ let g:which_key_map.g = {
       \ 'A' : [':Git add %'                        , 'add current'],
       \ 'b' : [':Git blame'                        , 'blame'],
       \ 'B' : [':CocCommand browserOpen'           , 'browse'],
-      \ 'c' : [':GCommit'                          , 'commit'],
+      \ 'c' : [':Gcommit'                          , 'commit'],
       \ 'd' : [':CocCommand git.diffCached'        , 'diff'],
       \ 'D' : [':Gdiffsplit'                       , 'diff split'],
       \ 'y' : [':CocCommand git.copyUrl'           , 'copy URL'],
