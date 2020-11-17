@@ -24,7 +24,6 @@ else
   source $HOME/.config/nvim/plug-config/rnvimr.vim
   source $HOME/.config/nvim/plug-config/fzf.vim
   source $HOME/.config/nvim/plug-config/nerd-commenter.vim
-  source $HOME/.config/nvim/plug-config/rainbow.vim
   source $HOME/.config/nvim/plug-config/vim-wiki.vim
   source $HOME/.config/nvim/plug-config/coc.vim
   source $HOME/.config/nvim/plug-config/goyo.vim
@@ -43,7 +42,8 @@ endif
 if !empty(glob("./paths.vim"))
   source $HOME/.config/nvim/paths.vim
 endif
-let g:polyglot_disabled = ['csv']
+
+" let g:polyglot_disabled = ['csv']
 
 " Python
 " https://realpython.com/python-debugging-pdb/ " breakpoint syntax is really cool

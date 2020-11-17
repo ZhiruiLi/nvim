@@ -2,20 +2,14 @@
     \ 'coc-snippets',
     \ 'coc-actions',
     \ 'coc-lists',
-    \ 'coc-emmet',
     \ 'coc-pairs',
-    \ 'coc-tsserver',
-    \ 'coc-floaterm',
     \ 'coc-html',
     \ 'coc-css',
-    \ 'coc-emoji',
-    \ 'coc-cssmodules',
     \ 'coc-yaml',
     \ 'coc-python',
     \ 'coc-explorer',
-    \ 'coc-svg',
-    \ 'coc-prettier',
-    \ 'coc-vimlsp',
+    \ 'coc-go',
+    \ 'coc-clangd',
     \ 'coc-xml',
     \ 'coc-yank',
     \ 'coc-json',
@@ -161,13 +155,13 @@ autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | end
 imap <C-l> <Plug>(coc-snippets-expand)
 
 " Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
+vmap <C-n> <Plug>(coc-snippets-select)
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_next = '<c-n>'
 
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
+let g:coc_snippet_prev = '<c-p>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
+imap <C-n> <Plug>(coc-snippets-expand-jump)

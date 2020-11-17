@@ -60,7 +60,6 @@ installcocextensions() { \
   [ ! -f package.json ] && echo '{"dependencies":{}}'> package.json
   # Change extension names to the extensions you need
   # sudo npm install coc-explorer coc-snippets coc-json coc-actions --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
-  sudo npm install coc-explorer coc-snippets coc-json coc-actions --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 }
 
 cloneconfig() { \
@@ -99,7 +98,7 @@ asktoinstallpip() { \
 }
 
 installonmac() { \
-  brew install ripgrep fzf ranger llvm
+  brew install ripgrep fzf llvm
 }
 
 pipinstallueberzug() { \
@@ -107,17 +106,15 @@ pipinstallueberzug() { \
 }
 
 installonubuntu() { \
-  sudo apt install ripgrep fzf ranger  
-  sudo apt install libjpeg8-dev zlib1g-dev python-dev python3-dev libxtst-dev
-  pip3 install ueberzug
+  sudo apt install ripgrep fzf
+  sudo apt install zlib1g-dev python-dev python3-dev
   pip3 install neovim-remote
   sudo apt-get install clangd-9 && sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
 }
 
 
 installonarch() { \
-  sudo pacman -S install ripgrep fzf ranger
-  which yay > /dev/null && yay -S python-ueberzug-git || pipinstallueberzug
+  sudo pacman -S install ripgrep fzf
   pip3 install neovim-remote
   echo "WARN! clangd not install automatically"
 }
@@ -148,7 +145,7 @@ pip3 list | grep pynvim > /dev/null && echo "pynvim installed, moving on..." || 
 # clone config down
 cloneconfig
 
-echo "Nvim is better with at least ripgrep, ueberzug and ranger"
+echo "Nvim is better with at least ripgrep llvm"
 echo -n "Would you like to install these now?  (y/n)? "
 read answer
 [ "$answer" != "${answer#[Yy]}" ] && installextrapackages || echo "not installing extra packages"
@@ -157,7 +154,3 @@ read answer
 which nvim > /dev/null && installplugins
 
 installcocextensions
-
-echo "I recommend you also install and activate a font from here: https://github.com/ryanoasis/nerd-fonts"
-
-echo "I also recommend you add 'set preview_images_method ueberzug' to ~/.config/ranger/rc.conf"

@@ -26,55 +26,30 @@
 
   // autoformat
   "coc.preferences.formatOnSaveFiletypes": [
-    "css",
+    "cpp",
+    "go",
     "markdown",
-    "javascript",
-    "graphql",
-    "html",
-    "yaml",
-    "json",
-    "python"
+    "xml",
+    "json"
   ],
   "coc.preferences.hoverTarget": "float",
-
-  // python config
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true,
-  "python.formatting.provider": "black",
-  "python.formatting.blackPath": "~/.miniconda/envs/neovim/bin/black",
-  // "python.linting.pylintPath": "~/.miniconda/envs/neovim/bin/pylint",
-  "python.condaPath": "~/.miniconda/bin/conda",
-  "python.sortImports.path": "~/.miniconda/envs/neovim/bin/isort",
-  "python.jediPath": "~/.miniconda/envs/neovim/lib/python3.8/site-packages",
 
   // snippets
   "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/snips"],
   //"snippets.userSnippetsDirectory": "~/.config/nvim/snips",
-
-  // emmet
-  "emmet.includeLanguages": {
-    "vue-html": "html",
-    "javascript": "javascriptreact"
-  },
 
   // explorer
   "explorer.width": 30,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
   "explorer.icon.enableVimDevicons": false,
-  "explorer.keyMappings": {
+  "explorer.keyMappings.global": {
     "<cr>": ["expandable?", "expand", "open"],
-    "v": "open:vsplit"
+    "v": "open:vsplit",
+    "s": "open:split"
   },
 
-  "languageserver": {
-    "bash": {
-      "command": "bash-language-server",
-      "args": ["start"],
-      "filetypes": ["sh"],
-      "ignoredRootPaths": ["~"]
-    }
-  }
+  "languageserver": {}
 
   // TODO b:coc_suggest_disable=1 GOYO
   // TODO add to paths.vim g:coc_node_path
