@@ -60,6 +60,7 @@ let g:which_key_map.t = {
 " o is for toggle
 let g:which_key_map.o = {
       \ 'name' : '+open' ,
+      \ 'o' : [':!open -a finder %:h'    , 'with finder'],
       \ 't' : [':FloatermToggle'         , 'terminal'],
       \ 'y' : [':!open -a yoink %:p'     , 'with yoink'],
       \ 'm' : [':!open -a typora %:p'    , 'with typora'],
@@ -83,9 +84,10 @@ let g:which_key_map.s = {
       \ 'name' : '+search' ,
       \ 'p' : [':CocList grep'          , 'in project'],
       \ 's' : [':CocList lines'         , 'in current file'],
+      \ 'h' : [':CocList helptags'      , 'helps'],
       \ 'i' : [':CocList outline'       , 'outline'],
-      \ 'o' : [':CocList -I symbols'       , 'workspace symbols'],
-      \ ';' : [':CocList vimcommands'   , 'commands'],
+      \ 'o' : [':CocList -I symbols'    , 'workspace symbols'],
+      \ ';' : [':CocList cmdhistory'    , 'command histroy'],
       \ 'k' : [':CocList marks'         , 'marks'],
       \ 'e' : [':CocList extensions'    , 'extensions'],
       \ 't' : [':CocList tags'          , 'search for tags'],
@@ -95,9 +97,9 @@ let g:which_key_map.s = {
 " f is for file
 let g:which_key_map.f = {
       \ 'name' : '+file' ,
-      \ 'f' : [':CocList files'         , 'files'],
-      \ 'g' : [':CocList gfiles'        , 'gfiles'],
-      \ 'p' : [':e $MYVIMRC'            , 'private config'],
+      \ 'f' : [':CocList files'             , 'files'],
+      \ 'g' : [':CocList gfiles'            , 'gfiles'],
+      \ 'p' : [':e $MYVIMRC'                , 'private config'],
       \ }
 
 " g is for git
@@ -130,17 +132,13 @@ let g:which_key_map.l = {
       \ 'D' : ['<Plug>(coc-declaration)'             , 'declaration'],
       \ 'f' : ['<Plug>(coc-format-selected)'         , 'format selected'],
       \ 'F' : ['<Plug>(coc-format)'                  , 'format'],
-      \ 'h' : ['<Plug>(coc-float-hide)'              , 'hide'],
       \ 'i' : ['<Plug>(coc-implementation)'          , 'implementation'],
       \ 't' : ['<Plug>(coc-type-definition)'         , 'type definition'],
       \ 'e' : [':CocList diagnostics'                , 'diagnostics'],
-      \ 'j' : ['<Plug>(coc-float-jump)'              , 'float jump'],
-      \ 'l' : ['<Plug>(coc-codelens-action)'         , 'code lens'],
       \ 'q' : ['<Plug>(coc-fix-current)'             , 'quickfix'],
       \ 'n' : ['<Plug>(coc-rename)'                  , 'rename'],
       \ 'r' : ['<Plug>(coc-references)'              , 'references'],
-      \ 's' : [':CocList -I symbols'                 , 'references'],
-      \ 'S' : [':CocList snippets'                   , 'snippets'],
+      \ 's' : [':CocList snippets'                   , 'snippets'],
       \ }
 
 " GoTo code navigation.
