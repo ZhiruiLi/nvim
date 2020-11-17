@@ -37,31 +37,25 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 
 
 " Single mappings
-" let g:which_key_map['/'] = [ ':Commentary'  , 'comment' ]
-" let g:which_key_map['.'] = [ ':e $MYVIMRC'                , 'open init' ]
-let g:which_key_map['.'] = [ ':CocList mru'                 , 'mru files' ]
-let g:which_key_map[','] = [ ':CocList buffers'             , 'buffers' ]
-let g:which_key_map[';'] = [ ':CocListResume'               , 'resume list' ]
-let g:which_key_map[':'] = [ ':CocList vimcommands'         , 'vim commands' ]
-let g:which_key_map['n'] = [ ':CocNext'                     , 'next coc item' ]
-let g:which_key_map['p'] = [ ':CocPrev'                     , 'previous coc item' ]
-" let g:which_key_map['S'] = [ ':SSave'                     , 'save session' ]
-" let g:which_key_map['T'] = [ ':Rg'                        , 'search text' ]
-" let g:which_key_map['v'] = [ '<C-W>v'                     , 'split right']
-" let g:which_key_map['W'] = [ 'w'                          , 'write' ]
-" let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]
+let g:which_key_map['.'] = [ ':CocList mru'              , 'mru files' ]
+let g:which_key_map[','] = [ ':CocList buffers'          , 'buffers' ]
+let g:which_key_map[';'] = [ ':CocListResume'            , 'resume list' ]
+let g:which_key_map[':'] = [ ':CocList vimcommands'      , 'vim commands' ]
+let g:which_key_map['n'] = [ ':CocNext'                  , 'next coc item' ]
+let g:which_key_map['p'] = [ ':CocPrev'                  , 'previous coc item' ]
 
 " Group mappings
 
 " t is for toggle
 let g:which_key_map.t = {
       \ 'name' : '+toggle' ,
+      \ 't' : [':Vista!!'                , 'tag viewer'],
+      \ 'l' : [':CocList filetype'       , 'language mode'],
       \ 'c' : [':ColorizerToggle'        , 'colorizer'],
       \ 'e' : [':CocCommand explorer'    , 'explorer'],
       \ 'n' : [':set nonumber!'          , 'line-numbers'],
       \ 'r' : [':set norelativenumber!'  , 'relative line nums'],
       \ 'h' : [':let @/ = ""'            , 'remove search highlight'],
-      \ 't' : [':Vista!!'                , 'tag viewer'],
       \ 'z' : [':Goyo!!'                 , 'zen mode'],
       \ }
 
@@ -99,10 +93,18 @@ let g:which_key_map.s = {
       \ 'y' : [':CocList yank'          , 'search for tags'],
       \ }
 
+" f is for file
+let g:which_key_map.f = {
+      \ 'name' : '+file' ,
+      \ 'f' : [':CocList files'         , 'files'],
+      \ 'g' : [':CocList gfiles'        , 'gfiles'],
+      \ 'p' : [':e $MYVIMRC'            , 'private config'],
+      \ }
+
 " g is for git
 let g:which_key_map.g = {
       \ 'name' : '+git' ,
-      \ 'g' : [':Gstatus'                          , 'status'],
+      \ 'g' : [':CocList gstatus'                  , 'status'],
       \ 'o' : [':CocCommand git.showCommit'        , 'commit log'],
       \ 'a' : [':Git add .'                        , 'add all'],
       \ 'A' : [':Git add %'                        , 'add current'],
