@@ -45,15 +45,6 @@ let g:which_key_map[';'] = [ ':CocListResume'               , 'resume list' ]
 let g:which_key_map[':'] = [ ':CocList vimcommands'         , 'vim commands' ]
 let g:which_key_map['n'] = [ ':CocNext'                     , 'next coc item' ]
 let g:which_key_map['p'] = [ ':CocPrev'                     , 'previous coc item' ]
-" let g:which_key_map['='] = [ '<C-W>='                     , 'balance windows' ]
-" let g:which_key_map[','] = [ 'Startify'                   , 'start screen' ]
-" let g:which_key_map['c'] = [ ':Codi!!'                    , 'virtual repl']
-" let g:which_key_map['d'] = [ ':bd'                        , 'delete buffer']
-" let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
-" let g:which_key_map['f'] = [ ':Files'                     , 'search files' ]
-" let g:which_key_map['h'] = [ '<C-W>s'                     , 'split below']
-" let g:which_key_map['q'] = [ 'q'                          , 'quit' ]
-" let g:which_key_map['r'] = [ ':RnvimrToggle'              , 'ranger' ]
 " let g:which_key_map['S'] = [ ':SSave'                     , 'save session' ]
 " let g:which_key_map['T'] = [ ':Rg'                        , 'search text' ]
 " let g:which_key_map['v'] = [ '<C-W>v'                     , 'split right']
@@ -79,7 +70,7 @@ let g:which_key_map.o = {
       \ 'name' : '+open' ,
       \ 't' : [':FloatermToggle'         , 'terminal'],
       \ 'y' : [':!open -a yoink %:p'     , 'with yoink'],
-      \ 'm' : [':!open -a typora %:p'     , 'with typora'],
+      \ 'm' : [':!open -a typora %:p'    , 'with typora'],
       \ }
 
 " b is for buffer
@@ -111,26 +102,20 @@ let g:which_key_map.s = {
 " g is for git
 let g:which_key_map.g = {
       \ 'name' : '+git' ,
+      \ 'g' : [':Gstatus'                          , 'status'],
+      \ 'o' : [':CocCommand git.showCommit'        , 'commit log'],
       \ 'a' : [':Git add .'                        , 'add all'],
       \ 'A' : [':Git add %'                        , 'add current'],
       \ 'b' : [':Git blame'                        , 'blame'],
-      \ 'B' : [':GBrowse'                          , 'browse'],
-      \ 'c' : [':Git commit'                       , 'commit'],
-      \ 'd' : [':Git diff'                         , 'diff'],
+      \ 'B' : [':CocCommand browserOpen'           , 'browse'],
+      \ 'c' : [':GCommit'                          , 'commit'],
+      \ 'd' : [':CocCommand git.diffCached'        , 'diff'],
       \ 'D' : [':Gdiffsplit'                       , 'diff split'],
-      \ 'g' : [':GGrep'                            , 'git grep'],
-      \ 'G' : [':Gstatus'                          , 'status'],
-      \ 'h' : [':GitGutterLineHighlightsToggle'    , 'highlight hunks'],
-      \ 'H' : ['<Plug>(GitGutterPreviewHunk)'      , 'preview hunk'],
-      \ 'j' : ['<Plug>(GitGutterNextHunk)'         , 'next hunk'],
-      \ 'k' : ['<Plug>(GitGutterPrevHunk)'         , 'prev hunk'],
-      \ 'l' : [':Git log'                          , 'log'],
-      \ 'p' : [':Git push'                         , 'push'],
-      \ 'P' : [':Git pull'                         , 'pull'],
+      \ 'y' : [':CocCommand git.copyUrl'           , 'copy URL'],
+      \ 'p' : [':CocCommand git.push'              , 'push'],
+      \ 'l' : [':Git pull'                         , 'pull'],
       \ 'r' : [':GRemove'                          , 'remove'],
-      \ 's' : ['<Plug>(GitGutterStageHunk)'        , 'stage hunk'],
-      \ 't' : [':GitGutterSignsToggle'             , 'toggle signs'],
-      \ 'u' : ['<Plug>(GitGutterUndoHunk)'         , 'undo hunk'],
+      \ 's' : [':CocCommand git.chunkStage'        , 'stage chunk'],
       \ 'v' : [':GV'                               , 'view commits'],
       \ 'V' : [':GV!'                              , 'view buffer commits'],
       \ }
@@ -147,23 +132,46 @@ let g:which_key_map.l = {
       \ 'F' : ['<Plug>(coc-format)'                  , 'format'],
       \ 'h' : ['<Plug>(coc-float-hide)'              , 'hide'],
       \ 'i' : ['<Plug>(coc-implementation)'          , 'implementation'],
+      \ 't' : ['<Plug>(coc-type-definition)'         , 'type definition'],
       \ 'e' : [':CocList diagnostics'                , 'diagnostics'],
       \ 'j' : ['<Plug>(coc-float-jump)'              , 'float jump'],
       \ 'l' : ['<Plug>(coc-codelens-action)'         , 'code lens'],
-      \ 'o' : ['<Plug>(coc-openlink)'                , 'open link'],
-      \ 'p' : ['<Plug>(coc-diagnostic-prev)'         , 'prev diagnostic'],
-      \ 'P' : ['<Plug>(coc-diagnostic-prev-error)'   , 'prev error'],
       \ 'q' : ['<Plug>(coc-fix-current)'             , 'quickfix'],
       \ 'n' : ['<Plug>(coc-rename)'                  , 'rename'],
       \ 'r' : ['<Plug>(coc-references)'              , 'references'],
       \ 's' : [':CocList -I symbols'                 , 'references'],
       \ 'S' : [':CocList snippets'                   , 'snippets'],
-      \ 't' : ['<Plug>(coc-type-definition)'         , 'type definition'],
-      \ 'U' : [':CocUpdate'                          , 'update CoC'],
-      \ 'v' : [':Vista!!'                            , 'tag viewer'],
-      \ 'z' : [':CocDisable'                         , 'disable CoC'],
-      \ 'Z' : [':CocEnable'                          , 'enable CoC'],
       \ }
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" create text object for git chunks
+omap ig <Plug>(coc-git-chunk-inner)
+xmap ig <Plug>(coc-git-chunk-inner)
+omap ag <Plug>(coc-git-chunk-outer)
+xmap ag <Plug>(coc-git-chunk-outer)
+
+" Introduce function text object
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " t is for terminal
 " let g:which_key_map.t = {
