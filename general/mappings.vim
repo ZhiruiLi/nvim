@@ -1,80 +1,19 @@
-" imap <C-h> <C-w>h
-" imap <C-j> <C-w>j
-" imap <C-k> <C-w>k
-" imap <C-l> <C-w>l
-
 " g Leader key
-let mapleader=" "
-" let localleader=" "
-nnoremap <Space> <Nop>
+let mapleader="\<Space>"
+let localleader="\<Space>\<Space>"
+" nnoremap <Space> <Nop>
 
 " Better indenting
 vnoremap < <gv
 vnoremap > >gv
-
-if exists('g:vscode')
-
-" Simulate same TAB behavior in VSCode
-" nmap <Tab> :Tabnext<CR>
-" nmap <S-Tab> :Tabprev<CR>
-
-else
-  " Better nav for omnicomplete
-  " inoremap <expr> <c-j> ("\<C-n>")
-  " inoremap <expr> <c-k> ("\<C-p>")
-
-  " I hate escape more than anything else
-  " inoremap jk <Esc>
-  " inoremap kj <Esc>
-
-  " Easy CAPS
-  " inoremap <c-u> <ESC>viwUi
-  " nnoremap <c-u> viwU<Esc>
-
-  " TAB in general mode will move to text buffer
-  " nnoremap <silent> <TAB> :bnext<CR>
-  " SHIFT-TAB will go back
-  " nnoremap <silent> <S-TAB> :bprevious<CR>
-
-  " Alternate way to save
-  " nnoremap <silent> <C-s> :w<CR>
-  " Alternate way to quit
-  " nnoremap <silent> <C-Q> :wq!<CR>
-  " Use control-c instead of escape
-  " nnoremap <silent> <C-c> <Esc>
-  " <TAB>: completion.
-  " inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-
-
-  " Better window navigation
-  " nnoremap <C-h> <C-w>h
-  " nnoremap <C-j> <C-w>j
-  " nnoremap <C-k> <C-w>k
-  " nnoremap <C-l> <C-w>l
-
-  " Terminal window navigation
-  " tnoremap <C-h> <C-\><C-N><C-w>h
-  " tnoremap <C-j> <C-\><C-N><C-w>j
-  " tnoremap <C-k> <C-\><C-N><C-w>k
-  " tnoremap <C-l> <C-\><C-N><C-w>l
-  " inoremap <C-h> <C-\><C-N><C-w>h
-  " inoremap <C-j> <C-\><C-N><C-w>j
-  " inoremap <C-k> <C-\><C-N><C-w>k
-  " inoremap <C-l> <C-\><C-N><C-w>l
-  " tnoremap <Esc> <C-\><C-n>
-
-  " Use alt + hjkl to resize windows
-  " nnoremap <silent> <M-j>    :resize -2<CR>
-  " nnoremap <silent> <M-k>    :resize +2<CR>
-  " nnoremap <silent> <M-h>    :vertical resize -2<CR>
-  " nnoremap <silent> <M-l>    :vertical resize +2<CR>
-endif
 
 " Which Key =====================================================================
 
 " Map leader to which_key
 nnoremap <silent> <leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+nnoremap <silent> <localleader> :silent <c-u> :silent WhichKey '<Space><Space>'<CR>
+vnoremap <silent> <localleader> :silent <c-u> :silent WhichKeyVisual '<Space><Space>'<CR>
 
 " Create map to add keys to
 let g:which_key_map =  {}
@@ -100,10 +39,12 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 " Single mappings
 " let g:which_key_map['/'] = [ ':Commentary'  , 'comment' ]
 " let g:which_key_map['.'] = [ ':e $MYVIMRC'                , 'open init' ]
-let g:which_key_map['.'] = [ ':Files'                , 'open files' ]
-let g:which_key_map['/'] = [ ':Rg'                , 'search' ]
-let g:which_key_map[','] = [ ':Buffers'                   , 'buffers' ]
-" let g:which_key_map[';'] = [ ':Commands'                  , 'commands' ]
+let g:which_key_map['.'] = [ ':CocList mru'                 , 'mru files' ]
+let g:which_key_map[','] = [ ':CocList buffers'             , 'buffers' ]
+let g:which_key_map[';'] = [ ':CocListResume'               , 'resume list' ]
+let g:which_key_map[':'] = [ ':CocList vimcommands'         , 'vim commands' ]
+let g:which_key_map['n'] = [ ':CocNext'                     , 'next coc item' ]
+let g:which_key_map['p'] = [ ':CocPrev'                     , 'previous coc item' ]
 " let g:which_key_map['='] = [ '<C-W>='                     , 'balance windows' ]
 " let g:which_key_map[','] = [ 'Startify'                   , 'start screen' ]
 " let g:which_key_map['c'] = [ ':Codi!!'                    , 'virtual repl']
@@ -130,58 +71,42 @@ let g:which_key_map.t = {
       \ 'r' : [':set norelativenumber!'  , 'relative line nums'],
       \ 'h' : [':let @/ = ""'            , 'remove search highlight'],
       \ 't' : [':Vista!!'                , 'tag viewer'],
-      \ 'z' : [':Goyo!!'                , 'zen mode'],
+      \ 'z' : [':Goyo!!'                 , 'zen mode'],
       \ }
 
 " o is for toggle
 let g:which_key_map.o = {
       \ 'name' : '+open' ,
       \ 't' : [':FloatermToggle'         , 'terminal'],
+      \ 'y' : [':!open -a yoink %:p'     , 'with yoink'],
+      \ 'm' : [':!open -a typora %:p'     , 'with typora'],
       \ }
 
 " b is for buffer
 let g:which_key_map.b = {
       \ 'name' : '+buffer' ,
-      \ '1' : ['b1'        , 'buffer 1']        ,
-      \ '2' : ['b2'        , 'buffer 2']        ,
-      \ 'd' : ['bd'        , 'delete-buffer']   ,
-      \ 'f' : ['bfirst'    , 'first-buffer']    ,
-      \ 'h' : ['Startify'  , 'home-buffer']     ,
-      \ 'l' : ['blast'     , 'last-buffer']     ,
-      \ 'n' : ['bnext'     , 'next-buffer']     ,
-      \ 'p' : ['bprevious' , 'previous-buffer'] ,
-      \ 'b' : ['Buffers'   , 'fzf-buffer']      ,
+      \ 'd' : ['bd'        , 'delete buffer']   ,
+      \ 'f' : ['bfirst'    , 'first buffer']    ,
+      \ 'l' : ['blast'     , 'last buffer']     ,
+      \ 'h' : ['Startify'  , 'home buffer']     ,
+      \ 'n' : ['bnext'     , 'next buffer']     ,
+      \ 'p' : ['bprevious' , 'previous buffer'] ,
+      \ 'N' : ['enew'      , 'new empty buffer']     ,
+      \ 'b' : [':CocList buffers'   , 'buffer list']      ,
       \ }
 
 " s is for search
 let g:which_key_map.s = {
       \ 'name' : '+search' ,
-      \ '/' : [':History/'              , 'history'],
-      \ ';' : [':Commands'              , 'commands'],
-      \ 'a' : [':Ag'                    , 'text Ag'],
-      \ 'b' : [':BLines'                , 'current buffer'],
-      \ 'B' : [':Buffers'               , 'open buffers'],
-      \ 'c' : [':Commits'               , 'commits'],
-      \ 'C' : [':BCommits'              , 'buffer commits'],
-      \ 'f' : [':Files'                 , 'files'],
-      \ 'g' : [':GFiles'                , 'git files'],
-      \ 'G' : [':GFiles?'               , 'modified git files'],
-      \ 'h' : [':History'               , 'file history'],
-      \ 'H' : [':History:'              , 'command history'],
-      \ 'l' : [':Lines'                 , 'lines'] ,
-      \ 'm' : [':Marks'                 , 'marks'] ,
-      \ 'M' : [':Maps'                  , 'normal maps'] ,
-      \ 'p' : [':Helptags'              , 'help tags'] ,
-      \ 'P' : [':Tags'                  , 'project tags'],
-      \ 's' : [':CocList snippets'      , 'snippets'],
-      \ 'S' : [':Colors'                , 'color schemes'],
-      \ 't' : [':Rg'                    , 'text Rg'],
-      \ 'T' : [':BTags'                 , 'buffer tags'],
-      \ 'w' : [':Windows'               , 'search windows'],
-      \ 'y' : [':Filetypes'             , 'file types'],
-      \ 'z' : [':FZF'                   , 'FZF'],
+      \ 'p' : [':CocList grep'          , 'in project'],
+      \ 's' : [':CocList lines'         , 'in current file'],
+      \ 'i' : [':CocList outline'       , 'outline'],
+      \ ';' : [':CocList vimcommands'   , 'commands'],
+      \ 'k' : [':CocList marks'         , 'marks'],
+      \ 'e' : [':CocList extensions'    , 'extensions'],
+      \ 't' : [':CocList tags'          , 'search for tags'],
+      \ 'y' : [':CocList yank'          , 'search for tags'],
       \ }
-      " \ 's' : [':Snippets'     , 'snippets'],
 
 " g is for git
 let g:which_key_map.g = {
@@ -212,37 +137,28 @@ let g:which_key_map.g = {
 
 " l is for language server protocol
 let g:which_key_map.l = {
-      \ 'name' : '+lsp' ,
+      \ 'name' : '+lang' ,
       \ '.' : [':CocConfig'                          , 'config'],
-      \ ';' : ['<Plug>(coc-refactor)'                , 'refactor'],
       \ 'a' : ['<Plug>(coc-codeaction)'              , 'line action'],
       \ 'A' : ['<Plug>(coc-codeaction-selected)'     , 'selected action'],
-      \ 'b' : [':CocNext'                            , 'next action'],
-      \ 'B' : [':CocPrev'                            , 'prev action'],
-      \ 'c' : [':CocList commands'                   , 'commands'],
       \ 'd' : ['<Plug>(coc-definition)'              , 'definition'],
       \ 'D' : ['<Plug>(coc-declaration)'             , 'declaration'],
-      \ 'e' : [':CocList extensions'                 , 'extensions'],
       \ 'f' : ['<Plug>(coc-format-selected)'         , 'format selected'],
       \ 'F' : ['<Plug>(coc-format)'                  , 'format'],
       \ 'h' : ['<Plug>(coc-float-hide)'              , 'hide'],
       \ 'i' : ['<Plug>(coc-implementation)'          , 'implementation'],
-      \ 'I' : [':CocList diagnostics'                , 'diagnostics'],
+      \ 'e' : [':CocList diagnostics'                , 'diagnostics'],
       \ 'j' : ['<Plug>(coc-float-jump)'              , 'float jump'],
       \ 'l' : ['<Plug>(coc-codelens-action)'         , 'code lens'],
-      \ 'n' : ['<Plug>(coc-diagnostic-next)'         , 'next diagnostic'],
-      \ 'N' : ['<Plug>(coc-diagnostic-next-error)'   , 'next error'],
       \ 'o' : ['<Plug>(coc-openlink)'                , 'open link'],
-      \ 'O' : [':CocList outline'                    , 'outline'],
       \ 'p' : ['<Plug>(coc-diagnostic-prev)'         , 'prev diagnostic'],
       \ 'P' : ['<Plug>(coc-diagnostic-prev-error)'   , 'prev error'],
       \ 'q' : ['<Plug>(coc-fix-current)'             , 'quickfix'],
-      \ 'r' : ['<Plug>(coc-rename)'                  , 'rename'],
-      \ 'R' : ['<Plug>(coc-references)'              , 'references'],
+      \ 'n' : ['<Plug>(coc-rename)'                  , 'rename'],
+      \ 'r' : ['<Plug>(coc-references)'              , 'references'],
       \ 's' : [':CocList -I symbols'                 , 'references'],
       \ 'S' : [':CocList snippets'                   , 'snippets'],
       \ 't' : ['<Plug>(coc-type-definition)'         , 'type definition'],
-      \ 'u' : [':CocListResume'                      , 'resume list'],
       \ 'U' : [':CocUpdate'                          , 'update CoC'],
       \ 'v' : [':Vista!!'                            , 'tag viewer'],
       \ 'z' : [':CocDisable'                         , 'disable CoC'],

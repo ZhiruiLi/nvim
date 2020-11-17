@@ -49,6 +49,14 @@
     "s": "open:split"
   },
 
+  "list.insertMappings": {
+    "<C-r>": "do:refresh",
+    "<C-n>": "normal:j",
+    "<C-p>": "normal:k"
+  },
+
+  "list.normalMappings": {},
+
   "languageserver": {}
 
   // TODO b:coc_suggest_disable=1 GOYO
