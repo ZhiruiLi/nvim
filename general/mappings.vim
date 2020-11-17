@@ -84,6 +84,7 @@ let g:which_key_map.s = {
       \ 'p' : [':CocList grep'          , 'in project'],
       \ 's' : [':CocList lines'         , 'in current file'],
       \ 'i' : [':CocList outline'       , 'outline'],
+      \ 'o' : [':CocList -I symbols'       , 'workspace symbols'],
       \ ';' : [':CocList vimcommands'   , 'commands'],
       \ 'k' : [':CocList marks'         , 'marks'],
       \ 'e' : [':CocList extensions'    , 'extensions'],
