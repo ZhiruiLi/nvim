@@ -116,6 +116,8 @@ let g:which_key_map['s']['y'] = 'search for tags'
 let g:which_key_map['f'] = { 'name' : '+file' }
 nnoremap <leader>fy :let @*=expand("%:t") . ":" . line(".")<CR>
 let g:which_key_map['f']['y'] = 'copy file name with line no'
+nnoremap <leader>fY :let @*=expand("%:p")<CR>
+let g:which_key_map['f']['Y'] = 'copy file full path'
 nnoremap <leader>ff :CocList files<CR>
 let g:which_key_map['f']['f'] = 'find files'
 nnoremap <leader>fp :CocList files -F<CR>
