@@ -41,6 +41,7 @@ let g:which_key_map[';'] = [ ':CocListResume'            , 'resume list' ]
 let g:which_key_map[':'] = [ ':CocList vimcommands'      , 'vim commands' ]
 let g:which_key_map['n'] = [ ':CocNext'                  , 'next coc item' ]
 let g:which_key_map['p'] = [ ':CocPrev'                  , 'previous coc item' ]
+let g:which_key_map['`'] = [ ':b#'                       , 'switch mru buffer' ]
 
 " Group mappings
 
@@ -49,10 +50,8 @@ let g:which_key_map.t = {
       \ 'name' : '+toggle' ,
       \ 't' : [':Vista!!'                , 'tag viewer'],
       \ 'l' : [':CocList filetype'       , 'language mode'],
-      \ 'c' : [':ColorizerToggle'        , 'colorizer'],
       \ 'e' : [':CocCommand explorer'    , 'explorer'],
       \ 'n' : [':set nonumber!'          , 'line-numbers'],
-      \ 'r' : [':set norelativenumber!'  , 'relative line nums'],
       \ 'h' : [':let @/ = ""'            , 'remove search highlight'],
       \ 'z' : [':Goyo!!'                 , 'zen mode'],
       \ }
@@ -97,9 +96,11 @@ let g:which_key_map.s = {
 " f is for file
 let g:which_key_map.f = {
       \ 'name' : '+file' ,
-      \ 'f' : [':CocList files'             , 'files'],
-      \ 'g' : [':CocList gfiles'            , 'gfiles'],
-      \ 'p' : [':e $MYVIMRC'                , 'private config'],
+      \ 'f' : [':CocList files'                         , 'files'],
+      \ 'g' : [':CocList gfiles'                        , 'gfiles'],
+      \ 'y' : [':let @*=expand("%:t")'                  , 'yank file name'],
+      \ '.' : [':CocList files -F $HOME/.config/nvim'   , 'private config'],
+      \ 'R' : [':so $MYVIMRC'                           , 'reload vimrc']
       \ }
 
 " g is for git

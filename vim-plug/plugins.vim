@@ -32,7 +32,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
   else
     " Text Navigation
-    " Plug 'justinmk/vim-sneak'
     Plug 'unblevable/quick-scope'
     Plug 'easymotion/vim-easymotion'
     " Add some color
@@ -40,8 +39,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'junegunn/rainbow_parentheses.vim'
     " Better Syntax Support
     Plug 'sheerun/vim-polyglot'
-    " Cool Icons
-    " Plug 'ryanoasis/vim-devicons'
     " Auto pairs for '(' '[' '{' 
     Plug 'jiangmiao/auto-pairs'
     " Closetags
@@ -53,16 +50,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'tomasiser/vim-code-dark'
     " Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neoclide/jsonc.vim'
     " Status Line
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    " Ranger
-    " Plug 'francoiscabrol/ranger.vim'
-    " Plug 'rbgrouleff/bclose.vim'
-    " Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
-    " FZF
-    " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    " Plug 'junegunn/fzf.vim'
     " Git
     " Plug 'mhinz/vim-signify'
     " Plug 'airblade/vim-gitgutter'
@@ -83,7 +74,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'neomake/neomake'
     " Snippets
     Plug 'honza/vim-snippets'
-    " Plug 'mattn/emmet-vim'
+    " FZF
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
     " Better Comments
     Plug 'jbgutierrez/vim-better-comments'
     " Echo doc

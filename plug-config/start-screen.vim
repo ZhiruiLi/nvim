@@ -27,7 +27,7 @@ let g:webdevicons_enable_startify = 1
 " endfunction
 
 let g:startify_bookmarks = [
-            \ { 'i': '~/.config/nvim/init.vim' },
+            \ { 'i': '~/.config/nvim' },
             \ { 'z': '~/.zshrc' },
             \ '~/OneDrive/notes',
             \ '~/projects',
