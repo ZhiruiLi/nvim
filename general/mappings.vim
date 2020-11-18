@@ -41,7 +41,7 @@ let g:which_key_map[';'] = [ ':CocListResume'            , 'resume list' ]
 let g:which_key_map[':'] = [ ':CocList vimcommands'      , 'vim commands' ]
 let g:which_key_map['n'] = [ ':CocNext'                  , 'next coc item' ]
 let g:which_key_map['p'] = [ ':CocPrev'                  , 'previous coc item' ]
-let g:which_key_map['`'] = [ ':b#'                       , 'switch mru buffer' ]
+let g:which_key_map['`'] = [ ':b#'                       , 'recent buffer' ]
 
 " Group mappings
 
@@ -60,7 +60,7 @@ let g:which_key_map.t = {
 let g:which_key_map.o = {
       \ 'name' : '+open' ,
       \ 'o' : [':!open -a finder %:h'    , 'with finder'],
-      \ 't' : [':FloatermToggle'         , 'terminal'],
+      \ 't' : [':terminal'               , 'terminal'],
       \ 'y' : [':!open -a yoink %:p'     , 'with yoink'],
       \ 'm' : [':!open -a typora %:p'    , 'with typora'],
       \ }
@@ -68,14 +68,12 @@ let g:which_key_map.o = {
 " b is for buffer
 let g:which_key_map.b = {
       \ 'name' : '+buffer' ,
-      \ 'd' : ['bd'        , 'delete buffer']   ,
-      \ 'f' : ['bfirst'    , 'first buffer']    ,
-      \ 'l' : ['blast'     , 'last buffer']     ,
-      \ 'h' : ['Startify'  , 'home buffer']     ,
-      \ 'n' : ['bnext'     , 'next buffer']     ,
-      \ 'p' : ['bprevious' , 'previous buffer'] ,
-      \ 'N' : ['enew'      , 'new empty buffer']     ,
-      \ 'b' : [':CocList buffers'   , 'buffer list']      ,
+      \ 'b' : [':CocList buffers'    , 'buffers']          ,
+      \ 'd' : [':bd'                 , 'delete buffer']    ,
+      \ 'h' : [':Startify'           , 'home buffer']      ,
+      \ 'n' : [':bnext'              , 'next buffer']      ,
+      \ 'p' : [':bprevious'          , 'previous buffer']  ,
+      \ 'N' : [':enew'               , 'new empty buffer'] ,
       \ }
 
 " s is for search
