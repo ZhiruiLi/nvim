@@ -18,7 +18,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'tpope/vim-speeddating'
   " Convert binary, hex, etc..
   Plug 'glts/vim-radical'
-  " Files
+  " Unix command helper: :Move, :Delete... 
   Plug 'tpope/vim-eunuch'
   " Repeat stuff
   Plug 'tpope/vim-repeat'
@@ -26,7 +26,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'tpope/vim-surround'
   " Better Comments
   Plug 'tpope/vim-commentary'
-  " Plug 'preservim/nerdcommenter'
   " Have the file system follow you around
   Plug 'airblade/vim-rooter'
   " auto set indent settings
@@ -35,7 +34,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   if exists('g:vscode')
     " Easy motion for VSCode
     Plug 'asvetliakov/vim-easymotion'
-
   else
     " Themes
     Plug 'morhetz/gruvbox'
