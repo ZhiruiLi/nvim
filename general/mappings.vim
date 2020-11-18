@@ -118,6 +118,10 @@ nnoremap <leader>fy :let @*=expand("%:t") . ":" . line(".")<CR>
 let g:which_key_map['f']['y'] = 'copy file name with line no'
 nnoremap <leader>ff :CocList files<CR>
 let g:which_key_map['f']['f'] = 'find files'
+nnoremap <leader>fp :CocList files -F<CR>
+let g:which_key_map['f']['p'] = 'find workspace files'
+nnoremap <leader>fP :CocList files -W<CR>
+let g:which_key_map['f']['P'] = 'find all workspace files'
 nnoremap <leader>fg :CocList gfiles<CR>
 let g:which_key_map['f']['g'] = 'find git files'
 nnoremap <leader>f. :CocList files $HOME/.config/nvim<CR>
