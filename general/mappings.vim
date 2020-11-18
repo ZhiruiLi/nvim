@@ -220,3 +220,15 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Easymotion
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+nmap S <Plug>(easymotion-overwin-t)
+" Move to line
+map  gl <Plug>(easymotion-bd-jk)
+nmap gl <Plug>(easymotion-overwin-line)
+" Move to word
+map  gj <Plug>(easymotion-bd-w)
+nmap gj <Plug>(easymotion-overwin-w)
+
+
