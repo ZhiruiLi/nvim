@@ -60,7 +60,7 @@ let g:which_key_map.t = {
 let g:which_key_map.o = {
       \ 'name' : '+open' ,
       \ 'o' : [':!open -a finder %:h'    , 'with finder'],
-      \ 't' : [':terminal'               , 'terminal'],
+      \ 't' : [':FloatermToggle'         , 'terminal'],
       \ 'y' : [':!open -a yoink %:p'     , 'with yoink'],
       \ 'm' : [':!open -a typora %:p'    , 'with typora'],
       \ }

@@ -4,9 +4,100 @@
 " _/ // / / / / /__| |/ / / / / / / /
 "/___/_/ /_/_/\__(_)___/_/_/ /_/ /_/
 
+" auto-install vim-plug
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  "autocmd VimEnter * PlugInstall
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
+call plug#begin('~/.config/nvim/autoload/plugged')
+
+  " Change dates fast
+  Plug 'tpope/vim-speeddating'
+  " Convert binary, hex, etc..
+  Plug 'glts/vim-radical'
+  " Files
+  Plug 'tpope/vim-eunuch'
+  " Repeat stuff
+  Plug 'tpope/vim-repeat'
+  " Surround
+  Plug 'tpope/vim-surround'
+  " Better Comments
+  Plug 'tpope/vim-commentary'
+  " Plug 'preservim/nerdcommenter'
+  " Have the file system follow you around
+  Plug 'airblade/vim-rooter'
+  " auto set indent settings
+  Plug 'tpope/vim-sleuth'
+
+  if exists('g:vscode')
+    " Easy motion for VSCode
+    Plug 'asvetliakov/vim-easymotion'
+
+  else
+    " Themes
+    Plug 'morhetz/gruvbox'
+    " Plug 'kaicataldo/material.vim'
+    " Plug 'NLKNguyen/papercolor-theme'
+    " Plug 'tomasiser/vim-code-dark'
+    " Text Navigation
+    Plug 'unblevable/quick-scope'
+    Plug 'easymotion/vim-easymotion'
+    " Add some color
+    Plug 'norcalli/nvim-colorizer.lua'
+    " Plug 'junegunn/rainbow_parentheses.vim'
+    " Better Syntax Support
+    Plug 'sheerun/vim-polyglot'
+    " Auto pairs for '(' '[' '{' 
+    Plug 'jiangmiao/auto-pairs'
+    " Closetags
+    Plug 'alvan/vim-closetag'
+    " Intellisense
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neoclide/jsonc.vim'
+    " Status Line
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    " Git
+    " Plug 'mhinz/vim-signify'
+    " Plug 'airblade/vim-gitgutter'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-rhubarb'
+    Plug 'junegunn/gv.vim'
+    " Terminal
+    Plug 'voldikss/vim-floaterm'
+    " Start Screen
+    Plug 'mhinz/vim-startify'
+    " Vista
+    Plug 'liuchengxu/vista.vim'
+    " See what keys do like in emacs
+    Plug 'liuchengxu/vim-which-key'
+    " Zen mode
+    Plug 'junegunn/goyo.vim'
+    " Making stuff
+    Plug 'neomake/neomake'
+    " Snippets
+    Plug 'honza/vim-snippets'
+    " FZF
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+    " Better Comments
+    Plug 'jbgutierrez/vim-better-comments'
+    " Echo doc
+    Plug 'Shougo/echodoc.vim'
+  endif
+
+call plug#end()
+
+" Automatically install missing plugins on startup
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
 
 " Always source these
-source $HOME/.config/nvim/vim-plug/plugins.vim
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/functions.vim
 source $HOME/.config/nvim/general/mappings.vim
@@ -21,7 +112,6 @@ else
   source $HOME/.config/nvim/themes/syntax.vim
   source $HOME/.config/nvim/themes/gruvbox.vim
   source $HOME/.config/nvim/themes/airline.vim
-  source $HOME/.config/nvim/plug-config/rnvimr.vim
   source $HOME/.config/nvim/plug-config/fzf.vim
   source $HOME/.config/nvim/plug-config/nerd-commenter.vim
   source $HOME/.config/nvim/plug-config/coc.vim
@@ -32,19 +122,7 @@ else
   source $HOME/.config/nvim/plug-config/closetags.vim
   source $HOME/.config/nvim/plug-config/floaterm.vim
   source $HOME/.config/nvim/plug-config/vista.vim
-  luafile $HOME/.config/nvim/lua/plug-colorizer.lua
   source $HOME/.config/nvim/plug-config/easymotion.vim
+  luafile $HOME/.config/nvim/lua/plug-colorizer.lua
 endif
 
-" Experimental
-
-if !empty(glob("./paths.vim"))
-  source $HOME/.config/nvim/paths.vim
-endif
-
-" let g:polyglot_disabled = ['csv']
-
-" Python
-" https://realpython.com/python-debugging-pdb/ " breakpoint syntax is really cool
-" also look into profiling as well
-" let g:python_highlight_all=1
