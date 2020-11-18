@@ -134,9 +134,9 @@ nnoremap <leader>gb :Git blame<CR>
 let g:which_key_map['g']['b'] = 'blame'
 nnoremap <leader>gB :CocCommand browserOpen<CR>
 let g:which_key_map['g']['B'] = 'browse'
-nnoremap <leader>gc :GcommitCR
+nnoremap <leader>gc :Gcommit<CR>
 let g:which_key_map['g']['c'] = 'commit'
-nnoremap <<leader>gd :CocCommand git.diffCached<CR>
+nnoremap <leader>gd :CocCommand git.diffCached<CR>
 let g:which_key_map['g']['d'] = 'diff'
 nnoremap <leader>gu :CocCommand git.chunkUndo<CR>
 let g:which_key_map['g']['u'] = 'undo'
