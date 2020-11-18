@@ -35,13 +35,13 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 
 
 " Single mappings
-let g:which_key_map['.'] = [ ':CocList mru'              , 'mru files' ]
-let g:which_key_map[','] = [ ':CocList buffers'          , 'buffers' ]
-let g:which_key_map[';'] = [ ':CocListResume'            , 'resume list' ]
-let g:which_key_map[':'] = [ ':CocList vimcommands'      , 'vim commands' ]
-let g:which_key_map['n'] = [ ':CocNext'                  , 'next coc item' ]
-let g:which_key_map['p'] = [ ':CocPrev'                  , 'previous coc item' ]
-let g:which_key_map['`'] = [ ':b#'                       , 'recent buffer' ]
+let g:which_key_map['.'] = [ ':CocList mru'                  , 'mru files' ]
+let g:which_key_map[','] = [ ':CocList buffers'              , 'buffers' ]
+let g:which_key_map[';'] = [ ':CocListResume'                , 'resume list' ]
+let g:which_key_map[':'] = [ ':CocList vimcommands'          , 'vim commands' ]
+let g:which_key_map['n'] = [ ':CocNext'                      , 'next coc item' ]
+let g:which_key_map['p'] = [ ':CocPrev'                      , 'previous coc item' ]
+let g:which_key_map['`'] = [ ':b#'                           , 'recent buffer' ]
 
 " Group mappings
 
@@ -68,12 +68,12 @@ let g:which_key_map.o = {
 " b is for buffer
 let g:which_key_map.b = {
       \ 'name' : '+buffer' ,
-      \ 'b' : [':CocList buffers'    , 'buffers']          ,
-      \ 'd' : [':bd'                 , 'delete buffer']    ,
-      \ 'h' : [':Startify'           , 'home buffer']      ,
-      \ 'n' : [':bnext'              , 'next buffer']      ,
-      \ 'p' : [':bprevious'          , 'previous buffer']  ,
-      \ 'N' : [':enew'               , 'new empty buffer'] ,
+      \ 'b' : [':CocList buffers'       , 'buffers'],
+      \ 'd' : [':bd'                    , 'delete buffer'],
+      \ 'h' : [':Startify'              , 'home buffer'],
+      \ 'n' : [':bnext'                 , 'next buffer'],
+      \ 'p' : [':bprevious'             , 'previous buffer'],
+      \ 'N' : [':enew'                  , 'new empty buffer'],
       \ }
 
 " s is for search
@@ -140,11 +140,18 @@ let g:which_key_map.l = {
       \ 's' : [':CocList snippets'                   , 'snippets'],
       \ }
 
+" Register which key map
+call which_key#register('<Space>', "g:which_key_map")
+
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap gl <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap gl <Plug>(EasyAlign)
 
 " create text object for git chunks
 omap ig <Plug>(coc-git-chunk-inner)
@@ -170,5 +177,3 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Register which key map
-call which_key#register('<Space>', "g:which_key_map")
