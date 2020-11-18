@@ -7,6 +7,10 @@ nnoremap <Space> <Nop>
 vnoremap < <gv
 vnoremap > >gv
 
+" Easymotion
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
 " Which Key =====================================================================
 
 " Map leader to which_key
@@ -33,7 +37,6 @@ autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
-
 " Single mappings
 let g:which_key_map['.'] = [ ':CocList mru',         'mru files' ]
 let g:which_key_map[','] = [ ':CocList buffers',     'buffers' ]
@@ -42,6 +45,8 @@ let g:which_key_map[':'] = [ ':CocList vimcommands', 'vim commands' ]
 let g:which_key_map['n'] = [ ':CocNext',             'next coc item' ]
 let g:which_key_map['p'] = [ ':CocPrev',             'previous coc item' ]
 let g:which_key_map['`'] = [ ':b#',                  'recent buffer' ]
+let g:which_key_map['j'] = [ '<Plug>(easymotion-w)', 'easy motion j' ]
+let g:which_key_map['k'] = [ '<Plug>(easymotion-b)', 'easy motion k' ]
 
 " Group mappings
 
@@ -136,7 +141,7 @@ nnoremap <leader>gB :CocCommand browserOpen<CR>
 let g:which_key_map['g']['B'] = 'browse'
 nnoremap <leader>gc :Gcommit<CR>
 let g:which_key_map['g']['c'] = 'commit'
-nnoremap <leader>gd :CocCommand git.diffCached<CR>
+nnoremap <leader>gd :Gdiffsplit<CR>
 let g:which_key_map['g']['d'] = 'diff'
 nnoremap <leader>gu :CocCommand git.chunkUndo<CR>
 let g:which_key_map['g']['u'] = 'undo'
@@ -219,16 +224,4 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-
-" Easymotion
-" s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
-nmap S <Plug>(easymotion-overwin-t)
-" Move to line
-map  gl <Plug>(easymotion-bd-jk)
-nmap gl <Plug>(easymotion-overwin-line)
-" Move to word
-map  gj <Plug>(easymotion-bd-w)
-nmap gj <Plug>(easymotion-overwin-w)
-
 
