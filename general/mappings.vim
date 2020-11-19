@@ -150,21 +150,21 @@ let g:which_key_map['s']['y'] = 'search for yank'
 
 " f is for file
 let g:which_key_map['f'] = { 'name' : '+file' }
-nnoremap <leader>fy :let @*=expand("%:t") . ":" . line(".")<CR>
+nnoremap <silent> <leader>fy :let @*=expand("%:t") . ":" . line(".")<CR>
 let g:which_key_map['f']['y'] = 'copy file name with line no'
-nnoremap <leader>fY :let @*=expand("%:p")<CR>
+nnoremap <silent> <leader>fY :let @*=expand("%:p")<CR>
 let g:which_key_map['f']['Y'] = 'copy file full path'
-nnoremap <leader>ff :CocList files<CR>
+nnoremap <silent> <leader>ff :exe 'CocList files '.expand('%:p:h')<CR>
 let g:which_key_map['f']['f'] = 'find files'
-nnoremap <leader>fp :CocList files -F<CR>
+nnoremap <silent> <leader>fp :CocList files<CR>
 let g:which_key_map['f']['p'] = 'find workspace files'
-nnoremap <leader>fP :CocList files -W<CR>
+nnoremap <silent> <leader>fP :CocList files -W<CR>
 let g:which_key_map['f']['P'] = 'find all workspace files'
-nnoremap <leader>fg :CocList gfiles<CR>
+nnoremap <silent> <leader>fg :CocList gfiles<CR>
 let g:which_key_map['f']['g'] = 'find git files'
-nnoremap <leader>f. :CocList files $HOME/.config/nvim<CR>
+nnoremap <silent> <leader>f. :CocList files $HOME/.config/nvim<CR>
 let g:which_key_map['f']["."] = 'find config files'
-nnoremap <leader>fR :so $MYVIMRC<CR>
+nnoremap <silent> <leader>fR :so $MYVIMRC<CR>
 let g:which_key_map['f']['R'] = 'reload config'
 
 " g is for git
