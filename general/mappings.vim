@@ -7,10 +7,6 @@ nnoremap <Space> <Nop>
 vnoremap < <gv
 vnoremap > >gv
 
-" Easymotion
-" s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
-
 " Which Key =====================================================================
 
 " Map leader to which_key
@@ -19,9 +15,6 @@ vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
 
 " Create map to add keys to
 let g:which_key_map =  {}
-" Define a separator
-let g:which_key_sep = ':'
-set timeoutlen=100
 
 " Not a fan of floating windows for this
 let g:which_key_use_floating_win = 0
@@ -42,11 +35,9 @@ let g:which_key_map['.'] = [ ':CocList mru',         'mru files' ]
 let g:which_key_map[','] = [ ':CocList buffers',     'buffers' ]
 let g:which_key_map[';'] = [ ':CocListResume',       'resume list' ]
 let g:which_key_map[':'] = [ ':CocList vimcommands', 'vim commands' ]
-let g:which_key_map['n'] = [ ':CocNext',             'next coc item' ]
-let g:which_key_map['p'] = [ ':CocPrev',             'previous coc item' ]
+let g:which_key_map['j'] = [ ':CocNext',             'next coc item' ]
+let g:which_key_map['k'] = [ ':CocPrev',             'previous coc item' ]
 let g:which_key_map['`'] = [ ':b#',                  'recent buffer' ]
-let g:which_key_map['j'] = [ '<Plug>(easymotion-w)', 'jump to word forwards' ]
-let g:which_key_map['k'] = [ '<Plug>(easymotion-b)', 'jump to word backwards' ]
 
 " Group mappings
 
@@ -237,14 +228,21 @@ call which_key#register('<Space>', "g:which_key_map")
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gD <Plug>(coc-declaration)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" Easymotion
+nmap s <Plug>(easymotion-overwin-f2)
+xmap gj <Plug>(easymotion-w)
+nmap gj <Plug>(easymotion-w)
+xmap gk <Plug>(easymotion-b)
+nmap gk <Plug>(easymotion-b)
 
 " create text object for git chunks
 omap ig <Plug>(coc-git-chunk-inner)
