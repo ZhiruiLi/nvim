@@ -36,19 +36,17 @@ if !exists('g:vscode')
   set clipboard=unnamedplus               " Copy paste between vim and everything else
   set incsearch
   set guifont=Iosevka:h14
-  " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  " set mmp=1300
-  " set autochdir                           " Your working directory will always be the same as your working directory
-  " set foldcolumn=2                        " Folding abilities
-
-  " au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
-  autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
   set mmp=100000
 
   " GBK
   let &termencoding=&encoding
   set fileencodings=utf-8,gb18030,gbk,gb2312,big5
+
+  " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  " set autochdir                           " Your working directory will always be the same as your working directory
+  " set foldcolumn=2                        " Folding abilities
+
+  autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
   " You can't stop me
   cmap w!! w !sudo tee %

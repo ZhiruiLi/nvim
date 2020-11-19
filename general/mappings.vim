@@ -102,9 +102,9 @@ nnoremap <leader>wK :wincmd K<CR>
 let g:which_key_map['w']['K'] = 'move to up'
 nnoremap <leader>wL :wincmd L<CR>
 let g:which_key_map['w']['L'] = 'move to right'
-nnoremap <leader>wv :bel vsplit \| CocList files<CR>
+nnoremap <leader>wv :bel vsplit \| CocList mru<CR>
 let g:which_key_map['w']['v'] = 'vsplit'
-nnoremap <leader>ws :bel split \| CocList files<CR>
+nnoremap <leader>ws :bel split \| CocList mru<CR>
 let g:which_key_map['w']['s'] = 'split'
 nnoremap <leader>wd :close<CR>
 let g:which_key_map['w']['d'] = 'close current window'
