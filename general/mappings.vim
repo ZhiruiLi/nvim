@@ -45,8 +45,8 @@ let g:which_key_map[':'] = [ ':CocList vimcommands', 'vim commands' ]
 let g:which_key_map['n'] = [ ':CocNext',             'next coc item' ]
 let g:which_key_map['p'] = [ ':CocPrev',             'previous coc item' ]
 let g:which_key_map['`'] = [ ':b#',                  'recent buffer' ]
-let g:which_key_map['j'] = [ '<Plug>(easymotion-w)', 'easy motion j' ]
-let g:which_key_map['k'] = [ '<Plug>(easymotion-b)', 'easy motion k' ]
+let g:which_key_map['j'] = [ '<Plug>(easymotion-w)', 'jump to word forwards' ]
+let g:which_key_map['k'] = [ '<Plug>(easymotion-b)', 'jump to word backwards' ]
 
 " Group mappings
 
@@ -88,6 +88,42 @@ nnoremap <leader>bp :bprevious<CR>
 let g:which_key_map['b']['p'] = 'previous buffer'
 nnoremap <leader>bN :enew<CR>
 let g:which_key_map['b']['N'] = 'new empty buffer'
+nnoremap <leader>br :edit!<CR>
+let g:which_key_map['b']['r'] = 'reload buffer'
+
+" w is for window
+let g:which_key_map['w'] = { 'name' : '+buffer' }
+nnoremap <leader>ww :CocList windows<CR>
+let g:which_key_map['w']['w'] = 'select windows'
+nnoremap <leader>wh :wincmd h<CR>
+let g:which_key_map['w']['h'] = 'select left'
+nnoremap <leader>wj :wincmd j<CR>
+let g:which_key_map['w']['j'] = 'select bottom'
+nnoremap <leader>wk :wincmd k<CR>
+let g:which_key_map['w']['k'] = 'select up'
+nnoremap <leader>wl :wincmd l<CR>
+let g:which_key_map['w']['l'] = 'select right'
+nnoremap <leader>wH :wincmd H<CR>
+let g:which_key_map['w']['H'] = 'move to left'
+nnoremap <leader>wJ :wincmd J<CR>
+let g:which_key_map['w']['J'] = 'move to bottom'
+nnoremap <leader>wK :wincmd K<CR>
+let g:which_key_map['w']['K'] = 'move to up'
+nnoremap <leader>wL :wincmd L<CR>
+let g:which_key_map['w']['L'] = 'move to right'
+nnoremap <leader>wv :bel vsplit \| CocList files<CR>
+let g:which_key_map['w']['v'] = 'vsplit'
+nnoremap <leader>ws :bel split \| CocList files<CR>
+let g:which_key_map['w']['s'] = 'split'
+nnoremap <leader>wd :close<CR>
+let g:which_key_map['w']['d'] = 'close current window'
+nnoremap <leader>wD :only<CR>
+let g:which_key_map['w']['D'] = 'close other windows'
+augroup restorezoom
+    au WinEnter * silent! :call ToggleZoom(v:false)
+augroup END
+nnoremap <silent> <leader>wo :call ToggleZoom(v:true)<CR>
+let g:which_key_map['w']['o'] = 'maximize window'
 
 " s is for search
 let g:which_key_map['s'] = { 'name' : '+search' }
@@ -228,6 +264,17 @@ function! s:show_documentation()
     execute 'h '.expand('<cword>')
   else
     call CocAction('doHover')
+  endif
+endfunction
+
+" How can I maximize a split window? https://stackoverflow.com/a/60639802
+function! ToggleZoom(zoom)
+  if exists("t:restore_zoom") && (a:zoom == v:true || t:restore_zoom.win != winnr())
+      exec t:restore_zoom.cmd
+      unlet t:restore_zoom
+  elseif a:zoom
+      let t:restore_zoom = { 'win': winnr(), 'cmd': winrestcmd() }
+      exec "normal \<C-W>\|\<C-W>_"
   endif
 endfunction
 

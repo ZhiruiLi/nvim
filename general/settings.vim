@@ -44,6 +44,8 @@ if !exists('g:vscode')
   " au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+  set mmp=100000
+
   " GBK
   let &termencoding=&encoding
   set fileencodings=utf-8,gb18030,gbk,gb2312,big5
