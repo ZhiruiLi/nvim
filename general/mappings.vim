@@ -191,7 +191,7 @@ nnoremap <leader>gu :CocCommand git.chunkUndo<CR>
 let g:which_key_map['g']['u'] = 'undo'
 nnoremap <leader>gy :CocCommand git.copyUrl<CR>
 let g:which_key_map['g']['y'] = 'copy URL'
-nnoremap <leader>gp :Git push<CR>
+nnoremap <leader>gp :CocCommand git.push<CR>
 let g:which_key_map['g']['p'] = 'push'
 nnoremap <leader>gl :Git pull<CR>
 let g:which_key_map['g']['l'] = 'pull'
