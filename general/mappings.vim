@@ -118,10 +118,10 @@ let g:which_key_map['w']['o'] = 'maximize window'
 
 " s is for search
 let g:which_key_map['s'] = { 'name' : '+search' }
-nnoremap <silent> <leader>sp :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+nnoremap <silent> <leader>sp :CocList -I grep<CR>
 vnoremap <silent> <leader>sp :<C-u>exe 'CocList -I --input='.<SID>GetSelectedText(visualmode()).' grep'<CR>
 let g:which_key_map['s']['p'] = 'in project'
-nnoremap <silent> <leader>ss :exe 'CocList -I --input='.expand('<cword>').' lines'<CR>
+nnoremap <silent> <leader>ss :CocList -I lines<CR>
 vnoremap <silent> <leader>ss :<C-u>exe 'CocList -I --input='.<SID>GetSelectedText(visualmode()).' lines'<CR>
 let g:which_key_map['s']['s'] = 'in current file'
 nnoremap <silent> <leader>sh :CocList helptags<CR>
