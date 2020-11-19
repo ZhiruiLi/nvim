@@ -1,16 +1,10 @@
 {
+  // auto select the first item
+  "suggest.noselect": false,
   // autoformat
-  "coc.preferences.formatOnSaveFiletypes": [
-    "go",
-    "markdown",
-    "xml",
-    "json"
-  ],
-
+  "coc.preferences.formatOnSaveFiletypes": ["go", "markdown", "xml", "json"],
   // snippets
-  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/snips"],
-  //"snippets.userSnippetsDirectory": "~/.config/nvim/snips",
-
+  "snippets.ultisnips.directories": ["ultisnips", "~/.config/nvim/snips"],
   // explorer
   "explorer.width": 30,
   "explorer.keyMappings.global": {
@@ -18,7 +12,6 @@
     "v": "open:vsplit",
     "s": "open:split"
   },
-
   "list.insertMappings": {
     "<C-r>": "do:refresh",
     "<C-n>": "normal:j",
@@ -26,9 +19,5 @@
   },
 
   "list.normalMappings": {},
-
   "languageserver": {}
-
-  // TODO b:coc_suggest_disable=1 GOYO
-  // TODO add to paths.vim g:coc_node_path
 }
