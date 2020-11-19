@@ -46,8 +46,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'junegunn/vim-easy-align'
     " Better Syntax Support
     Plug 'sheerun/vim-polyglot'
-    " Auto pairs for '(' '[' '{' 
-    Plug 'jiangmiao/auto-pairs'
     " Closetags
     Plug 'alvan/vim-closetag'
     " Intellisense
