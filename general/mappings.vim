@@ -183,6 +183,8 @@ nnoremap <leader>gB :CocCommand browserOpen<CR>
 let g:which_key_map['g']['B'] = 'browse'
 nnoremap <leader>gc :Gcommit<CR>
 let g:which_key_map['g']['c'] = 'commit'
+nnoremap <leader>gC :Gcommit --all<CR>
+let g:which_key_map['g']['C'] = 'commit all'
 nnoremap <leader>gd :Gdiffsplit<CR>
 let g:which_key_map['g']['d'] = 'diff'
 nnoremap <leader>gu :CocCommand git.chunkUndo<CR>
