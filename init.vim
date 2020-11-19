@@ -44,9 +44,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'unblevable/quick-scope'
     Plug 'easymotion/vim-easymotion'
     Plug 'junegunn/vim-easy-align'
-    " Add some color
-    Plug 'norcalli/nvim-colorizer.lua'
-    " Plug 'junegunn/rainbow_parentheses.vim'
     " Better Syntax Support
     Plug 'sheerun/vim-polyglot'
     " Auto pairs for '(' '[' '{' 
@@ -118,6 +115,5 @@ else
   source $HOME/.config/nvim/plug-config/floaterm.vim
   source $HOME/.config/nvim/plug-config/vista.vim
   source $HOME/.config/nvim/plug-config/easymotion.vim
-  luafile $HOME/.config/nvim/lua/plug-colorizer.lua
 endif
 
