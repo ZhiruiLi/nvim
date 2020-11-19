@@ -235,10 +235,10 @@ call which_key#register('<Space>', "g:which_key_map")
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gf <Plug>(coc-declaration)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
@@ -253,9 +253,13 @@ xmap ag <Plug>(coc-git-chunk-outer)
 " Introduce function text object
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
 omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
 
 " Search for selected text, forwards or backwards.
 " https://vim.fandom.com/wiki/Search_for_visually_selected_text
