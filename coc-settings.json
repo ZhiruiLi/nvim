@@ -1,7 +1,6 @@
 {
   // autoformat
   "coc.preferences.formatOnSaveFiletypes": [
-    "cpp",
     "go",
     "markdown",
     "xml",
