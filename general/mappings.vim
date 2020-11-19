@@ -217,8 +217,8 @@ nmap <leader>lF <Plug>(coc-format)
 let g:which_key_map['l']['F'] = 'format'
 nmap <leader>li <Plug>(coc-implementation)
 let g:which_key_map['l']['i'] = 'implementation'
-nmap <leader>lt <Plug>(coc-type-definition)
-let g:which_key_map['l']['t'] = 'type definition'
+nmap <leader>ly <Plug>(coc-type-definition)
+let g:which_key_map['l']['y'] = 'type definition'
 nnoremap <leader>le :CocList diagnostics<CR>
 let g:which_key_map['l']['e'] = 'diagnostics'
 nmap <leader>lq <Plug>(coc-fix-current)
@@ -235,6 +235,7 @@ call which_key#register('<Space>', "g:which_key_map")
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gD <Plug>(coc-declaration)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
