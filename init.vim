@@ -43,7 +43,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Text Navigation
     Plug 'unblevable/quick-scope'
     Plug 'easymotion/vim-easymotion'
+    " Alignment
     Plug 'junegunn/vim-easy-align'
+    " Expand selection
+    Plug 'gcmt/wildfire.vim'
     " Better Syntax Support
     Plug 'sheerun/vim-polyglot'
     " Closetags
