@@ -127,26 +127,26 @@ let g:which_key_map['w']['o'] = 'maximize window'
 
 " s is for search
 let g:which_key_map['s'] = { 'name' : '+search' }
-nnoremap <leader>sp :CocList grep<CR>
+nnoremap <silent> <leader>sp :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+vnoremap <silent> <leader>sp :<C-u>exe 'CocList -I --input='.<SID>GetSelectedText(visualmode()).' grep'<CR>
 let g:which_key_map['s']['p'] = 'in project'
-nnoremap <leader>ss :CocList lines<CR>
+nnoremap <silent> <leader>ss :exe 'CocList -I --input='.expand('<cword>').' lines'<CR>
+vnoremap <silent> <leader>ss :<C-u>exe 'CocList -I --input='.<SID>GetSelectedText(visualmode()).' lines'<CR>
 let g:which_key_map['s']['s'] = 'in current file'
-nnoremap <leader>sh :CocList helptags<CR>
+nnoremap <silent> <leader>sh :CocList helptags<CR>
 let g:which_key_map['s']['h'] = 'helps'
-nnoremap <leader>si :CocList outline<CR>
+nnoremap <silent> <leader>si :CocList outline<CR>
 let g:which_key_map['s']['i'] = 'outline'
-nnoremap <leader>so :CocList -I symbols<CR>
+nnoremap <silent> <leader>so :CocList -I symbols<CR>
 let g:which_key_map['s']['o'] = 'workspace symbols'
-nnoremap <leader>s; :CocList cmdhistory<CR>
+nnoremap <silent> <leader>s; :CocList cmdhistory<CR>
 let g:which_key_map['s'][';'] = 'command histroy'
-nnoremap <leader>sk :CocList marks<CR>
+nnoremap <silent> <leader>sk :CocList marks<CR>
 let g:which_key_map['s']['k'] = 'marks'
-nnoremap <leader>se :CocList extensions<CR>
+nnoremap <silent> <leader>se :CocList extensions<CR>
 let g:which_key_map['s']['e'] = 'extensions'
-nnoremap <leader>st :CocList tags<CR>
-let g:which_key_map['s']['t'] = 'search for tags'
-nnoremap <leader>sy :CocList yank<CR>
-let g:which_key_map['s']['y'] = 'search for tags'
+nnoremap <silent> <leader>sy :CocList yank<CR>
+let g:which_key_map['s']['y'] = 'search for yank'
 
 " f is for file
 let g:which_key_map['f'] = { 'name' : '+file' }
@@ -257,6 +257,19 @@ xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
+" Search for selected text, forwards or backwards.
+" https://vim.fandom.com/wiki/Search_for_visually_selected_text
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R>=&ic?'\c':'\C'<CR><C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gVzv:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R>=&ic?'\c':'\C'<CR><C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gVzv:call setreg('"', old_reg, old_regtype)<CR>
+
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -279,15 +292,17 @@ function! ToggleZoom(zoom)
   endif
 endfunction
 
-" Search for selected text, forwards or backwards.
-" https://vim.fandom.com/wiki/Search_for_visually_selected_text
-vnoremap <silent> * :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy/<C-R>=&ic?'\c':'\C'<CR><C-R><C-R>=substitute(
-  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gVzv:call setreg('"', old_reg, old_regtype)<CR>
-vnoremap <silent> # :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy?<C-R>=&ic?'\c':'\C'<CR><C-R><C-R>=substitute(
-  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gVzv:call setreg('"', old_reg, old_regtype)<CR>
+function! s:GetSelectedText(type)
+  let saved_unnamed_register = @@
+  if a:type ==# 'v'
+    normal! `<v`>y
+  elseif a:type ==# 'char'
+    normal! `[v`]y
+  else
+    return
+  endif
+  let word = substitute(@@, '\n$', '', 'g')
+  let word = escape(word, '| ')
+  let @@ = saved_unnamed_register
+  return word
+endfunction
