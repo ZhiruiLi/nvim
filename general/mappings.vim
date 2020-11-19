@@ -59,7 +59,7 @@ let g:which_key_map['t']['z'] = 'zen mode'
 " o is for toggle
 let g:which_key_map['o'] = { 'name' : '+open' }
 nnoremap <leader>oo :!open -a finder %:h<CR>
-let g:which_key_map['o']['o'] = 'with finder'
+let g:which_key_map['o']['f'] = 'with finder'
 nnoremap <leader>oy :!open -a yoink %:p<CR>
 let g:which_key_map['o']['y'] = 'with yoink'
 nnoremap <leader>om :!open -a typora %:p<CR>
