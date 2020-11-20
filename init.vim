@@ -37,9 +37,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   else
     " Themes
     Plug 'morhetz/gruvbox'
-    " Plug 'kaicataldo/material.vim'
-    " Plug 'NLKNguyen/papercolor-theme'
-    " Plug 'tomasiser/vim-code-dark'
+    Plug 'joshdick/onedark.vim'
     " Text Navigation
     Plug 'unblevable/quick-scope'
     Plug 'easymotion/vim-easymotion'
@@ -104,10 +102,9 @@ if exists('g:vscode')
   source $HOME/.config/nvim/plug-config/easymotion.vim
 else
   " ordinary neovim
-  source $HOME/.config/nvim/themes/syntax.vim
   source $HOME/.config/nvim/themes/gruvbox.vim
+  " source $HOME/.config/nvim/themes/onedark.vim
   source $HOME/.config/nvim/themes/airline.vim
-  source $HOME/.config/nvim/plug-config/nerd-commenter.vim
   source $HOME/.config/nvim/plug-config/coc.vim
   source $HOME/.config/nvim/plug-config/quickscope.vim
   source $HOME/.config/nvim/plug-config/goyo.vim

@@ -7,6 +7,16 @@ nnoremap <Space> <Nop>
 vnoremap < <gv
 vnoremap > >gv
 
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+
 " Which Key =====================================================================
 
 " Map leader to which_key
@@ -57,8 +67,10 @@ let g:which_key_map['t']['w'] = 'wrap'
 " o is for open
 let g:which_key_map['o'] = { 'name' : '+open' }
 let g:which_key_map['o']['o'] = { 'name' : '+external' }
-nnoremap <silent> <leader>ot :Deol -split='hor'<CR>
+nnoremap <silent> <leader>ot :<C-u>exe 'Deol -split=hor -cwd='.getcwd()<CR>
 let g:which_key_map['o']['t'] = 'terminal'
+nnoremap <silent> <leader>oT :<C-u>exe 'Deol -split=hor -cwd='.expand('%:p:h')<CR>
+let g:which_key_map['o']['T'] = 'terminal here'
 nnoremap <silent> <leader>oe :CocCommand explorer<CR>
 let g:which_key_map['o']['e'] = 'file explorer'
 nnoremap <silent> <leader>ov :Vista!!<CR>
