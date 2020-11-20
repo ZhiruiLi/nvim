@@ -31,7 +31,7 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
 " Single mappings
-let g:which_key_map['.'] = [ ':CocList mru',         'mru files' ]
+let g:which_key_map['.'] = [ ':CocList mru',         'recent files in cwd' ]
 let g:which_key_map[','] = [ ':CocList buffers',     'buffers' ]
 let g:which_key_map[';'] = [ ':CocListResume',       'resume list' ]
 let g:which_key_map[':'] = [ ':CocList vimcommands', 'vim commands' ]
@@ -109,9 +109,9 @@ nnoremap <silent> <leader>wK :wincmd K<CR>
 let g:which_key_map['w']['K'] = 'move to up'
 nnoremap <silent> <leader>wL :wincmd L<CR>
 let g:which_key_map['w']['L'] = 'move to right'
-nnoremap <silent> <leader>wv :bel vsplit \| CocList mru<CR>
+nnoremap <silent> <leader>wv :bel vsplit \| CocList mru -A<CR>
 let g:which_key_map['w']['v'] = 'vsplit'
-nnoremap <silent> <leader>ws :bel split \| CocList mru<CR>
+nnoremap <silent> <leader>ws :bel split \| CocList mru -A<CR>
 let g:which_key_map['w']['s'] = 'split'
 nnoremap <silent> <leader>wd :close<CR>
 let g:which_key_map['w']['d'] = 'close current window'
@@ -164,6 +164,8 @@ nnoremap <silent> <leader>f. :CocList files $HOME/.config/nvim<CR>
 let g:which_key_map['f']["."] = 'find config files'
 nnoremap <silent> <leader>fR :so $MYVIMRC<CR>
 let g:which_key_map['f']['R'] = 'reload config'
+nnoremap <silent> <leader>fr :CocList mru -A<CR>
+let g:which_key_map['f']['r'] = 'recent files'
 
 " g is for git
 let g:which_key_map['g'] = { 'name' : '+git' }
