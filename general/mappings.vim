@@ -90,6 +90,10 @@ nnoremap <silent> <leader>bi :CocCommand session.save<CR>
 let g:which_key_map['b']['i'] = 'save session'
 nnoremap <silent> <leader>bo :CocList sessions<CR>
 let g:which_key_map['b']['o'] = 'load session'
+nnoremap <silent> <leader>bs :w<CR>
+let g:which_key_map['b']['s'] = 'save buffer'
+nnoremap <silent> <leader>bS :wa<CR>
+let g:which_key_map['b']['S'] = 'save all buffers'
 
 " w is for window
 let g:which_key_map['w'] = { 'name' : '+buffer' }
