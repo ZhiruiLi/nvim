@@ -248,10 +248,10 @@ nmap ga <Plug>(EasyAlign)
 
 " Easymotion
 nmap s <Plug>(easymotion-overwin-f2)
-xmap gj <Plug>(easymotion-w)
-nmap gj <Plug>(easymotion-w)
-xmap gk <Plug>(easymotion-b)
-nmap gk <Plug>(easymotion-b)
+xmap gj <Plug>(easymotion-j)
+nmap gj <Plug>(easymotion-j)
+xmap gk <Plug>(easymotion-k)
+nmap gk <Plug>(easymotion-k)
 
 " create text object for git chunks
 omap ig <Plug>(coc-git-chunk-inner)

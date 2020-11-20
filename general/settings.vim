@@ -4,13 +4,15 @@ set formatoptions-=cro                  " Stop newline continution of comments
 if !exists('g:vscode')
   syntax enable                           " Enables syntax highlighing
   set hidden                              " Required to keep multiple buffers open multiple buffers
+  set textwidth=80                        " Text width maximum chars before wrapping
   set nowrap                              " Display long lines as just one line
-  set encoding=utf-8                      " The encoding displayed 
   set pumheight=10                        " Makes popup menu smaller
-  set fileencoding=utf-8                  " The encoding written to file
-  set ruler              			            " Show the cursor position all the time
+  set list                                " Show hidden characters
+  set ruler                               " Show the cursor position all the time
+  set showcmd                             " Show command in status line
   set cmdheight=2                         " More space for displaying messages
-  set mouse=a                             " Enable your mouse
+  set mouse=nv                            " Disable mouse in command-line mode
+  set virtualedit=block                   " Position cursor anywhere in visual block
   set splitbelow                          " Horizontal splits will automatically be below
   set splitright                          " Vertical splits will automatically be to the right
   set t_Co=256                            " Support 256 colors
@@ -26,6 +28,8 @@ if !exists('g:vscode')
   set cursorline                          " Enable highlighting of the current line
   set background=dark                     " tell vim what the background color looks like
   set showtabline=2                       " Always show tabs 
+  set winwidth=30                         " Minimum width for active window
+  set winminwidth=10                      " Minimum width for inactive windows
   set noshowmode                          " We don't need to see things like -- INSERT -- anymore
   set nobackup                            " This is recommended by coc
   set nowritebackup                       " This is recommended by coc
@@ -33,18 +37,43 @@ if !exists('g:vscode')
   set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
   set updatetime=300                      " Faster completion
   set timeoutlen=500                      " By default timeoutlen is 1000 ms
-  set clipboard=unnamedplus               " Copy paste between vim and everything else
-  set incsearch
+  set ignorecase                          " Search ignoring case
+  set smartcase                           " Keep case when searching with *
+  set infercase                           " Adjust case in insert completion mode
+  set incsearch                           " Incremental search
+  set wrapscan                            " Searches wrap around the end of the file
   set guifont=Iosevka:h14
   set mmp=100000
 
   " GBK
-  let &termencoding=&encoding
-  set fileencodings=utf-8,gb18030,gbk,gb2312,big5
+  if has('vim_starting')
+    set encoding=utf-8
+    let &termencoding=&encoding
+    set fileencoding=utf-8
+    set fileencodings=utf-8,gb18030,gbk,gb2312,big5
+  endif
 
-  " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  " set autochdir                           " Your working directory will always be the same as your working directory
-  " set foldcolumn=2                        " Folding abilities
+  if has('mac') && has('vim_starting')
+    let g:clipboard = {
+      \   'name': 'macOS-clipboard',
+      \   'copy': {
+      \      '+': 'pbcopy',
+      \      '*': 'pbcopy',
+      \    },
+      \   'paste': {
+      \      '+': 'pbpaste',
+      \      '*': 'pbpaste',
+      \   },
+      \   'cache_enabled': 0,
+      \ }
+  endif
+
+  if has('clipboard') && has('vim_starting')
+    set clipboard& clipboard+=unnamedplus
+  endif
+
+  let &showbreak='↳  '
+  set listchars=tab:\▏\ ,extends:⟫,precedes:⟪,nbsp:␣,trail:·
 
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
