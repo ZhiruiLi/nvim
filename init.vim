@@ -45,13 +45,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'junegunn/vim-easy-align'
     " Expand selection
     Plug 'gcmt/wildfire.vim'
-    " Better Syntax Support
-    Plug 'sheerun/vim-polyglot'
     " Closetags
     Plug 'alvan/vim-closetag'
     " Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'neoclide/jsonc.vim'
     " Status Line
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -70,8 +67,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'liuchengxu/vim-which-key'
     " Zen mode
     Plug 'junegunn/goyo.vim'
-    " Making stuff
-    Plug 'neomake/neomake'
+    " Bazel
+    Plug 'google/vim-maktaba'
+    Plug 'bazelbuild/vim-bazel'
     " Snippets
     Plug 'honza/vim-snippets'
     " Better Comments
@@ -80,6 +78,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'Shougo/echodoc.vim'
     " Dash
     Plug 'rizzatti/dash.vim'
+    " Other lang
+    Plug 'neoclide/jsonc.vim'
+    Plug 'sheerun/vim-polyglot'
   endif
 
 call plug#end()

@@ -7,18 +7,6 @@ nnoremap <Space> <Nop>
 vnoremap < <gv
 vnoremap > >gv
 
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-
-" Which Key =====================================================================
-
 " Map leader to which_key
 nnoremap <silent> <leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
@@ -30,10 +18,10 @@ let g:which_key_map =  {}
 let g:which_key_use_floating_win = 0
 
 " Change the colors if you want
-highlight default link WhichKey          Operator
-highlight default link WhichKeySeperator DiffAdded
-highlight default link WhichKeyGroup     Identifier
-highlight default link WhichKeyDesc      Function
+" highlight default link WhichKey          Operator
+" highlight default link WhichKeySeperator DiffAdded
+" highlight default link WhichKeyGroup     Identifier
+" highlight default link WhichKeyDesc      Function
 
 " Hide status line
 autocmd! FileType which_key
@@ -46,8 +34,32 @@ let g:which_key_map[','] = [ ':CocList buffers',     'buffers' ]
 let g:which_key_map[';'] = [ ':CocListResume',       'resume list' ]
 let g:which_key_map[':'] = [ ':CocList vimcommands', 'vim commands' ]
 let g:which_key_map['j'] = [ ':CocNext',             'next coc item' ]
-let g:which_key_map['k'] = [ ':CocPrev',             'previous coc item' ]
+let g:which_key_map['k'] = [ ':CocPrev',             'prev coc item' ]
 let g:which_key_map['`'] = [ ':b#',                  'recent buffer' ]
+
+" Select buffer 1~9
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+" Select last buffer
+nnoremap <silent> <leader>0 :exe "normal \<Plug>AirlineSelectTab1"<CR>:exe "normal \<Plug>AirlineSelectPrevTab"<CR>
+" Ignore them
+let g:which_key_map['1'] = 'which_key_ignore'
+let g:which_key_map['2'] = 'which_key_ignore'
+let g:which_key_map['3'] = 'which_key_ignore'
+let g:which_key_map['4'] = 'which_key_ignore'
+let g:which_key_map['5'] = 'which_key_ignore'
+let g:which_key_map['6'] = 'which_key_ignore'
+let g:which_key_map['7'] = 'which_key_ignore'
+let g:which_key_map['8'] = 'which_key_ignore'
+let g:which_key_map['9'] = 'which_key_ignore'
+let g:which_key_map['0'] = 'which_key_ignore'
 
 " Group mappings
 
@@ -93,7 +105,7 @@ let g:which_key_map['b']['h'] = 'home buffer'
 nnoremap <silent> <leader>bn :bnext<CR>
 let g:which_key_map['b']['n'] = 'next buffer'
 nnoremap <silent> <leader>bp :bprevious<CR>
-let g:which_key_map['b']['p'] = 'previous buffer'
+let g:which_key_map['b']['p'] = 'prev buffer'
 nnoremap <silent> <leader>bN :enew<CR>
 let g:which_key_map['b']['N'] = 'new empty buffer'
 nnoremap <silent> <leader>br :edit!<CR>
