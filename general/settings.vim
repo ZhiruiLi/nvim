@@ -5,16 +5,20 @@ if !exists('g:vscode')
   syntax enable                           " Enables syntax highlighing
   set hidden                              " Required to keep multiple buffers open multiple buffers
   set textwidth=80                        " Text width maximum chars before wrapping
-  set nowrap                              " Display long lines as just one line
+  set nowrap                              " No wrap by default
+  set linebreak                           " Break long lines at 'breakat'
+  set breakat=\ \	;:,!?                   " Long lines break chars
+  set nostartofline                       " Cursor in same column for few commands
+  set whichwrap+=h,l,<,>,[,],~            " Move to following line on certain keys
+  set backspace=indent,eol,start          " Intuitive backspacing in insert mode
   set pumheight=10                        " Makes popup menu smaller
+  set splitbelow splitright               " Splits open bottom right
   set list                                " Show hidden characters
-  set ruler                               " Show the cursor position all the time
+  set noruler                             " Show the cursor position all the time
   set showcmd                             " Show command in status line
   set cmdheight=2                         " More space for displaying messages
   set mouse=nv                            " Disable mouse in command-line mode
   set virtualedit=block                   " Position cursor anywhere in visual block
-  set splitbelow                          " Horizontal splits will automatically be below
-  set splitright                          " Vertical splits will automatically be to the right
   set t_Co=256                            " Support 256 colors
   set conceallevel=0                      " So that I can see `` in markdown files
   set tabstop=2                           " Insert 2 spaces for a tab
@@ -24,6 +28,8 @@ if !exists('g:vscode')
   set smartindent                         " Makes indenting smart
   set autoindent                          " Good auto indent
   set laststatus=2                        " Always display the status line
+  set colorcolumn=+0                      " Column highlight at textwidth's max character-limit
+  set display=lastline
   set number                              " Line numbers
   set cursorline                          " Enable highlighting of the current line
   set background=dark                     " tell vim what the background color looks like
@@ -44,6 +50,10 @@ if !exists('g:vscode')
   set wrapscan                            " Searches wrap around the end of the file
   set guifont=Iosevka:h14
   set mmp=100000
+
+  if exists('&breakindent')
+	  set breakindentopt=shift:2,min:20
+  endif
 
   " GBK
   if has('vim_starting')

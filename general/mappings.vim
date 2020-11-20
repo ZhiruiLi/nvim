@@ -51,6 +51,7 @@ nnoremap <silent> <leader>th :let @/ = ""<CR>
 let g:which_key_map['t']['h'] = 'remove search highlight'
 nnoremap <silent> <leader>tz :Goyo!!<CR>
 let g:which_key_map['t']['z'] = 'zen mode'
+nnoremap <leader>tw :execute('setlocal wrap! breakindent! colorcolumn='.(&colorcolumn == '' ? &textwidth : ''))<CR>
 
 " o is for open
 let g:which_key_map['o'] = { 'name' : '+open' }
@@ -148,9 +149,9 @@ let g:which_key_map['s']['y'] = 'search for yank'
 
 " f is for file
 let g:which_key_map['f'] = { 'name' : '+file' }
-nnoremap <silent> <leader>fy :let @*=expand("%:t") . ":" . line(".")<CR>
+nnoremap <silent> <leader>fy :let @+=expand("%:t") . ":" . line(".")<CR>
 let g:which_key_map['f']['y'] = 'copy file name with line no'
-nnoremap <silent> <leader>fY :let @*=expand("%:p")<CR>
+nnoremap <silent> <leader>fY :let @+=expand("%:p")<CR>
 let g:which_key_map['f']['Y'] = 'copy file full path'
 nnoremap <silent> <leader>ff :<C-u>exe 'CocList files '.expand('%:p:h')<CR>
 let g:which_key_map['f']['f'] = 'find files'
