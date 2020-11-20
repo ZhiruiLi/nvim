@@ -161,16 +161,21 @@ let g:which_key_map['f']['Y'] = 'copy file full path'
 nnoremap <silent> <leader>ff :<C-u>exe 'CocList files '.expand('%:p:h')<CR>
 let g:which_key_map['f']['f'] = 'find files'
 nnoremap <silent> <leader>fp :CocList files<CR>
+vnoremap <silent> <leader>fp :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' files'<CR>
 let g:which_key_map['f']['p'] = 'find workspace files'
 nnoremap <silent> <leader>fP :CocList files -W<CR>
+vnoremap <silent> <leader>fP :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' files -W'<CR>
 let g:which_key_map['f']['P'] = 'find all workspace files'
 nnoremap <silent> <leader>fg :CocList gfiles<CR>
+vnoremap <silent> <leader>fg :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' gfiles'<CR>
 let g:which_key_map['f']['g'] = 'find git files'
 nnoremap <silent> <leader>f. :CocList files $HOME/.config/nvim<CR>
+vnoremap <silent> <leader>f. :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' files $HOME/.config/nvim'<CR>
 let g:which_key_map['f']["."] = 'find config files'
 nnoremap <silent> <leader>fR :so $MYVIMRC<CR>
 let g:which_key_map['f']['R'] = 'reload config'
 nnoremap <silent> <leader>fr :CocList mru -A<CR>
+vnoremap <silent> <leader>fr :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' mru -A'<CR>
 let g:which_key_map['f']['r'] = 'recent files'
 
 " g is for git
