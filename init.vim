@@ -16,6 +16,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
   " Change dates fast
   Plug 'tpope/vim-speeddating'
+  " Indentline
+  Plug 'yggdroot/indentline'
   " Convert binary, hex, etc..
   Plug 'glts/vim-radical'
   " Unix command helper: :Move, :Delete... 
@@ -24,64 +26,58 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'tpope/vim-repeat'
   " Surround
   Plug 'tpope/vim-surround'
-  " Better Comments
+  " Better comments
   Plug 'tpope/vim-commentary'
   " Have the file system follow you around
   Plug 'airblade/vim-rooter'
   " auto set indent settings
   Plug 'tpope/vim-sleuth'
-
-  if exists('g:vscode')
-    " Easy motion for VSCode
-    Plug 'asvetliakov/vim-easymotion'
-  else
-    " Themes
-    Plug 'morhetz/gruvbox'
-    Plug 'joshdick/onedark.vim'
-    " Text Navigation
-    Plug 'unblevable/quick-scope'
-    Plug 'easymotion/vim-easymotion'
-    " Alignment
-    Plug 'junegunn/vim-easy-align'
-    " Expand selection
-    Plug 'gcmt/wildfire.vim'
-    " Closetags
-    Plug 'alvan/vim-closetag'
-    " Intellisense
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    " Status Line
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    " Git
-    Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-rhubarb'
-    Plug 'junegunn/gv.vim'
-    " Terminal
-    Plug 'Shougo/deol.nvim'
-    Plug 'voldikss/vim-floaterm'
-    " Start Screen
-    Plug 'mhinz/vim-startify'
-    " Vista
-    Plug 'liuchengxu/vista.vim'
-    " See what keys do like in emacs
-    Plug 'liuchengxu/vim-which-key'
-    " Zen mode
-    Plug 'junegunn/goyo.vim'
-    " Bazel
-    Plug 'google/vim-maktaba'
-    Plug 'bazelbuild/vim-bazel'
-    " Snippets
-    Plug 'honza/vim-snippets'
-    " Better Comments
-    Plug 'jbgutierrez/vim-better-comments'
-    " Echo doc
-    Plug 'Shougo/echodoc.vim'
-    " Dash
-    Plug 'rizzatti/dash.vim'
-    " Other lang
-    Plug 'neoclide/jsonc.vim'
-    Plug 'sheerun/vim-polyglot'
-  endif
+  " Themes
+  Plug 'morhetz/gruvbox'
+  Plug 'joshdick/onedark.vim'
+  " Text Navigation
+  Plug 'unblevable/quick-scope'
+  Plug 'easymotion/vim-easymotion'
+  " Alignment
+  Plug 'junegunn/vim-easy-align'
+  " Expand selection
+  Plug 'gcmt/wildfire.vim'
+  " Closetags
+  Plug 'alvan/vim-closetag'
+  " Intellisense
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Status Line
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  " Git
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-rhubarb'
+  Plug 'junegunn/gv.vim'
+  " Terminal
+  Plug 'Shougo/deol.nvim'
+  Plug 'voldikss/vim-floaterm'
+  " Start Screen
+  Plug 'mhinz/vim-startify'
+  " Vista
+  Plug 'liuchengxu/vista.vim'
+  " See what keys do like in emacs
+  Plug 'liuchengxu/vim-which-key'
+  " Zen mode
+  Plug 'junegunn/goyo.vim'
+  " Bazel
+  Plug 'google/vim-maktaba'
+  Plug 'bazelbuild/vim-bazel'
+  " Snippets
+  Plug 'honza/vim-snippets'
+  " Better Comments
+  Plug 'jbgutierrez/vim-better-comments'
+  " Echo doc
+  Plug 'Shougo/echodoc.vim'
+  " Dash
+  Plug 'rizzatti/dash.vim'
+  " Other lang
+  Plug 'neoclide/jsonc.vim'
+  Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -96,24 +92,15 @@ source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/functions.vim
 source $HOME/.config/nvim/general/mappings.vim
 
-" Source depending on if VSCode is our client
-if exists('g:vscode')
-    " VSCode extension
-  source $HOME/.config/nvim/vscode/windows.vim
-  source $HOME/.config/nvim/plug-config/easymotion.vim
-else
-  " ordinary neovim
-  source $HOME/.config/nvim/themes/gruvbox.vim
-  " source $HOME/.config/nvim/themes/onedark.vim
-  source $HOME/.config/nvim/themes/airline.vim
-  source $HOME/.config/nvim/plug-config/coc.vim
-  source $HOME/.config/nvim/plug-config/quickscope.vim
-  source $HOME/.config/nvim/plug-config/goyo.vim
-  source $HOME/.config/nvim/plug-config/vim-rooter.vim
-  source $HOME/.config/nvim/plug-config/start-screen.vim
-  source $HOME/.config/nvim/plug-config/closetags.vim
-  source $HOME/.config/nvim/plug-config/terminals.vim
-  source $HOME/.config/nvim/plug-config/vista.vim
-  source $HOME/.config/nvim/plug-config/easymotion.vim
-endif
+source $HOME/.config/nvim/themes/gruvbox.vim
+" source $HOME/.config/nvim/themes/onedark.vim
+source $HOME/.config/nvim/themes/airline.vim
+
+source $HOME/.config/nvim/plug-config/coc.vim
+source $HOME/.config/nvim/plug-config/editing.vim
+source $HOME/.config/nvim/plug-config/goyo.vim
+source $HOME/.config/nvim/plug-config/vim-rooter.vim
+source $HOME/.config/nvim/plug-config/start-screen.vim
+source $HOME/.config/nvim/plug-config/terminals.vim
+source $HOME/.config/nvim/plug-config/vista.vim
 
