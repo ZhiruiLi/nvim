@@ -17,6 +17,7 @@
     "<C-n>": "normal:j",
     "<C-p>": "normal:k"
   },
+  "session.directory": "~/.local/share/nvim/sessions",
   "list.normalMappings": {},
   "languageserver": {}
 }

@@ -5,7 +5,7 @@ let g:startify_custom_header = [
         \ '    /_/|_/|___/_/_/_/_/   ',
         \]
 
-let g:startify_session_dir = '~/.vim/sessions'
+let g:startify_session_dir = '~/.local/share/nvim/sessions'
 
 let g:startify_lists = [
           \ { 'type': 'files',     'header': ['   Files']                        },
