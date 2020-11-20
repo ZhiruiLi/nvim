@@ -62,6 +62,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'tpope/vim-rhubarb'
     Plug 'junegunn/gv.vim'
     " Terminal
+    Plug 'Shougo/deol.nvim'
     Plug 'voldikss/vim-floaterm'
     " Start Screen
     Plug 'mhinz/vim-startify'
@@ -79,6 +80,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'jbgutierrez/vim-better-comments'
     " Echo doc
     Plug 'Shougo/echodoc.vim'
+    " Dash
+    Plug 'rizzatti/dash.vim'
   endif
 
 call plug#end()
@@ -111,7 +114,7 @@ else
   source $HOME/.config/nvim/plug-config/vim-rooter.vim
   source $HOME/.config/nvim/plug-config/start-screen.vim
   source $HOME/.config/nvim/plug-config/closetags.vim
-  source $HOME/.config/nvim/plug-config/floaterm.vim
+  source $HOME/.config/nvim/plug-config/terminals.vim
   source $HOME/.config/nvim/plug-config/vista.vim
   source $HOME/.config/nvim/plug-config/easymotion.vim
 endif

@@ -43,77 +43,80 @@ let g:which_key_map['`'] = [ ':b#',                  'recent buffer' ]
 
 " t is for toggle
 let g:which_key_map['t'] = { 'name' : '+toggle' }
-nnoremap <leader>tt :Vista!!<CR>
-let g:which_key_map['t']['t'] = 'tag viewer'
-nnoremap <leader>tl :CocList filetype<CR>
+nnoremap <silent> <leader>tl :CocList filetype<CR>
 let g:which_key_map['t']['l'] = 'language mode'
-nnoremap <leader>te :CocCommand explorer<CR>
-let g:which_key_map['t']['e'] = 'explorer'
-nnoremap <leader>tn :set nonumber!<CR>
-let g:which_key_map['t']['n'] = 'line-numbers'
-nnoremap <leader>th :let @/ = ""<CR>
+nnoremap <silent> <leader>tn :set nonumber!<CR>
+let g:which_key_map['t']['n'] = 'line numbers'
+nnoremap <silent> <leader>th :let @/ = ""<CR>
 let g:which_key_map['t']['h'] = 'remove search highlight'
-nnoremap <leader>tz :Goyo!!<CR>
+nnoremap <silent> <leader>tz :Goyo!!<CR>
 let g:which_key_map['t']['z'] = 'zen mode'
 
-" o is for toggle
+" o is for open
 let g:which_key_map['o'] = { 'name' : '+open' }
-nnoremap <leader>of :!open -a finder %:h<CR>
-let g:which_key_map['o']['f'] = 'with finder'
-nnoremap <leader>oy :!open -a yoink %:p<CR>
-let g:which_key_map['o']['y'] = 'with yoink'
-nnoremap <leader>om :!open -a typora %:p<CR>
-let g:which_key_map['o']['m'] = 'with typora'
+let g:which_key_map['o']['o'] = { 'name' : '+external' }
+nnoremap <silent> <leader>ot :Deol -split='hor'<CR>
+let g:which_key_map['o']['t'] = 'terminal'
+nnoremap <silent> <leader>oe :CocCommand explorer<CR>
+let g:which_key_map['o']['e'] = 'file explorer'
+nnoremap <silent> <leader>ov :Vista!!<CR>
+let g:which_key_map['o']['v'] = 'tag viewer'
+nnoremap <silent> <leader>oof :!open -a finder %:h<CR>
+let g:which_key_map['o']['o']['f'] = 'with finder'
+nnoremap <silent> <leader>ooy :!open -a yoink %:p<CR>
+let g:which_key_map['o']['o']['y'] = 'with yoink'
+nnoremap <silent> <leader>oom :!open -a typora %:p<CR>
+let g:which_key_map['o']['o']['m'] = 'with typora'
 
 " b is for buffer
 let g:which_key_map['b'] = { 'name' : '+buffer' }
-nnoremap <leader>bb :CocList buffers<CR>
+nnoremap <silent> <leader>bb :CocList buffers<CR>
 let g:which_key_map['b']['b'] = 'buffers'
-nnoremap <leader>bd :bd<CR>
+nnoremap <silent> <leader>bd :bd<CR>
 let g:which_key_map['b']['d'] = 'delete buffer'
-nnoremap <leader>bh :Startify<CR>
+nnoremap <silent> <leader>bh :Startify<CR>
 let g:which_key_map['b']['h'] = 'home buffer'
-nnoremap <leader>bn :bnext<CR>
+nnoremap <silent> <leader>bn :bnext<CR>
 let g:which_key_map['b']['n'] = 'next buffer'
-nnoremap <leader>bp :bprevious<CR>
+nnoremap <silent> <leader>bp :bprevious<CR>
 let g:which_key_map['b']['p'] = 'previous buffer'
-nnoremap <leader>bN :enew<CR>
+nnoremap <silent> <leader>bN :enew<CR>
 let g:which_key_map['b']['N'] = 'new empty buffer'
-nnoremap <leader>br :edit!<CR>
+nnoremap <silent> <leader>br :edit!<CR>
 let g:which_key_map['b']['r'] = 'reload buffer'
 
 " w is for window
 let g:which_key_map['w'] = { 'name' : '+buffer' }
-nnoremap <leader>ww :CocList windows<CR>
+nnoremap <silent> <leader>ww :CocList windows<CR>
 let g:which_key_map['w']['w'] = 'select windows'
-nnoremap <leader>wh :wincmd h<CR>
+nnoremap <silent> <leader>wh :wincmd h<CR>
 let g:which_key_map['w']['h'] = 'select left'
-nnoremap <leader>wj :wincmd j<CR>
+nnoremap <silent> <leader>wj :wincmd j<CR>
 let g:which_key_map['w']['j'] = 'select bottom'
-nnoremap <leader>wk :wincmd k<CR>
+nnoremap <silent> <leader>wk :wincmd k<CR>
 let g:which_key_map['w']['k'] = 'select up'
-nnoremap <leader>wl :wincmd l<CR>
+nnoremap <silent> <leader>wl :wincmd l<CR>
 let g:which_key_map['w']['l'] = 'select right'
-nnoremap <leader>wH :wincmd H<CR>
+nnoremap <silent> <leader>wH :wincmd H<CR>
 let g:which_key_map['w']['H'] = 'move to left'
-nnoremap <leader>wJ :wincmd J<CR>
+nnoremap <silent> <leader>wJ :wincmd J<CR>
 let g:which_key_map['w']['J'] = 'move to bottom'
-nnoremap <leader>wK :wincmd K<CR>
+nnoremap <silent> <leader>wK :wincmd K<CR>
 let g:which_key_map['w']['K'] = 'move to up'
-nnoremap <leader>wL :wincmd L<CR>
+nnoremap <silent> <leader>wL :wincmd L<CR>
 let g:which_key_map['w']['L'] = 'move to right'
-nnoremap <leader>wv :bel vsplit \| CocList mru<CR>
+nnoremap <silent> <leader>wv :bel vsplit \| CocList mru<CR>
 let g:which_key_map['w']['v'] = 'vsplit'
-nnoremap <leader>ws :bel split \| CocList mru<CR>
+nnoremap <silent> <leader>ws :bel split \| CocList mru<CR>
 let g:which_key_map['w']['s'] = 'split'
-nnoremap <leader>wd :close<CR>
+nnoremap <silent> <leader>wd :close<CR>
 let g:which_key_map['w']['d'] = 'close current window'
-nnoremap <leader>wD :only<CR>
+nnoremap <silent> <leader>wD :only<CR>
 let g:which_key_map['w']['D'] = 'close other windows'
 augroup restorezoom
     au WinEnter * silent! :call ToggleZoom(v:false)
 augroup END
-nnoremap <silent> <leader>wo :call ToggleZoom(v:true)<CR>
+nnoremap <silent> <leader>wo :call <SID>ToggleZoom(v:true)<CR>
 let g:which_key_map['w']['o'] = 'maximize window'
 
 " s is for search
@@ -145,7 +148,7 @@ nnoremap <silent> <leader>fy :let @*=expand("%:t") . ":" . line(".")<CR>
 let g:which_key_map['f']['y'] = 'copy file name with line no'
 nnoremap <silent> <leader>fY :let @*=expand("%:p")<CR>
 let g:which_key_map['f']['Y'] = 'copy file full path'
-nnoremap <silent> <leader>ff :exe 'CocList files '.expand('%:p:h')<CR>
+nnoremap <silent> <leader>ff :<C-u>exe 'CocList files '.expand('%:p:h')<CR>
 let g:which_key_map['f']['f'] = 'find files'
 nnoremap <silent> <leader>fp :CocList files<CR>
 let g:which_key_map['f']['p'] = 'find workspace files'
@@ -160,67 +163,67 @@ let g:which_key_map['f']['R'] = 'reload config'
 
 " g is for git
 let g:which_key_map['g'] = { 'name' : '+git' }
-nnoremap <leader>gg :CocList gstatus<CR>
+nnoremap <silent> <leader>gg :CocList gstatus<CR>
 let g:which_key_map['g']['g'] = 'status'
-nnoremap <leader>go :CocCommand git.showCommit<CR>
+nnoremap <silent> <leader>go :CocCommand git.showCommit<CR>
 let g:which_key_map['g']['o'] = 'commit log'
-nnoremap <leader>ga :Git add .<CR>
+nnoremap <silent> <leader>ga :Git add .<CR>
 let g:which_key_map['g']['a'] = 'add all'
-nnoremap <leader>gA :Git add %<CR>
+nnoremap <silent> <leader>gA :Git add %<CR>
 let g:which_key_map['g']['A'] = 'add current'
-nnoremap <leader>gb :Git blame<CR>
+nnoremap <silent> <leader>gb :Git blame<CR>
 let g:which_key_map['g']['b'] = 'blame'
-nnoremap <leader>gB :CocCommand browserOpen<CR>
+nnoremap <silent> <leader>gB :CocCommand browserOpen<CR>
 let g:which_key_map['g']['B'] = 'browse'
-nnoremap <leader>gc :Gcommit<CR>
+nnoremap <silent> <leader>gc :Gcommit<CR>
 let g:which_key_map['g']['c'] = 'commit'
-nnoremap <leader>gC :Gcommit --all<CR>
+nnoremap <silent> <leader>gC :Gcommit --all<CR>
 let g:which_key_map['g']['C'] = 'commit all'
-nnoremap <leader>gd :Gdiffsplit<CR>
+nnoremap <silent> <leader>gd :Gdiffsplit<CR>
 let g:which_key_map['g']['d'] = 'diff'
-nnoremap <leader>gu :CocCommand git.chunkUndo<CR>
+nnoremap <silent> <leader>gu :CocCommand git.chunkUndo<CR>
 let g:which_key_map['g']['u'] = 'undo'
-nnoremap <leader>gy :CocCommand git.copyUrl<CR>
+nnoremap <silent> <leader>gy :CocCommand git.copyUrl<CR>
 let g:which_key_map['g']['y'] = 'copy URL'
-nnoremap <leader>gp :CocCommand git.push<CR>
+nnoremap <silent> <leader>gp :CocCommand git.push<CR>
 let g:which_key_map['g']['p'] = 'push'
-nnoremap <leader>gl :Git pull<CR>
+nnoremap <silent> <leader>gl :Git pull<CR>
 let g:which_key_map['g']['l'] = 'pull'
-nnoremap <leader>gs :CocCommand git.chunkStage<CR>
+nnoremap <silent> <leader>gs :CocCommand git.chunkStage<CR>
 let g:which_key_map['g']['s'] = 'stage chunk'
-nnoremap <leader>gv :GV<CR>
+nnoremap <silent> <leader>gv :GV<CR>
 let g:which_key_map['g']['v'] = 'view commits'
-nnoremap <leader>gV :GV!<CR>
+nnoremap <silent> <leader>gV :GV!<CR>
 let g:which_key_map['g']['V'] = 'view buffer commits'
 
 " l is for language server protocol
 let g:which_key_map['l'] = { 'name' : '+lang' }
-nmap <leader>la <Plug>(coc-codeaction)
+nmap <silent> <leader>la <Plug>(coc-codeaction)
 let g:which_key_map['l']['a'] = 'line action'
-nmap <leader>lA <Plug>(coc-codeaction-selected)
+nmap <silent> <leader>lA <Plug>(coc-codeaction-selected)
 let g:which_key_map['l']['A'] = 'selected action'
-nmap <leader>ld <Plug>(coc-definition)
+nmap <silent> <leader>ld <Plug>(coc-definition)
 let g:which_key_map['l']['d'] = 'definition'
-nmap <leader>lD <Plug>(coc-declaration)
+nmap <silent> <leader>lD <Plug>(coc-declaration)
 let g:which_key_map['l']['D'] = 'declaration'
-xmap <leader>lf <Plug>(coc-format-selected)
-nmap <leader>lf <Plug>(coc-format-selected)
+xmap <silent> <leader>lf <Plug>(coc-format-selected)
+nmap <silent> <leader>lf <Plug>(coc-format-selected)
 let g:which_key_map['l']['f'] = 'format selected'
-nmap <leader>lF <Plug>(coc-format)
+nmap <silent> <leader>lF <Plug>(coc-format)
 let g:which_key_map['l']['F'] = 'format'
-nmap <leader>li <Plug>(coc-implementation)
+nmap <silent> <leader>li <Plug>(coc-implementation)
 let g:which_key_map['l']['i'] = 'implementation'
-nmap <leader>ly <Plug>(coc-type-definition)
+nmap <silent> <leader>ly <Plug>(coc-type-definition)
 let g:which_key_map['l']['y'] = 'type definition'
-nnoremap <leader>le :CocList diagnostics<CR>
+nnoremap <silent> <leader>le :CocList diagnostics<CR>
 let g:which_key_map['l']['e'] = 'diagnostics'
-nmap <leader>lq <Plug>(coc-fix-current)
+nmap <silent> <leader>lq <Plug>(coc-fix-current)
 let g:which_key_map['l']['q'] = 'quickfix'
-nmap <leader>ln <Plug>(coc-rename)
+nmap <silent> <leader>ln <Plug>(coc-rename)
 let g:which_key_map['l']['n'] = 'rename'
-nmap <leader>lr <Plug>(coc-references)
+nmap <silent> <leader>lr <Plug>(coc-references)
 let g:which_key_map['l']['r'] = 'references'
-nnoremap <leader>ls :CocList snippets<CR>
+nnoremap <silent> <leader>ls :CocList snippets<CR>
 let g:which_key_map['l']['s'] = 'snippets'
 
 " Register which key map
@@ -274,10 +277,18 @@ vnoremap <silent> # :<C-U>
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gVzv:call setreg('"', old_reg, old_regtype)<CR>
 
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Search in Dash 
+nnoremap <silent> D :exe 'Dash '.expand('<cword>')<CR>
+vnoremap <silent> D :<C-u>exe 'Dash '.<SID>GetSelectedText(visualmode())<CR>
 
-function! s:show_documentation()
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
+
+" Terminal to normal mode
+tnoremap <ESC> <C-\><C-n>
+tnoremap <C-[> <C-\><C-n>
+
+function! s:ShowDocumentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
   else
@@ -286,7 +297,7 @@ function! s:show_documentation()
 endfunction
 
 " How can I maximize a split window? https://stackoverflow.com/a/60639802
-function! ToggleZoom(zoom)
+function! s:ToggleZoom(zoom)
   if exists("t:restore_zoom") && (a:zoom == v:true || t:restore_zoom.win != winnr())
       exec t:restore_zoom.cmd
       unlet t:restore_zoom
