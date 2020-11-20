@@ -5,7 +5,7 @@ let g:startify_custom_header = [
         \ '    /_/|_/|___/_/_/_/_/   ',
         \]
 
-let g:startify_session_dir = '~/.config/nvim/session'
+let g:startify_session_dir = '~/.vim/sessions'
 
 let g:startify_lists = [
           \ { 'type': 'files',     'header': ['   Files']                        },
@@ -27,10 +27,10 @@ let g:webdevicons_enable_startify = 1
 " endfunction
 
 let g:startify_bookmarks = [
+            \ { 'p': '~/projects' },
             \ { 'i': '~/.config/nvim' },
             \ { 'z': '~/.zshrc' },
-            \ '~/OneDrive/notes',
-            \ '~/projects',
+            \ { 'n': '~/OneDrive/notes' },
             \ ]
 
 let g:startify_enable_special = 0

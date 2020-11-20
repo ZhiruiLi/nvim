@@ -84,6 +84,10 @@ nnoremap <silent> <leader>bN :enew<CR>
 let g:which_key_map['b']['N'] = 'new empty buffer'
 nnoremap <silent> <leader>br :edit!<CR>
 let g:which_key_map['b']['r'] = 'reload buffer'
+nnoremap <silent> <leader>bi :CocCommand session.save<CR>
+let g:which_key_map['b']['i'] = 'save session'
+nnoremap <silent> <leader>bo :CocList sessions<CR>
+let g:which_key_map['b']['o'] = 'load session'
 
 " w is for window
 let g:which_key_map['w'] = { 'name' : '+buffer' }
