@@ -51,7 +51,8 @@ nnoremap <silent> <leader>th :let @/ = ""<CR>
 let g:which_key_map['t']['h'] = 'remove search highlight'
 nnoremap <silent> <leader>tz :Goyo!!<CR>
 let g:which_key_map['t']['z'] = 'zen mode'
-nnoremap <leader>tw :execute('setlocal wrap! breakindent! colorcolumn='.(&colorcolumn == '' ? &textwidth : ''))<CR>
+nnoremap <silent> <leader>tw :execute('setlocal wrap! breakindent! colorcolumn='.(&colorcolumn == '' ? &textwidth : ''))<CR>
+let g:which_key_map['t']['w'] = 'wrap'
 
 " o is for open
 let g:which_key_map['o'] = { 'name' : '+open' }
