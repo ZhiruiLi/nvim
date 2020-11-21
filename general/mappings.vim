@@ -218,10 +218,10 @@ nnoremap <silent> <leader>gg :CocList gstatus<CR>
 let g:which_key_map['g']['g'] = 'status'
 nnoremap <silent> <leader>go :CocCommand git.showCommit<CR>
 let g:which_key_map['g']['o'] = 'commit log'
-nnoremap <silent> <leader>ga :Git add .<CR>
-let g:which_key_map['g']['a'] = 'add all'
-nnoremap <silent> <leader>gA :Git add %<CR>
-let g:which_key_map['g']['A'] = 'add current'
+nnoremap <silent> <leader>ga :Git add %<CR>
+let g:which_key_map['g']['a'] = 'add current'
+nnoremap <silent> <leader>gA :Git add .<CR>
+let g:which_key_map['g']['A'] = 'add all'
 nnoremap <silent> <leader>gb :Git blame<CR>
 let g:which_key_map['g']['b'] = 'blame'
 nnoremap <silent> <leader>gB :CocCommand browserOpen<CR>
