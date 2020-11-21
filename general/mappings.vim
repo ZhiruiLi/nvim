@@ -59,9 +59,11 @@ let g:which_key_map['0'] = 'which_key_ignore'
 " b is for buffer
 let g:which_key_map['b'] = { 'name' : '+buffer' }
 nnoremap <silent> <leader>bb :CocList buffers<CR>
-let g:which_key_map['b']['b'] = 'buffers'
+let g:which_key_map['b']['b'] = 'list buffers'
 nnoremap <silent> <leader>bd :bd<CR>
-let g:which_key_map['b']['d'] = 'delete buffer'
+let g:which_key_map['b']['d'] = 'delete current'
+nnoremap <silent> <leader>bD :%bd\|e#\|bd#<CR>\|'"
+let g:which_key_map['b']['D'] = 'delete other'
 nnoremap <silent> <leader>bh :Startify<CR>
 let g:which_key_map['b']['h'] = 'home buffer'
 nnoremap <silent> <leader>bn :bnext<CR>
@@ -94,9 +96,9 @@ let g:which_key_map['f']['P'] = 'find all workspace files'
 nnoremap <silent> <leader>fg :CocList gfiles<CR>
 vnoremap <silent> <leader>fg :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' gfiles'<CR>
 let g:which_key_map['f']['g'] = 'find git files'
-nnoremap <silent> <leader>fc :CocList files $HOME/.config/nvim<CR>
-vnoremap <silent> <leader>fc :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' files $HOME/.config/nvim'<CR>
-let g:which_key_map['f']["c"] = 'find config files'
+nnoremap <silent> <leader>f. :CocList files $HOME/.config/nvim<CR>
+vnoremap <silent> <leader>f. :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' files $HOME/.config/nvim'<CR>
+let g:which_key_map['f']["."] = 'find config files'
 nnoremap <silent> <leader>fR :so $MYVIMRC \| :echo $MYVIMRC.' files sourced'<CR>
 let g:which_key_map['f']['R'] = 'reload config'
 nnoremap <silent> <leader>fr :CocList mru -A<CR>
@@ -188,24 +190,24 @@ nnoremap <silent> <leader>w- :exe "resize " . (winheight(0) * 2/3)<CR>
 " s is for search
 let g:which_key_map['s'] = { 'name' : '+search' }
 nnoremap <silent> <leader>sp :CocList -I grep<CR>
-vnoremap <silent> <leader>sp :<C-u>exe 'CocList -I --input='.<SID>GetSelectedText(visualmode()).' grep'<CR>
+vnoremap <silent> <leader>sp :<C-u>exe 'CocList -I -A --input='.<SID>GetSelectedText(visualmode()).' grep'<CR>
 let g:which_key_map['s']['p'] = 'in project'
-nnoremap <silent> <leader>ss :CocList -I lines<CR>
+nnoremap <silent> <leader>ss :CocList -I -A lines<CR>
 vnoremap <silent> <leader>ss :<C-u>exe 'CocList -I --input='.<SID>GetSelectedText(visualmode()).' lines'<CR>
 let g:which_key_map['s']['s'] = 'in current file'
 nnoremap <silent> <leader>sh :CocList helptags<CR>
 let g:which_key_map['s']['h'] = 'helps'
-nnoremap <silent> <leader>si :CocList outline<CR>
+nnoremap <silent> <leader>si :CocList -A outline<CR>
 let g:which_key_map['s']['i'] = 'outline'
-nnoremap <silent> <leader>so :CocList -I symbols<CR>
+nnoremap <silent> <leader>so :CocList -I -A symbols<CR>
 let g:which_key_map['s']['o'] = 'workspace symbols'
 nnoremap <silent> <leader>s: :CocList vimcommands<CR>
 let g:which_key_map['s'][':'] = 'commands'
 nnoremap <silent> <leader>s; :CocList cmdhistory<CR>
 let g:which_key_map['s'][';'] = 'command histroy'
-nnoremap <silent> <leader>sy :CocList yank<CR>
+nnoremap <silent> <leader>sy :CocList -A yank<CR>
 let g:which_key_map['s']['y'] = 'search for yank'
-nnoremap <silent> <leader>sk :CocList bookmark<CR>
+nnoremap <silent> <leader>sk :CocList -A bookmark<CR>
 let g:which_key_map['s']['k'] = 'bookmarks'
 
 " g is for git
