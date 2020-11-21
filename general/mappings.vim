@@ -89,21 +89,21 @@ let g:which_key_map['f']['Y'] = 'copy file full path'
 nnoremap <silent> <leader>ff :<C-u>exe 'CocList files '.expand('%:p:h')<CR>
 let g:which_key_map['f']['f'] = 'find files'
 nnoremap <silent> <leader>fp :CocList files<CR>
-vnoremap <silent> <leader>fp :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' files'<CR>
+vnoremap <silent> <leader>fp :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' files'<CR>
 let g:which_key_map['f']['p'] = 'find workspace files'
 nnoremap <silent> <leader>fP :CocList files -W<CR>
-vnoremap <silent> <leader>fP :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' files -W'<CR>
+vnoremap <silent> <leader>fP :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' files -W'<CR>
 let g:which_key_map['f']['P'] = 'find all workspace files'
 nnoremap <silent> <leader>fg :CocList gfiles<CR>
-vnoremap <silent> <leader>fg :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' gfiles'<CR>
+vnoremap <silent> <leader>fg :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' gfiles'<CR>
 let g:which_key_map['f']['g'] = 'find git files'
 nnoremap <silent> <leader>f. :CocList files $HOME/.config/nvim<CR>
-vnoremap <silent> <leader>f. :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' files $HOME/.config/nvim'<CR>
+vnoremap <silent> <leader>f. :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' files $HOME/.config/nvim'<CR>
 let g:which_key_map['f']["."] = 'find config files'
 nnoremap <silent> <leader>fR :so $MYVIMRC \| :echo $MYVIMRC.' files sourced'<CR>
 let g:which_key_map['f']['R'] = 'reload config'
 nnoremap <silent> <leader>fr :CocList mru -A<CR>
-vnoremap <silent> <leader>fr :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' mru -A'<CR>
+vnoremap <silent> <leader>fr :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' mru -A'<CR>
 let g:which_key_map['f']['r'] = 'recent files'
 nnoremap <silent> <leader>fd :if GetBoolInput("Confirm delete file ? (y/n) ") \| echom "Delete ".expand('%:p') \| Delete \| else \| echo "Cancel delete" \| endif<CR>
 let g:which_key_map['f']['d'] = 'delete file'
@@ -182,20 +182,20 @@ let g:which_key_map['w']['D'] = 'close other'
 augroup restorezoom
     au WinEnter * silent! :call ToggleZoom(v:false)
 augroup END
-nnoremap <silent> <leader>wo :call <SID>ToggleZoom(v:true)<CR>
+nnoremap <silent> <leader>wo :call ToggleZoom(v:true)<CR>
 let g:which_key_map['w']['o'] = 'maximize'
 nnoremap <silent> <leader>w= :wincmd =<CR>
 let g:which_key_map['w']['='] = 'equal all'
-nnoremap <silent> <leader>wu :<C-u>call <SID>SwapWinBuffer()<CR>
+nnoremap <silent> <leader>wu :<C-u>call SwapWinBuffer()<CR>
 let g:which_key_map['w']['u'] = 'swap'
 
 " s is for search
 let g:which_key_map['s'] = { 'name' : '+search' }
 nnoremap <silent> <leader>sp :CocList -I grep<CR>
-vnoremap <silent> <leader>sp :<C-u>exe 'CocList -I -A --input='.<SID>GetSelectedText(visualmode()).' grep'<CR>
+vnoremap <silent> <leader>sp :<C-u>exe 'CocList -I -A --input='.GetSelectedText(visualmode()).' grep'<CR>
 let g:which_key_map['s']['p'] = 'in project'
 nnoremap <silent> <leader>ss :CocList -I -A lines<CR>
-vnoremap <silent> <leader>ss :<C-u>exe 'CocList -I --input='.<SID>GetSelectedText(visualmode()).' lines'<CR>
+vnoremap <silent> <leader>ss :<C-u>exe 'CocList -I --input='.GetSelectedText(visualmode()).' lines'<CR>
 let g:which_key_map['s']['s'] = 'in current file'
 nnoremap <silent> <leader>sh :CocList helptags<CR>
 let g:which_key_map['s']['h'] = 'helps'
@@ -277,9 +277,6 @@ let g:which_key_map['l']['r'] = 'references'
 nnoremap <silent> <leader>ls :CocList snippets<CR>
 let g:which_key_map['l']['s'] = 'snippets'
 
-" n is for notes
-nmap <silent> <leader>nn <Plug>VimwikiIndex
-
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")
 
@@ -333,58 +330,12 @@ vnoremap <silent> # :<C-U>
 
 " Search in Dash
 nnoremap <silent> D :exe 'Dash '.expand('<cword>')<CR>
-vnoremap <silent> D :<C-u>exe 'Dash '.<SID>GetSelectedText(visualmode())<CR>
+vnoremap <silent> D :<C-u>exe 'Dash '.GetSelectedText(visualmode())<CR>
 
 " Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
 " Terminal to normal mode
 tnoremap <ESC> <C-\><C-n>
 tnoremap <C-[> <C-\><C-n>
-
-function! s:ShowDocumentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" How can I maximize a split window? https://stackoverflow.com/a/60639802
-function! s:ToggleZoom(zoom)
-  if exists("t:restore_zoom") && (a:zoom == v:true || t:restore_zoom.win != winnr())
-      exec t:restore_zoom.cmd
-      unlet t:restore_zoom
-  elseif a:zoom
-      let t:restore_zoom = { 'win': winnr(), 'cmd': winrestcmd() }
-      exec "normal \<C-W>\|\<C-W>_"
-  endif
-endfunction
-
-function! s:GetSelectedText(type)
-  let saved_unnamed_register = @@
-  if a:type ==# 'v'
-    normal! `<v`>y
-  elseif a:type ==# 'char'
-    normal! `[v`]y
-  else
-    return
-  endif
-  let word = substitute(@@, '\n$', '', 'g')
-  let word = escape(word, '| ')
-  let @@ = saved_unnamed_register
-  return word
-endfunction
-
-function! s:SwapWinBuffer()
-  let thiswin = winnr()
-  let thisbuf = bufnr("%")
-  let lastwin = winnr("#")
-  let lastbuf = winbufnr(lastwin)
-
-  exec  lastwin . " wincmd w" ."|".
-      \ "buffer ". thisbuf ."|".
-      \ thiswin ." wincmd w" ."|".
-      \ "buffer ". lastbuf
-endfunction
 
