@@ -8,71 +8,52 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 
-  " Change dates fast
-  Plug 'tpope/vim-speeddating'
-  " Indentline
+  " Keybinding hint
+  Plug 'liuchengxu/vim-which-key'
+  " Intellisense
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " UI
+  Plug 'morhetz/gruvbox'
+  Plug 'joshdick/onedark.vim'
   Plug 'yggdroot/indentline'
-  " Convert binary, hex, etc..
+  Plug 'mhinz/vim-startify'
+  Plug 'liuchengxu/vista.vim'
+  Plug 'junegunn/goyo.vim'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  " Convert binary, hex, etc..: crd(10) crx(16) crb(2) cro(8)
+  Plug 'glts/vim-magnum'
   Plug 'glts/vim-radical'
   " Unix command helper: :Move, :Delete...
   Plug 'tpope/vim-eunuch'
-  " Repeat stuff
-  Plug 'tpope/vim-repeat'
-  " Surround
-  Plug 'tpope/vim-surround'
-  " Better comments
+  " Editing
   Plug 'tpope/vim-commentary'
-  " Have the file system follow you around
-  Plug 'airblade/vim-rooter'
-  " auto set indent settings
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-surround'
   Plug 'tpope/vim-sleuth'
-  " Themes
-  Plug 'morhetz/gruvbox'
-  Plug 'joshdick/onedark.vim'
-  " Text Navigation
+  Plug 'honza/vim-snippets'
+  Plug 'junegunn/vim-easy-align'
+  Plug 'alvan/vim-closetag'
+  Plug 'ntpeters/vim-better-whitespace'
   Plug 'unblevable/quick-scope'
   Plug 'easymotion/vim-easymotion'
-  " Alignment
-  Plug 'junegunn/vim-easy-align'
-  " Expand selection
   Plug 'gcmt/wildfire.vim'
-  " Closetags
-  Plug 'alvan/vim-closetag'
-  " Intellisense
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  " Status Line
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+  " Auto change CWD
+  Plug 'airblade/vim-rooter'
   " Git
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb'
   Plug 'junegunn/gv.vim'
-  " Terminal
+  " Terminals
   Plug 'Shougo/deol.nvim'
   Plug 'voldikss/vim-floaterm'
-  " Start Screen
-  Plug 'mhinz/vim-startify'
-  " FZF is not needed now
-  " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  " Plug 'junegunn/fzf.vim'
-  " Vista
-  Plug 'liuchengxu/vista.vim'
-  " See what keys do like in emacs
-  Plug 'liuchengxu/vim-which-key'
-  " Zen mode
-  Plug 'junegunn/goyo.vim'
   " Bazel
   Plug 'google/vim-maktaba'
   Plug 'bazelbuild/vim-bazel'
-  " Snippets
-  Plug 'honza/vim-snippets'
-  " Better Comments
-  Plug 'jbgutierrez/vim-better-comments'
-  " Echo doc
+  " Docs
   Plug 'Shougo/echodoc.vim'
-  " Dash
   Plug 'rizzatti/dash.vim'
-  " Scratch pad
+  " Notes
   Plug 'mtth/scratch.vim'
   " Other lang
   Plug 'neoclide/jsonc.vim'
@@ -91,15 +72,10 @@ source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/functions.vim
 source $HOME/.config/nvim/general/mappings.vim
 
-source $HOME/.config/nvim/themes/gruvbox.vim
-" source $HOME/.config/nvim/themes/onedark.vim
-source $HOME/.config/nvim/themes/airline.vim
-
+source $HOME/.config/nvim/plug-config/ui.vim
 source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/editing.vim
-source $HOME/.config/nvim/plug-config/vim-rooter.vim
-source $HOME/.config/nvim/plug-config/start-screen.vim
+source $HOME/.config/nvim/plug-config/rooter.vim
 source $HOME/.config/nvim/plug-config/terminals.vim
-source $HOME/.config/nvim/plug-config/vista.vim
-source $HOME/.config/nvim/plug-config/scratch.vim
+source $HOME/.config/nvim/plug-config/notes.vim
 

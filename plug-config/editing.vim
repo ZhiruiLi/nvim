@@ -15,3 +15,7 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
 let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js,*.vue'
 let g:closetag_filetypes = 'html,xhtml,phtml,javascript'
 
+" Better whitespaces
+let g:better_whitespace_enabled = 1
+let g:strip_whitespace_on_save = 1
+let g:strip_whitespace_confirm = 0

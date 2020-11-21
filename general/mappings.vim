@@ -122,6 +122,8 @@ nnoremap <silent> <leader>tn :set nonumber!<CR>
 let g:which_key_map['t']['n'] = 'line numbers'
 nnoremap <silent> <leader>th :let @/ = ""<CR>
 let g:which_key_map['t']['h'] = 'remove search highlight'
+nnoremap <silent> <leader>tm :ToggleStripWhitespaceOnSave<CR>
+let g:which_key_map['t']['m'] = 'trim whitespaces'
 nnoremap <silent> <leader>tz :Goyo!!<CR>
 let g:which_key_map['t']['z'] = 'zen mode'
 nnoremap <silent> <leader>tw :execute('setlocal wrap! breakindent! colorcolumn='.(&colorcolumn == '' ? &textwidth : ''))<CR>
@@ -185,8 +187,7 @@ let g:which_key_map['w']['o'] = 'maximize'
 nnoremap <silent> <leader>w= :wincmd =<CR>
 let g:which_key_map['w']['='] = 'equal all'
 nnoremap <silent> <leader>wu :<C-u>call <SID>SwapWinBuffer()<CR>
-nnoremap <silent> <leader>w+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <leader>w- :exe "resize " . (winheight(0) * 2/3)<CR>
+let g:which_key_map['w']['u'] = 'swap'
 
 " s is for search
 let g:which_key_map['s'] = { 'name' : '+search' }
@@ -275,6 +276,9 @@ nmap <silent> <leader>lr <Plug>(coc-references)
 let g:which_key_map['l']['r'] = 'references'
 nnoremap <silent> <leader>ls :CocList snippets<CR>
 let g:which_key_map['l']['s'] = 'snippets'
+
+" n is for notes
+nmap <silent> <leader>nn <Plug>VimwikiIndex
 
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")
