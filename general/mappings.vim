@@ -112,8 +112,6 @@ let g:which_key_map['f']['R'] = 'reload config'
 nnoremap <silent> <leader>fr :CocList mru -A<CR>
 vnoremap <silent> <leader>fr :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' mru -A'<CR>
 let g:which_key_map['f']['r'] = 'recent files'
-nnoremap <leader>fd :call ConfirmAndDeleteFile(expand('%:p'))<CR>
-let g:which_key_map['f']['d'] = 'delete current'
 
 " t is for toggle
 let g:which_key_map['t'] = { 'name' : '+toggle' }

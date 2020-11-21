@@ -37,12 +37,3 @@ function! GetBoolInput(hint)
   return 0
 endfunction
 
-function! ConfirmAndDeleteFile(path) abort
-  if GetBoolInput('Confirm delete file '.a:path.' ? (y/n) ')
-    echom 'Delete file '.a:path
-    exe 'Delete '.a:path
-  else
-    echo 'Cancel delete file '.a:path
-  endif
-endfunction
-
