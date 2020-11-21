@@ -238,6 +238,8 @@ nnoremap <silent> <leader>gy :CocCommand git.copyUrl<CR>
 let g:which_key_map['g']['y'] = 'copy URL'
 nnoremap <silent> <leader>gp :CocCommand git.push<CR>
 let g:which_key_map['g']['p'] = 'push'
+nnoremap <silent> <leader>gP :Gcommit --all \| :CocCommand git.push<CR>
+let g:which_key_map['g']['P'] = 'commit all and push'
 nnoremap <silent> <leader>gl :Git pull<CR>
 let g:which_key_map['g']['l'] = 'pull'
 nnoremap <silent> <leader>gs :CocCommand git.chunkStage<CR>
