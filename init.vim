@@ -72,10 +72,17 @@ source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/functions.vim
 source $HOME/.config/nvim/general/mappings.vim
 
-source $HOME/.config/nvim/plug-config/ui.vim
+source $HOME/.config/nvim/plug-config/airline.vim
+source $HOME/.config/nvim/plug-config/better-whitespace.vim
+source $HOME/.config/nvim/plug-config/closetag.vim
 source $HOME/.config/nvim/plug-config/coc.vim
-source $HOME/.config/nvim/plug-config/editing.vim
+source $HOME/.config/nvim/plug-config/easymotion.vim
+source $HOME/.config/nvim/plug-config/indentline.vim
+source $HOME/.config/nvim/plug-config/quick-scope.vim
 source $HOME/.config/nvim/plug-config/rooter.vim
+source $HOME/.config/nvim/plug-config/scratch.vim
+source $HOME/.config/nvim/plug-config/startify.vim
 source $HOME/.config/nvim/plug-config/terminals.vim
-source $HOME/.config/nvim/plug-config/notes.vim
+source $HOME/.config/nvim/plug-config/themes.vim
+source $HOME/.config/nvim/plug-config/vista.vim
 

@@ -1,0 +1,21 @@
+" Header
+let g:startify_custom_header = [
+        \ '  ╔╗╔┌─┐┌─┐╦  ╦╦╔╦╗',
+        \ '  ║║║├┤ │ │╚╗╔╝║║║║',
+        \ '  ╝╚╝└─┘└─┘ ╚╝ ╩╩ ╩',
+        \]
+
+" Don't change dir, change by rooter
+let g:startify_change_to_dir = 0
+
+" Specific session save path
+let g:startify_session_dir = '~/.local/share/nvim/sessions'
+
+" Specific block list
+let g:startify_lists = [
+          \ { 'type': 'dir',       'header': ['  '.getcwd()] },
+          \ { 'type': 'files',     'header': ['  Files'] },
+          \ { 'type': 'sessions',  'header': ['  Sessions'] },
+          \ { 'type': 'bookmarks', 'header': ['  Bookmarks'] },
+          \ ]
+
