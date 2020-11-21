@@ -13,7 +13,7 @@ set backspace=indent,eol,start          " Intuitive backspacing in insert mode
 set pumheight=10                        " Makes popup menu smaller
 set splitbelow splitright               " Splits open bottom right
 set list                                " Show hidden characters
-set noruler                             " Show the cursor position all the time
+set ruler                               " Show current cursor position
 set showcmd                             " Show command in status line
 set cmdheight=2                         " More space for displaying messages
 set mouse=nv                            " Disable mouse in command-line mode
@@ -32,7 +32,7 @@ set display=lastline
 set number                              " Line numbers
 set cursorline                          " Enable highlighting of the current line
 set background=dark                     " tell vim what the background color looks like
-set showtabline=2                       " Always show tabs 
+set showtabline=2                       " Always show tabs
 set winwidth=30                         " Minimum width for active window
 set winminwidth=10                      " Minimum width for inactive windows
 set noshowmode                          " We don't need to see things like -- INSERT -- anymore

@@ -17,12 +17,6 @@ let g:which_key_map =  {}
 " Not a fan of floating windows for this
 let g:which_key_use_floating_win = 0
 
-" Change the colors if you want
-" highlight default link WhichKey          Operator
-" highlight default link WhichKeySeperator DiffAdded
-" highlight default link WhichKeyGroup     Identifier
-" highlight default link WhichKeyDesc      Function
-
 " Hide status line
 autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
@@ -78,10 +72,6 @@ nnoremap <silent> <leader>bN :enew<CR>
 let g:which_key_map['b']['N'] = 'new empty buffer'
 nnoremap <silent> <leader>br :edit!<CR>
 let g:which_key_map['b']['r'] = 'reload buffer'
-nnoremap <silent> <leader>bi :CocCommand session.save<CR>
-let g:which_key_map['b']['i'] = 'save session'
-nnoremap <silent> <leader>bo :CocList sessions<CR>
-let g:which_key_map['b']['o'] = 'load session'
 nnoremap <silent> <leader>bs :w<CR>
 let g:which_key_map['b']['s'] = 'save buffer'
 nnoremap <silent> <leader>bS :wa \| :echo 'All buffers saved'<CR>
@@ -114,6 +104,12 @@ vnoremap <silent> <leader>fr :<C-u>exe 'CocList --input='.<SID>GetSelectedText(v
 let g:which_key_map['f']['r'] = 'recent files'
 nnoremap <silent> <leader>fd :if GetBoolInput("Confirm delete file ? (y/n) ") \| echom "Delete ".expand('%:p') \| Delete \| else \| echo "Cancel delete" \| endif<CR>
 let g:which_key_map['f']['d'] = 'delete file'
+nnoremap <silent> <leader>fi :CocCommand session.save<CR>
+let g:which_key_map['f']['i'] = 'save session'
+nnoremap <silent> <leader>fo :CocList sessions<CR>
+let g:which_key_map['f']['o'] = 'load session'
+nnoremap <silent> <leader>fc :SClose<CR>
+let g:which_key_map['f']['c'] = 'close session'
 
 " t is for toggle
 let g:which_key_map['t'] = { 'name' : '+toggle' }

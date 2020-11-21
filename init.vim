@@ -1,9 +1,3 @@
-"    ____      _ __        _
-"   /  _/___  (_) /__   __(_)___ ___
-"   / // __ \/ / __/ | / / / __ `__ \
-" _/ // / / / / /__| |/ / / / / / / /
-"/___/_/ /_/_/\__(_)___/_/_/ /_/ /_/
-
 " auto-install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -20,7 +14,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'yggdroot/indentline'
   " Convert binary, hex, etc..
   Plug 'glts/vim-radical'
-  " Unix command helper: :Move, :Delete... 
+  " Unix command helper: :Move, :Delete...
   Plug 'tpope/vim-eunuch'
   " Repeat stuff
   Plug 'tpope/vim-repeat'
