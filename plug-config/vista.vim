@@ -1,6 +1,5 @@
 let g:vista_default_executive = 'coc'
 let g:vista#renderer#enable_icon = 0
-let g:vista_fzf_preview = ['right:50%']
 
 function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
@@ -13,3 +12,6 @@ set statusline+=%{NearestMethodOrFunction()}
 " If you want to show the nearest function in your statusline automatically,
 " you can add the following line to your vimrc
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
+" Close vista if it is the last window
+autocmd bufenter * if winnr("$") == 1 && vista#sidebar#IsOpen() | execute "normal! :q!\<CR>" | endif

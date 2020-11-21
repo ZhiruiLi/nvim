@@ -48,22 +48,6 @@ else
   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 " Explorer
 let g:coc_explorer_global_presets = {
 \   'floating': {
@@ -89,14 +73,11 @@ autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | end
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 
-" Use <C-j> for select text for visual placeholder of snippet.
+" Use <C-n> for select text for visual placeholder of snippet.
 vmap <C-n> <Plug>(coc-snippets-select)
-
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-n>'
-
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-p>'
-
-" Use <C-j> for both expand and jump (make expand higher priority.)
+" Use <C-n> for jump to next placeholder, default is <C-j>
+let g:coc_snippet_next = '<C-n>'
+" Use <C-k> for jump to previous placeholder, default is <C-k>
+let g:coc_snippet_prev = '<C-p>'
+" Use <C-n> for both expand and jump (make expand higher priority.)
 imap <C-n> <Plug>(coc-snippets-expand-jump)

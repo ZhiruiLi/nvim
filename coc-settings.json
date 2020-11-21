@@ -8,9 +8,10 @@
   // explorer
   "explorer.width": 30,
   "explorer.keyMappings.global": {
-    "<cr>": ["expandable?", "expand", "open"],
-    "v": "open:vsplit",
-    "s": "open:split"
+    "<cr>": ["expandable?", "cd", "open"],
+    "o": ["expandable?", ["expanded?", "collapse", "expand"], "open"],
+    "S": "open:split",
+    "V": "open:vsplit"
   },
   "list.insertMappings": {
     "<C-r>": "do:refresh",

@@ -32,9 +32,8 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 let g:which_key_map['.'] = [ ':CocList mru',         'recent files in cwd' ]
 let g:which_key_map[','] = [ ':CocList buffers',     'buffers' ]
 let g:which_key_map[';'] = [ ':CocListResume',       'resume list' ]
-let g:which_key_map[':'] = [ ':CocList vimcommands', 'vim commands' ]
-let g:which_key_map['j'] = [ ':CocNext',             'next coc item' ]
-let g:which_key_map['k'] = [ ':CocPrev',             'prev coc item' ]
+let g:which_key_map[']'] = [ ':CocNext',             'next coc item' ]
+let g:which_key_map['['] = [ ':CocPrev',             'prev coc item' ]
 let g:which_key_map['`'] = [ ':b#',                  'recent buffer' ]
 
 " Select buffer 1~9
@@ -63,37 +62,6 @@ let g:which_key_map['0'] = 'which_key_ignore'
 
 " Group mappings
 
-" t is for toggle
-let g:which_key_map['t'] = { 'name' : '+toggle' }
-nnoremap <silent> <leader>tl :CocList filetype<CR>
-let g:which_key_map['t']['l'] = 'language mode'
-nnoremap <silent> <leader>tn :set nonumber!<CR>
-let g:which_key_map['t']['n'] = 'line numbers'
-nnoremap <silent> <leader>th :let @/ = ""<CR>
-let g:which_key_map['t']['h'] = 'remove search highlight'
-nnoremap <silent> <leader>tz :Goyo!!<CR>
-let g:which_key_map['t']['z'] = 'zen mode'
-nnoremap <silent> <leader>tw :execute('setlocal wrap! breakindent! colorcolumn='.(&colorcolumn == '' ? &textwidth : ''))<CR>
-let g:which_key_map['t']['w'] = 'wrap'
-
-" o is for open
-let g:which_key_map['o'] = { 'name' : '+open' }
-let g:which_key_map['o']['o'] = { 'name' : '+external' }
-nnoremap <silent> <leader>ot :<C-u>exe 'Deol -split=hor -cwd='.getcwd()<CR>
-let g:which_key_map['o']['t'] = 'terminal'
-nnoremap <silent> <leader>oT :<C-u>exe 'Deol -split=hor -cwd='.expand('%:p:h')<CR>
-let g:which_key_map['o']['T'] = 'terminal here'
-nnoremap <silent> <leader>oe :CocCommand explorer<CR>
-let g:which_key_map['o']['e'] = 'file explorer'
-nnoremap <silent> <leader>ov :Vista!!<CR>
-let g:which_key_map['o']['v'] = 'tag viewer'
-nnoremap <silent> <leader>oof :!open -a finder %:h<CR>
-let g:which_key_map['o']['o']['f'] = 'with finder'
-nnoremap <silent> <leader>ooy :!open -a yoink %:p<CR>
-let g:which_key_map['o']['o']['y'] = 'with yoink'
-nnoremap <silent> <leader>oom :!open -a typora %:p<CR>
-let g:which_key_map['o']['o']['m'] = 'with typora'
-
 " b is for buffer
 let g:which_key_map['b'] = { 'name' : '+buffer' }
 nnoremap <silent> <leader>bb :CocList buffers<CR>
@@ -116,13 +84,76 @@ nnoremap <silent> <leader>bo :CocList sessions<CR>
 let g:which_key_map['b']['o'] = 'load session'
 nnoremap <silent> <leader>bs :w<CR>
 let g:which_key_map['b']['s'] = 'save buffer'
-nnoremap <silent> <leader>bS :wa<CR>
+nnoremap <silent> <leader>bS :wa \| :echo 'All buffers saved'<CR>
 let g:which_key_map['b']['S'] = 'save all buffers'
+
+" f is for file
+let g:which_key_map['f'] = { 'name' : '+file' }
+nnoremap <silent> <leader>fy :let @+=expand("%:t") . ":" . line(".")<CR>
+let g:which_key_map['f']['y'] = 'copy file name with line no'
+nnoremap <silent> <leader>fY :let @+=expand("%:p")<CR>
+let g:which_key_map['f']['Y'] = 'copy file full path'
+nnoremap <silent> <leader>ff :<C-u>exe 'CocList files '.expand('%:p:h')<CR>
+let g:which_key_map['f']['f'] = 'find files'
+nnoremap <silent> <leader>fp :CocList files<CR>
+vnoremap <silent> <leader>fp :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' files'<CR>
+let g:which_key_map['f']['p'] = 'find workspace files'
+nnoremap <silent> <leader>fP :CocList files -W<CR>
+vnoremap <silent> <leader>fP :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' files -W'<CR>
+let g:which_key_map['f']['P'] = 'find all workspace files'
+nnoremap <silent> <leader>fg :CocList gfiles<CR>
+vnoremap <silent> <leader>fg :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' gfiles'<CR>
+let g:which_key_map['f']['g'] = 'find git files'
+nnoremap <silent> <leader>fc :CocList files $HOME/.config/nvim<CR>
+vnoremap <silent> <leader>fc :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' files $HOME/.config/nvim'<CR>
+let g:which_key_map['f']["c"] = 'find config files'
+nnoremap <silent> <leader>fR :so $MYVIMRC \| :echo $MYVIMRC.' files sourced'<CR>
+let g:which_key_map['f']['R'] = 'reload config'
+nnoremap <silent> <leader>fr :CocList mru -A<CR>
+vnoremap <silent> <leader>fr :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' mru -A'<CR>
+let g:which_key_map['f']['r'] = 'recent files'
+nnoremap <leader>fd :call ConfirmAndDeleteFile(expand('%:p'))<CR>
+let g:which_key_map['f']['d'] = 'delete current'
+
+" t is for toggle
+let g:which_key_map['t'] = { 'name' : '+toggle' }
+nnoremap <silent> <leader>tl :CocList filetype<CR>
+let g:which_key_map['t']['l'] = 'language mode'
+nnoremap <silent> <leader>tn :set nonumber!<CR>
+let g:which_key_map['t']['n'] = 'line numbers'
+nnoremap <silent> <leader>th :let @/ = ""<CR>
+let g:which_key_map['t']['h'] = 'remove search highlight'
+nnoremap <silent> <leader>tz :Goyo!!<CR>
+let g:which_key_map['t']['z'] = 'zen mode'
+nnoremap <silent> <leader>tw :execute('setlocal wrap! breakindent! colorcolumn='.(&colorcolumn == '' ? &textwidth : ''))<CR>
+let g:which_key_map['t']['w'] = 'wrap'
+nnoremap <silent> <leader>tk :CocCommand bookmark.toggle<CR>
+let g:which_key_map['t']['k'] = 'toggle bookmark'
+nnoremap <silent> <leader>tK :CocCommand bookmark.annotate<CR>
+let g:which_key_map['t']['K'] = 'annotate bookmark'
+
+" o is for open
+let g:which_key_map['o'] = { 'name' : '+open' }
+let g:which_key_map['o']['o'] = { 'name' : '+external' }
+nnoremap <silent> <leader>ot :<C-u>exe 'Deol -split=hor -cwd='.getcwd()<CR>
+let g:which_key_map['o']['t'] = 'terminal'
+nnoremap <silent> <leader>oT :<C-u>exe 'Deol -split=hor -cwd='.expand('%:p:h')<CR>
+let g:which_key_map['o']['T'] = 'terminal here'
+nnoremap <silent> <leader>oe :CocCommand explorer --no-toggle<CR>
+let g:which_key_map['o']['e'] = 'file explorer'
+nnoremap <silent> <leader>ov :Vista<CR>
+let g:which_key_map['o']['v'] = 'tag viewer'
+nnoremap <silent> <leader>oof :!open -a finder %:h<CR>
+let g:which_key_map['o']['o']['f'] = 'with finder'
+nnoremap <silent> <leader>ooy :!open -a yoink %:p<CR>
+let g:which_key_map['o']['o']['y'] = 'with yoink'
+nnoremap <silent> <leader>oom :!open -a typora %:p<CR>
+let g:which_key_map['o']['o']['m'] = 'with typora'
 
 " w is for window
 let g:which_key_map['w'] = { 'name' : '+buffer' }
 nnoremap <silent> <leader>ww :CocList windows<CR>
-let g:which_key_map['w']['w'] = 'select windows'
+let g:which_key_map['w']['w'] = 'select any'
 nnoremap <silent> <leader>wh :wincmd h<CR>
 let g:which_key_map['w']['h'] = 'select left'
 nnoremap <silent> <leader>wj :wincmd j<CR>
@@ -144,14 +175,19 @@ let g:which_key_map['w']['v'] = 'vsplit'
 nnoremap <silent> <leader>ws :bel split \| CocList mru -A<CR>
 let g:which_key_map['w']['s'] = 'split'
 nnoremap <silent> <leader>wd :close<CR>
-let g:which_key_map['w']['d'] = 'close current window'
+let g:which_key_map['w']['d'] = 'close current'
 nnoremap <silent> <leader>wD :only<CR>
-let g:which_key_map['w']['D'] = 'close other windows'
+let g:which_key_map['w']['D'] = 'close other'
 augroup restorezoom
     au WinEnter * silent! :call ToggleZoom(v:false)
 augroup END
 nnoremap <silent> <leader>wo :call <SID>ToggleZoom(v:true)<CR>
-let g:which_key_map['w']['o'] = 'maximize window'
+let g:which_key_map['w']['o'] = 'maximize'
+nnoremap <silent> <leader>w= :wincmd =<CR>
+let g:which_key_map['w']['='] = 'equal all'
+nnoremap <silent> <leader>wu :<C-u>call <SID>SwapWinBuffer()<CR>
+nnoremap <silent> <leader>w+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <leader>w- :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " s is for search
 let g:which_key_map['s'] = { 'name' : '+search' }
@@ -167,40 +203,14 @@ nnoremap <silent> <leader>si :CocList outline<CR>
 let g:which_key_map['s']['i'] = 'outline'
 nnoremap <silent> <leader>so :CocList -I symbols<CR>
 let g:which_key_map['s']['o'] = 'workspace symbols'
+nnoremap <silent> <leader>s: :CocList vimcommands<CR>
+let g:which_key_map['s'][':'] = 'commands'
 nnoremap <silent> <leader>s; :CocList cmdhistory<CR>
 let g:which_key_map['s'][';'] = 'command histroy'
-nnoremap <silent> <leader>sk :CocList marks<CR>
-let g:which_key_map['s']['k'] = 'marks'
-nnoremap <silent> <leader>se :CocList extensions<CR>
-let g:which_key_map['s']['e'] = 'extensions'
 nnoremap <silent> <leader>sy :CocList yank<CR>
 let g:which_key_map['s']['y'] = 'search for yank'
-
-" f is for file
-let g:which_key_map['f'] = { 'name' : '+file' }
-nnoremap <silent> <leader>fy :let @+=expand("%:t") . ":" . line(".")<CR>
-let g:which_key_map['f']['y'] = 'copy file name with line no'
-nnoremap <silent> <leader>fY :let @+=expand("%:p")<CR>
-let g:which_key_map['f']['Y'] = 'copy file full path'
-nnoremap <silent> <leader>ff :<C-u>exe 'CocList files '.expand('%:p:h')<CR>
-let g:which_key_map['f']['f'] = 'find files'
-nnoremap <silent> <leader>fp :CocList files<CR>
-vnoremap <silent> <leader>fp :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' files'<CR>
-let g:which_key_map['f']['p'] = 'find workspace files'
-nnoremap <silent> <leader>fP :CocList files -W<CR>
-vnoremap <silent> <leader>fP :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' files -W'<CR>
-let g:which_key_map['f']['P'] = 'find all workspace files'
-nnoremap <silent> <leader>fg :CocList gfiles<CR>
-vnoremap <silent> <leader>fg :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' gfiles'<CR>
-let g:which_key_map['f']['g'] = 'find git files'
-nnoremap <silent> <leader>f. :CocList files $HOME/.config/nvim<CR>
-vnoremap <silent> <leader>f. :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' files $HOME/.config/nvim'<CR>
-let g:which_key_map['f']["."] = 'find config files'
-nnoremap <silent> <leader>fR :so $MYVIMRC<CR>
-let g:which_key_map['f']['R'] = 'reload config'
-nnoremap <silent> <leader>fr :CocList mru -A<CR>
-vnoremap <silent> <leader>fr :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' mru -A'<CR>
-let g:which_key_map['f']['r'] = 'recent files'
+nnoremap <silent> <leader>sk :CocList bookmark<CR>
+let g:which_key_map['s']['k'] = 'bookmarks'
 
 " g is for git
 let g:which_key_map['g'] = { 'name' : '+git' }
@@ -237,7 +247,7 @@ let g:which_key_map['g']['v'] = 'view commits'
 nnoremap <silent> <leader>gV :GV!<CR>
 let g:which_key_map['g']['V'] = 'view buffer commits'
 
-" l is for language server protocol
+" l is for language
 let g:which_key_map['l'] = { 'name' : '+lang' }
 nmap <silent> <leader>la <Plug>(coc-codeaction)
 let g:which_key_map['l']['a'] = 'line action'
@@ -318,11 +328,11 @@ vnoremap <silent> # :<C-U>
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gVzv:call setreg('"', old_reg, old_regtype)<CR>
 
-" Search in Dash 
+" Search in Dash
 nnoremap <silent> D :exe 'Dash '.expand('<cword>')<CR>
 vnoremap <silent> D :<C-u>exe 'Dash '.<SID>GetSelectedText(visualmode())<CR>
 
-" Use K to show documentation in preview window.
+" Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
 
 " Terminal to normal mode
@@ -362,3 +372,16 @@ function! s:GetSelectedText(type)
   let @@ = saved_unnamed_register
   return word
 endfunction
+
+function! s:SwapWinBuffer()
+  let thiswin = winnr()
+  let thisbuf = bufnr("%")
+  let lastwin = winnr("#")
+  let lastbuf = winbufnr(lastwin)
+
+  exec  lastwin . " wincmd w" ."|".
+      \ "buffer ". thisbuf ."|".
+      \ thiswin ." wincmd w" ."|".
+      \ "buffer ". lastbuf
+endfunction
+

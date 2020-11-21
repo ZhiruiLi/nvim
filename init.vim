@@ -58,6 +58,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'voldikss/vim-floaterm'
   " Start Screen
   Plug 'mhinz/vim-startify'
+  " FZF is not needed now
+  " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  " Plug 'junegunn/fzf.vim'
   " Vista
   Plug 'liuchengxu/vista.vim'
   " See what keys do like in emacs
@@ -98,7 +101,6 @@ source $HOME/.config/nvim/themes/airline.vim
 
 source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/editing.vim
-source $HOME/.config/nvim/plug-config/goyo.vim
 source $HOME/.config/nvim/plug-config/vim-rooter.vim
 source $HOME/.config/nvim/plug-config/start-screen.vim
 source $HOME/.config/nvim/plug-config/terminals.vim
