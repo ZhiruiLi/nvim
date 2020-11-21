@@ -23,12 +23,13 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
 " Single mappings
-let g:which_key_map['.'] = [ ':CocList mru',         'recent files in cwd' ]
-let g:which_key_map[','] = [ ':CocList buffers',     'buffers' ]
-let g:which_key_map[';'] = [ ':CocListResume',       'resume list' ]
-let g:which_key_map[']'] = [ ':CocNext',             'next coc item' ]
-let g:which_key_map['['] = [ ':CocPrev',             'prev coc item' ]
-let g:which_key_map['`'] = [ ':b#',                  'recent buffer' ]
+let g:which_key_map['.'] = [ ':CocList mru',     'recent files in cwd' ]
+let g:which_key_map[','] = [ ':CocList buffers', 'buffers' ]
+let g:which_key_map[';'] = [ ':CocListResume',   'resume list' ]
+let g:which_key_map[']'] = [ ':CocNext',         'next coc item' ]
+let g:which_key_map['['] = [ ':CocPrev',         'prev coc item' ]
+let g:which_key_map['`'] = [ ':b#',              'recent buffer' ]
+let g:which_key_map['e'] = [ ':Scratch',         'open scratch pad' ]
 
 " Select buffer 1~9
 nmap <leader>1 <Plug>AirlineSelectTab1

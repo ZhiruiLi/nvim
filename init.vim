@@ -72,6 +72,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'Shougo/echodoc.vim'
   " Dash
   Plug 'rizzatti/dash.vim'
+  " Scratch pad
+  Plug 'mtth/scratch.vim'
   " Other lang
   Plug 'neoclide/jsonc.vim'
   Plug 'sheerun/vim-polyglot'
@@ -99,4 +101,5 @@ source $HOME/.config/nvim/plug-config/vim-rooter.vim
 source $HOME/.config/nvim/plug-config/start-screen.vim
 source $HOME/.config/nvim/plug-config/terminals.vim
 source $HOME/.config/nvim/plug-config/vista.vim
+source $HOME/.config/nvim/plug-config/scratch.vim
 
