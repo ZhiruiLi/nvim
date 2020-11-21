@@ -47,7 +47,7 @@ set smartcase                           " Keep case when searching with *
 set infercase                           " Adjust case in insert completion mode
 set incsearch                           " Incremental search
 set wrapscan                            " Searches wrap around the end of the file
-set guifont=Iosevka:h14
+" set guifont=Iosevka:h14
 set mmp=100000
 
 if exists('&breakindent')
