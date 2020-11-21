@@ -1,29 +1,30 @@
-  let g:coc_global_extensions = [
-    \ 'coc-actions',
-    \ 'coc-bookmark',
-    \ 'coc-clangd',
-    \ 'coc-css',
-    \ 'coc-eslint',
-    \ 'coc-explorer',
-    \ 'coc-git',
-    \ 'coc-go',
-    \ 'coc-highlight',
-    \ 'coc-html',
-    \ 'coc-json',
-    \ 'coc-lists',
-    \ 'coc-marketplace',
-    \ 'coc-pairs',
-    \ 'coc-prettier',
-    \ 'coc-python',
-    \ 'coc-sh',
-    \ 'coc-snippets',
-    \ 'coc-tsserver',
-    \ 'coc-vetur',
-    \ 'coc-vimlsp',
-    \ 'coc-xml',
-    \ 'coc-yaml',
-    \ 'coc-yank',
-    \ ]
+" Plugin list
+let g:coc_global_extensions = [
+  \ 'coc-actions',
+  \ 'coc-bookmark',
+  \ 'coc-clangd',
+  \ 'coc-css',
+  \ 'coc-eslint',
+  \ 'coc-explorer',
+  \ 'coc-git',
+  \ 'coc-go',
+  \ 'coc-highlight',
+  \ 'coc-html',
+  \ 'coc-json',
+  \ 'coc-lists',
+  \ 'coc-marketplace',
+  \ 'coc-pairs',
+  \ 'coc-prettier',
+  \ 'coc-python',
+  \ 'coc-sh',
+  \ 'coc-snippets',
+  \ 'coc-tsserver',
+  \ 'coc-vetur',
+  \ 'coc-vimlsp',
+  \ 'coc-xml',
+  \ 'coc-yaml',
+  \ 'coc-yank',
+  \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
@@ -48,31 +49,12 @@ else
   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
-" Explorer
-let g:coc_explorer_global_presets = {
-\   'floating': {
-\      'position': 'floating',
-\   },
-\   'floatingLeftside': {
-\      'position': 'floating',
-\      'floating-position': 'left-center',
-\      'floating-width': 30,
-\   },
-\   'floatingRightside': {
-\      'position': 'floating',
-\      'floating-position': 'right-center',
-\      'floating-width': 30,
-\   },
-\   'simplify': {
-\     'file.child.template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
-\   }
-\ }
+" Auto close explorer
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
 " Snippets
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
-
 " Use <C-n> for select text for visual placeholder of snippet.
 vmap <C-n> <Plug>(coc-snippets-select)
 " Use <C-n> for jump to next placeholder, default is <C-j>
