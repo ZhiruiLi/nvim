@@ -4,7 +4,6 @@ let g:startify_custom_header = [
         \ '  ╝╚╝└─┘└─┘ ╚╝ ╩╩ ╩',
         \]
 
-
 let g:startify_session_dir = '~/.local/share/nvim/sessions'
 
 let g:startify_lists = [
