@@ -18,4 +18,4 @@ let g:closetag_filetypes = 'html,xhtml,phtml,javascript'
 " Better whitespaces
 let g:better_whitespace_enabled = 1
 let g:strip_whitespace_on_save = 1
-let g:strip_whitespace_confirm = 0
+let g:strip_whitespace_confirm = 1
