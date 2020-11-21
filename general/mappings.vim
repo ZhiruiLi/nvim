@@ -112,6 +112,8 @@ let g:which_key_map['f']['R'] = 'reload config'
 nnoremap <silent> <leader>fr :CocList mru -A<CR>
 vnoremap <silent> <leader>fr :<C-u>exe 'CocList --input='.<SID>GetSelectedText(visualmode()).' mru -A'<CR>
 let g:which_key_map['f']['r'] = 'recent files'
+nnoremap <silent> <leader>fd :if GetBoolInput("Confirm delete file ? (y/n) ") \| echom "Delete ".expand('%:p') \| Delete \| else \| echo "Cancel delete" \| endif<CR>
+let g:which_key_map['f']['d'] = 'delete file'
 
 " t is for toggle
 let g:which_key_map['t'] = { 'name' : '+toggle' }
