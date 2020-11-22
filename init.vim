@@ -37,6 +37,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'unblevable/quick-scope'
   Plug 'easymotion/vim-easymotion'
   Plug 'terryma/vim-expand-region'
+  Plug 'kana/vim-textobj-user'
+  Plug 'kana/vim-textobj-line'
+  Plug 'kana/vim-textobj-entire'
   " Auto change CWD
   Plug 'airblade/vim-rooter'
   " Git
