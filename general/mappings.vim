@@ -216,7 +216,7 @@ let g:which_key_map['s']['i'] = 'Outline'
 nnoremap <silent> <leader>so :CocList -I -A symbols<CR>
 let g:which_key_map['s']['o'] = 'Workspace symbols'
 nnoremap <silent> <leader>sy :CocList -A yank<CR>
-let g:which_key_map['s']['y'] = 'Search for yank'
+let g:which_key_map['s']['y'] = 'Yank'
 nnoremap <silent> <leader>sk :CocList -A bookmark<CR>
 let g:which_key_map['s']['k'] = 'Bookmarks'
 nnoremap <silent> <leader>sh :CocList helptags<CR>
@@ -225,6 +225,8 @@ nnoremap <silent> <leader>sm :CocList maps<CR>
 let g:which_key_map['s']['m'] = 'Keymapping'
 nnoremap <silent> <leader>sl :CocList links<CR>
 let g:which_key_map['s']['l'] = 'Links'
+nnoremap <silent> <leader>s: :CocList commands<CR>
+let g:which_key_map['s'][':'] = 'Coc commands'
 
 " g is for git
 let g:which_key_map['g'] = { 'name' : '+Git' }
