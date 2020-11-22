@@ -46,8 +46,8 @@ set ignorecase                          " Search ignoring case
 set smartcase                           " Keep case when searching with *
 set infercase                           " Adjust case in insert completion mode
 set incsearch                           " Incremental search
-" set guifont=Iosevka:h14
-set mmp=100000
+set maxmempattern=2000000               " No limit for matching
+" set guifont=Iosevka:h14 <- this will cause VimR error ?
 
 if exists('&breakindent')
   set breakindentopt=shift:2,min:20
