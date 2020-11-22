@@ -205,11 +205,11 @@ let g:which_key_map['w']['u'] = 'Swap'
 
 " s is for search
 let g:which_key_map['s'] = { 'name' : '+Search' }
-nnoremap <silent> <leader>sp :CocList -I grep<CR>
+nnoremap <silent> <leader>sp :CocList -I -A grep<CR>
 vnoremap <silent> <leader>sp :<C-u>exe 'CocList -I -A --input='.GetSelectedText(visualmode()).' grep'<CR>
 let g:which_key_map['s']['p'] = 'In project'
 nnoremap <silent> <leader>ss :CocList -I -A lines<CR>
-vnoremap <silent> <leader>ss :<C-u>exe 'CocList -I --input='.GetSelectedText(visualmode()).' lines'<CR>
+vnoremap <silent> <leader>ss :<C-u>exe 'CocList -I -A --input='.GetSelectedText(visualmode()).' lines'<CR>
 let g:which_key_map['s']['s'] = 'In current file'
 nnoremap <silent> <leader>si :CocList -A outline<CR>
 let g:which_key_map['s']['i'] = 'Outline'
