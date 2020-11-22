@@ -47,7 +47,6 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 " Select last buffer
 nnoremap <silent> <leader>0 :exe "normal \<Plug>AirlineSelectTab1"<CR>:exe "normal \<Plug>AirlineSelectPrevTab"<CR>
-
 " Ignore them
 let g:which_key_map['1'] = 'which_key_ignore'
 let g:which_key_map['2'] = 'which_key_ignore'
