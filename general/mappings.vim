@@ -355,3 +355,5 @@ nnoremap <silent> K :call ShowDocumentation()<CR>
 tnoremap <ESC> <C-\><C-n>
 tnoremap <C-[> <C-\><C-n>
 
+" You can't stop me
+cmap w!! w !sudo tee %
