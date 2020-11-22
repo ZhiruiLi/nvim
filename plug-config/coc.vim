@@ -56,8 +56,8 @@ autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | end
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Snippets
-" Use <C-l> for trigger snippet expand.
-" imap <C-l> <Plug>(coc-snippets-expand)
+" Use <C-o> for trigger snippet expand.
+imap <C-o> <Plug>(coc-snippets-expand)
 " Use <C-n> for select text for visual placeholder of snippet.
 " vmap <C-n> <Plug>(coc-snippets-select)
 " Use <C-n> for jump to next placeholder, default is <C-j>
