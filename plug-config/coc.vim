@@ -57,12 +57,12 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Snippets
 " Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
+" imap <C-l> <Plug>(coc-snippets-expand)
 " Use <C-n> for select text for visual placeholder of snippet.
-vmap <C-n> <Plug>(coc-snippets-select)
+" vmap <C-n> <Plug>(coc-snippets-select)
 " Use <C-n> for jump to next placeholder, default is <C-j>
 let g:coc_snippet_next = '<C-n>'
 " Use <C-k> for jump to previous placeholder, default is <C-k>
 let g:coc_snippet_prev = '<C-p>'
 " Use <C-n> for both expand and jump (make expand higher priority.)
-imap <C-n> <Plug>(coc-snippets-expand-jump)
+imap <tab> <Plug>(coc-snippets-expand-jump)
