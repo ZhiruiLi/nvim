@@ -123,6 +123,8 @@ nnoremap <silent> <leader>tl :CocList filetype<CR>
 let g:which_key_map['t']['l'] = 'Language mode'
 nnoremap <silent> <leader>tn :set nonumber!<CR>
 let g:which_key_map['t']['n'] = 'Line numbers'
+nnoremap <silent> <leader>tr :set relativenumber!<CR>
+let g:which_key_map['t']['r'] = 'Relavive line numbers'
 nnoremap <silent> <leader>th :let @/ = ""<CR>
 let g:which_key_map['t']['h'] = 'Remove search highlight'
 nnoremap <silent> <leader>tm :ToggleStripWhitespaceOnSave<CR>
@@ -212,8 +214,6 @@ nnoremap <silent> <leader>so :CocList -I -A symbols<CR>
 let g:which_key_map['s']['o'] = 'Workspace symbols'
 nnoremap <silent> <leader>s: :CocList vimcommands<CR>
 let g:which_key_map['s'][':'] = 'Commands'
-nnoremap <silent> <leader>s; :CocList cmdhistory<CR>
-let g:which_key_map['s'][';'] = 'Command histroy'
 nnoremap <silent> <leader>sy :CocList -A yank<CR>
 let g:which_key_map['s']['y'] = 'Search for yank'
 nnoremap <silent> <leader>sk :CocList -A bookmark<CR>

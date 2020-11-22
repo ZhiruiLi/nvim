@@ -42,6 +42,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'kana/vim-textobj-entire'
   " Auto change CWD
   Plug 'airblade/vim-rooter'
+  " Search, now use coc instead
+  " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  " Plug 'junegunn/fzf.vim'
   " Git
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb'
@@ -69,11 +72,12 @@ autocmd VimEnter *
   \|   PlugInstall --sync | q
   \| endif
 
-" Always source these
+" General config
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/functions.vim
 source $HOME/.config/nvim/general/mappings.vim
 
+" Plugin config
 source $HOME/.config/nvim/plug-config/airline.vim
 source $HOME/.config/nvim/plug-config/better-whitespace.vim
 source $HOME/.config/nvim/plug-config/closetag.vim

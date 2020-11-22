@@ -1,7 +1,6 @@
-set iskeyword+=-                      	" treat dash separated words as a word text object"
-set formatoptions-=cro                  " Stop newline continution of comments
-
 syntax enable                           " Enables syntax highlighing
+set iskeyword+=-                        " Treat dash separated words as a word text object"
+set formatoptions-=cro                  " Stop newline continution of comments
 set fileformats=unix,dos,mac            " Use Unix as the standard file type
 set textwidth=80                        " Text width maximum chars before wrapping
 set nowrap                              " No wrap by default
@@ -47,8 +46,6 @@ set ignorecase                          " Search ignoring case
 set smartcase                           " Keep case when searching with *
 set infercase                           " Adjust case in insert completion mode
 set incsearch                           " Incremental search
-set wrapscan                            " Searches wrap around the end of the file
-set history=2000                        " History saving
 " set guifont=Iosevka:h14
 set mmp=100000
 
@@ -98,8 +95,6 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
-
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " You can't stop me
 cmap w!! w !sudo tee %
