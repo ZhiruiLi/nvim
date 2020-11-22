@@ -1,5 +1,4 @@
 syntax enable                           " Enables syntax highlighing
-set iskeyword+=-                        " Treat dash separated words as a word text object"
 set formatoptions-=cro                  " Stop newline continution of comments
 set fileformats=unix,dos,mac            " Use Unix as the standard file type
 set textwidth=80                        " Text width maximum chars before wrapping
