@@ -16,14 +16,12 @@
   "list.insertMappings": {
     "<C-r>": "do:refresh",
     "<C-n>": "normal:j",
-    "<C-p>": "normal:k",
-    "<C-s>": "action:split",
-    "<C-v>": "action:vsplit"
+    "<C-p>": "normal:k"
   },
   "list.normalMappings": {
-    "v": "action:vsplit",
-    "s": "action:split",
-    "d": "expr:GetDeleteAction"
+    "V": "action:vsplit",
+    "S": "action:split",
+    "D": "expr:GetDeleteAction"
   },
   "session.directory": "~/.local/share/nvim/sessions",
   "languageserver": {}

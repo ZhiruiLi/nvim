@@ -121,6 +121,8 @@ let g:which_key_map['f']['c'] = 'Close session'
 let g:which_key_map['t'] = { 'name' : '+Toggle' }
 nnoremap <silent> <leader>tl :CocList filetype<CR>
 let g:which_key_map['t']['l'] = 'Language mode'
+nnoremap <silent> <leader>tc :CocList colors<CR>
+let g:which_key_map['t']['c'] = 'Colorscheme'
 nnoremap <silent> <leader>tn :set nonumber!<CR>
 let g:which_key_map['t']['n'] = 'Line numbers'
 nnoremap <silent> <leader>tr :set relativenumber!<CR>
@@ -206,8 +208,6 @@ let g:which_key_map['s']['p'] = 'In project'
 nnoremap <silent> <leader>ss :CocList -I -A lines<CR>
 vnoremap <silent> <leader>ss :<C-u>exe 'CocList -I --input='.GetSelectedText(visualmode()).' lines'<CR>
 let g:which_key_map['s']['s'] = 'In current file'
-nnoremap <silent> <leader>sh :CocList helptags<CR>
-let g:which_key_map['s']['h'] = 'Helps'
 nnoremap <silent> <leader>si :CocList -A outline<CR>
 let g:which_key_map['s']['i'] = 'Outline'
 nnoremap <silent> <leader>so :CocList -I -A symbols<CR>
@@ -218,6 +218,10 @@ nnoremap <silent> <leader>sy :CocList -A yank<CR>
 let g:which_key_map['s']['y'] = 'Search for yank'
 nnoremap <silent> <leader>sk :CocList -A bookmark<CR>
 let g:which_key_map['s']['k'] = 'Bookmarks'
+nnoremap <silent> <leader>sh :CocList helptags<CR>
+let g:which_key_map['s']['h'] = 'Help tags'
+nnoremap <silent> <leader>sm :CocList maps<CR>
+let g:which_key_map['s']['m'] = 'Keymapping'
 
 " g is for git
 let g:which_key_map['g'] = { 'name' : '+Git' }

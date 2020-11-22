@@ -52,6 +52,9 @@ endif
 " Auto close explorer
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
+" Highlight current symbol
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 " Snippets
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
