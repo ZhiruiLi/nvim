@@ -1,7 +1,10 @@
 " Turn spellcheck on for markdown/org files
-augroup auto_spellcheck
+augroup autospellcheck
   autocmd BufNewFile,BufRead *.md,README,Readme,*.org,*.markdown setlocal spell
 augroup END
+
+" Auto center cursor
+autocmd InsertEnter * normal zz
 
 " Clear output text
 function! ClearOutput()

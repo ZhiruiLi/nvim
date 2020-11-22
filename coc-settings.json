@@ -4,7 +4,7 @@
   // autoformat
   "coc.preferences.formatOnSaveFiletypes": ["go", "markdown", "xml", "json"],
   // snippets
-  "snippets.ultisnips.directories": ["ultisnips", "~/.config/nvim/snips"],
+  "snippets.ultisnips.directories": ["~/.config/nvim/snips"],
   // explorer
   "explorer.width": 30,
   "explorer.keyMappings.global": {
