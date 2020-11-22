@@ -124,10 +124,12 @@ nnoremap <silent> <leader>tl :CocList filetype<CR>
 let g:which_key_map['t']['l'] = 'Language mode'
 nnoremap <silent> <leader>tc :CocList colors<CR>
 let g:which_key_map['t']['c'] = 'Colorscheme'
-nnoremap <silent> <leader>tn :set nonumber!<CR>
+nnoremap <silent> <leader>tn :setlocal nonumber!<CR>
 let g:which_key_map['t']['n'] = 'Line numbers'
-nnoremap <silent> <leader>tr :set relativenumber!<CR>
+nnoremap <silent> <leader>tr :setlocal relativenumber!<CR>
 let g:which_key_map['t']['r'] = 'Relavive line numbers'
+nnoremap <silent> <leader>tp :setlocal spell! spelllang=en_us<CR>
+let g:which_key_map['t']['p'] = 'Spell check'
 nnoremap <silent> <leader>th :let @/ = ""<CR>
 let g:which_key_map['t']['h'] = 'Remove search highlight'
 nnoremap <silent> <leader>tm :ToggleStripWhitespaceOnSave<CR>
