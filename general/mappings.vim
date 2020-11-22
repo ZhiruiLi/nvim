@@ -26,13 +26,14 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
 " Single mappings
-let g:which_key_map['.'] = [ ':CocList mru',     'Recent files in cwd' ]
-let g:which_key_map[','] = [ ':CocList buffers', 'List buffers' ]
-let g:which_key_map[';'] = [ ':CocListResume',   'Resume list' ]
-let g:which_key_map[']'] = [ ':CocNext',         'Next coc item' ]
-let g:which_key_map['['] = [ ':CocPrev',         'Previous coc item' ]
-let g:which_key_map['`'] = [ ':b#',              'Switch recent buffer' ]
-let g:which_key_map['e'] = [ ':Scratch',         'Open scratch pad' ]
+let g:which_key_map['.'] = [ ':CocList mru',         'Recent files in cwd' ]
+let g:which_key_map[','] = [ ':CocList buffers',     'List buffers' ]
+let g:which_key_map[':'] = [ ':CocList vimcommands', 'Vim commands' ]
+let g:which_key_map[';'] = [ ':CocListResume',       'Resume list' ]
+let g:which_key_map[']'] = [ ':CocNext',             'Next coc item' ]
+let g:which_key_map['['] = [ ':CocPrev',             'Previous coc item' ]
+let g:which_key_map['`'] = [ ':b#',                  'Switch recent buffer' ]
+let g:which_key_map['e'] = [ ':Scratch',             'Open scratch pad' ]
 
 " Select buffer 1~9
 nmap <leader>1 <Plug>AirlineSelectTab1
@@ -46,6 +47,7 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 " Select last buffer
 nnoremap <silent> <leader>0 :exe "normal \<Plug>AirlineSelectTab1"<CR>:exe "normal \<Plug>AirlineSelectPrevTab"<CR>
+
 " Ignore them
 let g:which_key_map['1'] = 'which_key_ignore'
 let g:which_key_map['2'] = 'which_key_ignore'
@@ -212,8 +214,6 @@ nnoremap <silent> <leader>si :CocList -A outline<CR>
 let g:which_key_map['s']['i'] = 'Outline'
 nnoremap <silent> <leader>so :CocList -I -A symbols<CR>
 let g:which_key_map['s']['o'] = 'Workspace symbols'
-nnoremap <silent> <leader>s: :CocList vimcommands<CR>
-let g:which_key_map['s'][':'] = 'Commands'
 nnoremap <silent> <leader>sy :CocList -A yank<CR>
 let g:which_key_map['s']['y'] = 'Search for yank'
 nnoremap <silent> <leader>sk :CocList -A bookmark<CR>
@@ -222,6 +222,8 @@ nnoremap <silent> <leader>sh :CocList helptags<CR>
 let g:which_key_map['s']['h'] = 'Help tags'
 nnoremap <silent> <leader>sm :CocList maps<CR>
 let g:which_key_map['s']['m'] = 'Keymapping'
+nnoremap <silent> <leader>sl :CocList links<CR>
+let g:which_key_map['s']['l'] = 'Links'
 
 " g is for git
 let g:which_key_map['g'] = { 'name' : '+Git' }
@@ -295,6 +297,7 @@ nmap <silent> gD <Plug>(coc-declaration)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gl <Plug>(coc-openlink)
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
