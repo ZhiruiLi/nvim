@@ -18,7 +18,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'yggdroot/indentline'
   Plug 'mhinz/vim-startify'
   Plug 'liuchengxu/vista.vim'
-  Plug 'junegunn/goyo.vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   " Convert binary, hex, etc..: crd(10) crx(16) crb(2) cro(8)
@@ -37,7 +36,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'unblevable/quick-scope'
   Plug 'easymotion/vim-easymotion'
-  Plug 'gcmt/wildfire.vim'
+  Plug 'terryma/vim-expand-region'
   " Auto change CWD
   Plug 'airblade/vim-rooter'
   " Git
