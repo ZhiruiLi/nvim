@@ -40,6 +40,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'kana/vim-textobj-user'
   Plug 'kana/vim-textobj-line'
   Plug 'kana/vim-textobj-entire'
+  Plug 'vim-scripts/matchit.zip'
   " Auto change CWD
   Plug 'airblade/vim-rooter'
   " Search, now use coc instead

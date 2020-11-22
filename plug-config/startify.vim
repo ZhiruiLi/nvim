@@ -19,3 +19,8 @@ let g:startify_lists = [
           \ { 'type': 'bookmarks', 'header': ['  Bookmarks'] },
           \ ]
 
+let g:startify_bookmarks = [
+      \ {'n': '~/OneDrive/notes/index.md'},
+      \ {'i': '~/.config/nvim/init.vim'},
+      \ {'z': '~/.local/dotfiles/zsh/zshrc'},
+      \ ]
