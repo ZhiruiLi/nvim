@@ -2,7 +2,7 @@ set iskeyword+=-                      	" treat dash separated words as a word te
 set formatoptions-=cro                  " Stop newline continution of comments
 
 syntax enable                           " Enables syntax highlighing
-set hidden                              " Required to keep multiple buffers open multiple buffers
+set fileformats=unix,dos,mac            " Use Unix as the standard file type
 set textwidth=80                        " Text width maximum chars before wrapping
 set nowrap                              " No wrap by default
 set linebreak                           " Break long lines at 'breakat'
@@ -15,6 +15,7 @@ set splitbelow splitright               " Splits open bottom right
 set list                                " Show hidden characters
 set ruler                               " Show current cursor position
 set showcmd                             " Show command in status line
+set noshowmode                          " We don't need to see things like -- INSERT -- anymore
 set cmdheight=2                         " More space for displaying messages
 set mouse=nv                            " Disable mouse in command-line mode
 set virtualedit=block                   " Position cursor anywhere in visual block
@@ -35,11 +36,11 @@ set background=dark                     " tell vim what the background color loo
 set showtabline=2                       " Always show tabs
 set winwidth=30                         " Minimum width for active window
 set winminwidth=10                      " Minimum width for inactive windows
-set noshowmode                          " We don't need to see things like -- INSERT -- anymore
-set nobackup                            " This is recommended by coc
-set nowritebackup                       " This is recommended by coc
-set shortmess+=c                        " Don't pass messages to |ins-completion-menu|.
-set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
+set hidden                              " Coc: TextEdit might fail if hidden is not set.
+set nobackup                            " Coc: Some servers have issues with backup files, see #649.
+set nowritebackup                       " Coc: Some servers have issues with backup files, see #649.
+set shortmess+=c                        " Coc: Don't pass messages to |ins-completion-menu|.
+set signcolumn=yes                      " Coc: Always show the signcolumn, otherwise it would shift the text each time
 set updatetime=300                      " Faster completion
 set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set ignorecase                          " Search ignoring case
@@ -47,6 +48,7 @@ set smartcase                           " Keep case when searching with *
 set infercase                           " Adjust case in insert completion mode
 set incsearch                           " Incremental search
 set wrapscan                            " Searches wrap around the end of the file
+set history=2000                        " History saving
 " set guifont=Iosevka:h14
 set mmp=100000
 
@@ -96,9 +98,6 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
-
-let &showbreak='↳  '
-set listchars=tab:\▏\ ,extends:⟫,precedes:⟪,nbsp:␣,trail:·
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 

@@ -260,8 +260,10 @@ nmap <silent> <leader>ld <Plug>(coc-definition)
 let g:which_key_map['l']['d'] = 'Definition'
 nmap <silent> <leader>lD <Plug>(coc-declaration)
 let g:which_key_map['l']['D'] = 'Declaration'
-nmap <silent> <leader>lm <Plug>(coc-implementation)
-let g:which_key_map['l']['m'] = 'Implementation'
+nmap <silent> <leader>ly <Plug>(coc-type-definition)
+let g:which_key_map['l']['y'] = 'Type definition'
+nmap <silent> <leader>li <Plug>(coc-implementation)
+let g:which_key_map['l']['i'] = 'Implementation'
 nmap <silent> <leader>lr <Plug>(coc-references)
 let g:which_key_map['l']['r'] = 'References'
 xmap <silent> <leader>lf <Plug>(coc-format-selected)
@@ -286,7 +288,8 @@ call which_key#register('<Space>', "g:which_key_map")
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gD <Plug>(coc-declaration)
-nmap <silent> gm <Plug>(coc-implementation)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
