@@ -73,3 +73,14 @@ function! SwapWinBuffer()
       \ "buffer ". lastbuf
 endfunction
 
+" Profiling
+function! StartProfiling()
+  profile start profile.log
+  profile func *
+  profile file *
+endfunction
+
+function! StopProfiling()
+  profile pause
+  noautocmd qall!
+endfunction
