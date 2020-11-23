@@ -1,11 +1,10 @@
-" g Leader key
-let mapleader="\<Space>"
-let localleader="\<Space>\<Space>"
-nnoremap <Space> <Nop>
+"==============================================================================
+" Global key mappings
+"==============================================================================
 
-" Better indenting
-vnoremap < <gv
-vnoremap > >gv
+" Leader key
+let mapleader = "\<Space>"
+nnoremap <Space> <Nop>
 
 " Map leader to which_key
 nnoremap <silent> <leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
@@ -355,5 +354,33 @@ nnoremap <silent> K :call ShowDocumentation()<CR>
 tnoremap <ESC> <C-\><C-n>
 tnoremap <C-[> <C-\><C-n>
 
+" Better indenting
+vnoremap < <gv
+vnoremap > >gv
+
 " You can't stop me
 cmap w!! w !sudo tee %
+
+"==============================================================================
+" Local key mappings
+"==============================================================================
+
+let maplocalleader = "\,"
+
+" Dummy empty map
+let g:which_key_map_local =  {}
+nnoremap <silent> <localleader> :silent <c-u> :silent WhichKey ','<CR>
+vnoremap <silent> <localleader> :silent <c-u> :silent WhichKeyVisual ','<CR>
+call which_key#register(',', "g:which_key_map_local")
+
+" C & C++
+function! s:CppKeyMapping()
+  let b:which_key_map_local = {}
+  nnoremap <buffer> <silent> <localleader>s :CocCommand clangd.switchSourceHeader<CR>
+  let b:which_key_map_local['s'] = 'Switch header source'
+  call which_key#register(',', "b:which_key_map_local")
+endfunction
+
+autocmd BufEnter *.c,*.cpp,*.h,*.hpp,*.cc call s:CppKeyMapping()
+  \| autocmd BufLeave <buffer> call which_key#register(',', "g:which_key_map_local")
+
