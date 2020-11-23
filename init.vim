@@ -52,7 +52,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'junegunn/gv.vim'
   " Terminals
   Plug 'Shougo/deol.nvim'
-  Plug 'voldikss/vim-floaterm'
   " Bazel
   Plug 'google/vim-maktaba'
   Plug 'bazelbuild/vim-bazel'
@@ -90,7 +89,6 @@ source $HOME/.config/nvim/plug-config/quick-scope.vim
 source $HOME/.config/nvim/plug-config/rooter.vim
 source $HOME/.config/nvim/plug-config/scratch.vim
 source $HOME/.config/nvim/plug-config/startify.vim
-source $HOME/.config/nvim/plug-config/terminals.vim
 source $HOME/.config/nvim/plug-config/themes.vim
 source $HOME/.config/nvim/plug-config/vista.vim
 
