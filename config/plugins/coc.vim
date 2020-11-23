@@ -57,6 +57,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Snippets
 " Use <C-o> for trigger snippet expand.
+" For tmux, use <C-l> as command key
 imap <C-o> <Plug>(coc-snippets-expand)
 " Use <C-j> for select text for visual placeholder of snippet.
 vmap <C-j> <Plug>(coc-snippets-select)
