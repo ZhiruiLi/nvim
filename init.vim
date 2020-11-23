@@ -75,7 +75,7 @@ autocmd VimEnter *
 " General config
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/functions.vim
-source $HOME/.config/nvim/general/mappings.vim
+source $HOME/.config/nvim/general/keymappings.vim
 
 " Plugin config
 source $HOME/.config/nvim/plug-config/airline.vim
