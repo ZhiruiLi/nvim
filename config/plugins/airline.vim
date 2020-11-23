@@ -10,9 +10,6 @@ let g:airline_powerline_fonts = 0
 " Show buffer ID
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 
-" Don't show current mode
-let g:airline_section_a = "NVIM"
-
 " Fancy seperators
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
