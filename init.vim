@@ -72,23 +72,18 @@ autocmd VimEnter *
   \|   PlugInstall --sync | q
   \| endif
 
-" General config
-source $HOME/.config/nvim/general/settings.vim
-source $HOME/.config/nvim/general/functions.vim
-source $HOME/.config/nvim/general/keymappings.vim
+" Source general configs
+source ~/.config/nvim/config/settings.vim
+source ~/.config/nvim/config/functions.vim
+source ~/.config/nvim/config/keymappings.vim
 
-" Plugin config
-source $HOME/.config/nvim/plug-config/airline.vim
-source $HOME/.config/nvim/plug-config/better-whitespace.vim
-source $HOME/.config/nvim/plug-config/closetag.vim
-source $HOME/.config/nvim/plug-config/coc.vim
-source $HOME/.config/nvim/plug-config/echodoc.vim
-source $HOME/.config/nvim/plug-config/easymotion.vim
-source $HOME/.config/nvim/plug-config/indentline.vim
-source $HOME/.config/nvim/plug-config/quick-scope.vim
-source $HOME/.config/nvim/plug-config/rooter.vim
-source $HOME/.config/nvim/plug-config/scratch.vim
-source $HOME/.config/nvim/plug-config/startify.vim
-source $HOME/.config/nvim/plug-config/themes.vim
-source $HOME/.config/nvim/plug-config/vista.vim
+" Get dot files path
+function! s:DotPath(path)
+  return "~/.config/nvim/".a:path
+endfunction
+
+" Source plugin configs, so that I don't need to list all plugin config files
+for file in split(glob(s:DotPath('config/plugins/*.vim')), '\n')
+  exe 'source' file
+endfor
 
