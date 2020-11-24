@@ -25,14 +25,18 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
 " Single mappings
-let g:which_key_map['.'] = [ ':CocList mru',         'Recent files in cwd' ]
-let g:which_key_map[','] = [ ':CocList buffers',     'List buffers' ]
-let g:which_key_map[':'] = [ ':CocList vimcommands', 'Vim commands' ]
-let g:which_key_map[';'] = [ ':CocListResume',       'Resume list' ]
-let g:which_key_map[']'] = [ ':CocNext',             'Next coc item' ]
-let g:which_key_map['['] = [ ':CocPrev',             'Previous coc item' ]
-let g:which_key_map['`'] = [ ':b#',                  'Switch recent buffer' ]
-let g:which_key_map['e'] = [ ':Scratch',             'Open scratch pad' ]
+let g:which_key_map['.'] = [ ':Files',           'List files' ]
+let g:which_key_map[','] = [ ':Buffers',         'List buffers' ]
+let g:which_key_map['/'] = [ ':Lines',           'Search in all buffers' ]
+let g:which_key_map[':'] = [ ':Commands',        'Vim commands' ]
+" let g:which_key_map['.'] = [ ':CocList mru',         'Recent files in cwd' ]
+" let g:which_key_map[','] = [ ':CocList buffers',     'List buffers' ]
+" let g:which_key_map[':'] = [ ':CocList vimcommands', 'Vim commands' ]
+" let g:which_key_map[';'] = [ ':CocListResume',       'Resume list' ]
+" let g:which_key_map[']'] = [ ':CocNext',             'Next coc item' ]
+" let g:which_key_map['['] = [ ':CocPrev',             'Previous coc item' ]
+let g:which_key_map['`'] = [ ':b#',              'Switch recent buffer' ]
+let g:which_key_map['e'] = [ ':Scratch',         'Open scratch pad' ]
 
 " Select buffer 1~9
 nmap <leader>1 <Plug>AirlineSelectTab1
@@ -62,7 +66,8 @@ let g:which_key_map['0'] = 'which_key_ignore'
 
 " b is for buffer
 let g:which_key_map['b'] = { 'name' : '+Buffer' }
-nnoremap <silent> <leader>bb :CocList buffers<CR>
+" nnoremap <silent> <leader>bb :CocList buffers<CR>
+nnoremap <silent> <leader>bb :Buffers<CR>
 let g:which_key_map['b']['b'] = 'List buffers'
 nnoremap <silent> <leader>bd :bd<CR>
 let g:which_key_map['b']['d'] = 'Delete current'
@@ -89,39 +94,49 @@ nnoremap <silent> <leader>fy :let @+=expand("%:t") . ":" . line(".")<CR>
 let g:which_key_map['f']['y'] = 'Yank name with line no'
 nnoremap <silent> <leader>fY :let @+=expand("%:p")<CR>
 let g:which_key_map['f']['Y'] = 'Yank full path'
-nnoremap <silent> <leader>ff :<C-u>exe 'CocList files '.expand('%:p:h')<CR>
+" nnoremap <silent> <leader>ff :<C-u>exe 'CocList files '.expand('%:p:h')<CR>
+" vnoremap <silent> <leader>ff :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' files '.expand('%:p:h')<CR>
+nnoremap <silent> <leader>ff :<C-u>exe 'Files '.expand('%:p:h')<CR>
 let g:which_key_map['f']['f'] = 'Find in current path'
-nnoremap <silent> <leader>fp :CocList files<CR>
-vnoremap <silent> <leader>fp :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' files'<CR>
+" nnoremap <silent> <leader>fp :CocList files<CR>
+" vnoremap <silent> <leader>fp :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' files'<CR>
+nnoremap <silent> <leader>fp :<C-u>:Files<CR>
 let g:which_key_map['f']['p'] = 'Find in current workspace'
-nnoremap <silent> <leader>fP :CocList files -W<CR>
-vnoremap <silent> <leader>fP :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' files -W'<CR>
-let g:which_key_map['f']['P'] = 'Find in all workspaces'
-nnoremap <silent> <leader>fg :CocList gfiles<CR>
-vnoremap <silent> <leader>fg :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' gfiles'<CR>
+" nnoremap <silent> <leader>fP :CocList files -W<CR>
+" vnoremap <silent> <leader>fP :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' files -W'<CR>
+" let g:which_key_map['f']['P'] = 'Find in all workspaces'
+" nnoremap <silent> <leader>fg :CocList gfiles<CR>
+" vnoremap <silent> <leader>fg :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' gfiles'<CR>
+nnoremap <silent> <leader>fg :GFiles<CR>
 let g:which_key_map['f']['g'] = 'Find with git filter'
-nnoremap <silent> <leader>f. :CocList files $HOME/.config/nvim<CR>
-vnoremap <silent> <leader>f. :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' files $HOME/.config/nvim'<CR>
+" nnoremap <silent> <leader>f. :CocList files $HOME/.config/nvim<CR>
+" vnoremap <silent> <leader>f. :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' files $HOME/.config/nvim'<CR>
+nnoremap <silent> <leader>f. :Files $HOME/.config/nvim<CR>
 let g:which_key_map['f']["."] = 'Find in config path'
 nnoremap <silent> <leader>fR :so $MYVIMRC \| :echo $MYVIMRC.' file has been sourced'<CR>
 let g:which_key_map['f']['R'] = 'Reload config'
-nnoremap <silent> <leader>fr :CocList mru -A<CR>
-vnoremap <silent> <leader>fr :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' mru -A'<CR>
+" nnoremap <silent> <leader>fr :CocList mru -A<CR>
+" vnoremap <silent> <leader>fr :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' mru -A'<CR>
+nnoremap <silent> <leader>fr :History<CR>
 let g:which_key_map['f']['r'] = 'Find recent'
 nnoremap <silent> <leader>fd :if GetBoolInput("Confirm delete file ? (y/n) ") \| echom "Delete ".expand('%:p') \| Delete \| else \| echo "Cancel delete" \| endif<CR>
 let g:which_key_map['f']['d'] = 'Delete current'
-nnoremap <silent> <leader>fi :CocCommand session.save<CR>
-let g:which_key_map['f']['i'] = 'Save session'
-nnoremap <silent> <leader>fo :CocList sessions<CR>
-let g:which_key_map['f']['o'] = 'Load session'
+" nnoremap <silent> <leader>fs :CocCommand session.save<CR>
+nnoremap <silent> <leader>fs :SSave<CR>
+let g:which_key_map['f']['s'] = 'Save session'
+" nnoremap <silent> <leader>fl :CocList sessions<CR>
+nnoremap <silent> <leader>fl :SLoad<CR>
+let g:which_key_map['f']['l'] = 'Load session'
 nnoremap <silent> <leader>fc :SClose<CR>
 let g:which_key_map['f']['c'] = 'Close session'
 
 " t is for toggle
 let g:which_key_map['t'] = { 'name' : '+Toggle' }
-nnoremap <silent> <leader>tl :CocList filetype<CR>
+" nnoremap <silent> <leader>tl :CocList filetype<CR>
+nnoremap <silent> <leader>tl :Filetypes<CR>
 let g:which_key_map['t']['l'] = 'Language mode'
-nnoremap <silent> <leader>tc :CocList colors<CR>
+" nnoremap <silent> <leader>tc :CocList colors<CR>
+nnoremap <silent> <leader>tc :Colors<CR>
 let g:which_key_map['t']['c'] = 'Colorscheme'
 nnoremap <silent> <leader>tn :setlocal nonumber!<CR>
 let g:which_key_map['t']['n'] = 'Line numbers'
@@ -168,7 +183,8 @@ let g:which_key_map['o']['o']['m'] = 'With typora'
 
 " w is for window
 let g:which_key_map['w'] = { 'name' : '+Window' }
-nnoremap <silent> <leader>ww :CocList windows<CR>
+" nnoremap <silent> <leader>ww :CocList windows<CR>
+nnoremap <silent> <leader>ww :Windows<CR>
 let g:which_key_map['w']['w'] = 'Select any'
 nnoremap <silent> <leader>wh :wincmd h<CR>
 let g:which_key_map['w']['h'] = 'Select left'
@@ -186,9 +202,11 @@ nnoremap <silent> <leader>wK :wincmd K<CR>
 let g:which_key_map['w']['K'] = 'Move to up'
 nnoremap <silent> <leader>wL :wincmd L<CR>
 let g:which_key_map['w']['L'] = 'Move to right'
-nnoremap <silent> <leader>wv :bel vsplit \| CocList mru -A<CR>
+" nnoremap <silent> <leader>wv :bel vsplit \| CocList mru -A<CR>
+nnoremap <silent> <leader>wv :bel vsplit<CR>
 let g:which_key_map['w']['v'] = 'VSplit'
-nnoremap <silent> <leader>ws :bel split \| CocList mru -A<CR>
+" nnoremap <silent> <leader>ws :bel split \| CocList mru -A<CR>
+nnoremap <silent> <leader>ws :bel split<CR>
 let g:which_key_map['w']['s'] = 'HSplit'
 nnoremap <silent> <leader>wd :close<CR>
 let g:which_key_map['w']['d'] = 'Close current'
@@ -206,32 +224,40 @@ let g:which_key_map['w']['u'] = 'Swap'
 
 " s is for search
 let g:which_key_map['s'] = { 'name' : '+Search' }
-nnoremap <silent> <leader>sp :CocList -I -A grep<CR>
-vnoremap <silent> <leader>sp :<C-u>exe 'CocList -I -A --input='.GetSelectedText(visualmode()).' grep'<CR>
+" nnoremap <silent> <leader>sp :CocList -I -A grep<CR>
+" vnoremap <silent> <leader>sp :<C-u>exe 'CocList -I -A --input='.GetSelectedText(visualmode()).' grep'<CR>
+nnoremap <silent> <leader>sp :Rg<CR>
 let g:which_key_map['s']['p'] = 'In project'
-nnoremap <silent> <leader>ss :CocList -I -A lines<CR>
-vnoremap <silent> <leader>ss :<C-u>exe 'CocList -I -A --input='.GetSelectedText(visualmode()).' lines'<CR>
-let g:which_key_map['s']['s'] = 'In current file'
-nnoremap <silent> <leader>si :CocList -A outline<CR>
+" nnoremap <silent> <leader>ss :CocList -I -A lines<CR>
+" vnoremap <silent> <leader>ss :<C-u>exe 'CocList -I -A --input='.GetSelectedText(visualmode()).' lines'<CR>
+nnoremap <silent> <leader>ss :BLines<CR>
+let g:which_key_map['s']['s'] = 'In current buffer'
+" nnoremap <silent> <leader>si :CocList -A outline<CR>
+nnoremap <silent> <leader>si :CocFzfList outline<CR>
 let g:which_key_map['s']['i'] = 'Outline'
-nnoremap <silent> <leader>so :CocList -I -A symbols<CR>
+" nnoremap <silent> <leader>so :CocList -I -A symbols<CR>
+nnoremap <silent> <leader>so :CocFzfList symbols<CR>
 let g:which_key_map['s']['o'] = 'Workspace symbols'
-nnoremap <silent> <leader>sy :CocList -A yank<CR>
-let g:which_key_map['s']['y'] = 'Yank'
-nnoremap <silent> <leader>sk :CocList -A bookmark<CR>
+" nnoremap <silent> <leader>sy :CocList -A yank<CR>
+" let g:which_key_map['s']['y'] = 'Yank'
+" nnoremap <silent> <leader>sk :CocList -A bookmark<CR>
+nnoremap <silent> <leader>sk :Marks<CR>
 let g:which_key_map['s']['k'] = 'Bookmarks'
-nnoremap <silent> <leader>sh :CocList helptags<CR>
+" nnoremap <silent> <leader>sh :CocList helptags<CR>
+nnoremap <silent> <leader>sh :Helptags<CR>
 let g:which_key_map['s']['h'] = 'Help tags'
-nnoremap <silent> <leader>sm :CocList maps<CR>
+" nnoremap <silent> <leader>sm :CocList maps<CR>
+nnoremap <silent> <leader>sm :Maps<CR>
 let g:which_key_map['s']['m'] = 'Keymapping'
-nnoremap <silent> <leader>sl :CocList links<CR>
-let g:which_key_map['s']['l'] = 'Links'
-nnoremap <silent> <leader>s: :CocList commands<CR>
-let g:which_key_map['s'][':'] = 'Coc commands'
+" nnoremap <silent> <leader>sl :CocList links<CR>
+" let g:which_key_map['s']['l'] = 'Links'
+" nnoremap <silent> <leader>s: :CocList commands<CR>
+" let g:which_key_map['s'][':'] = 'Coc commands'
 
 " g is for git
 let g:which_key_map['g'] = { 'name' : '+Git' }
-nnoremap <silent> <leader>gg :CocList gstatus<CR>
+" nnoremap <silent> <leader>gg :CocList gstatus<CR>
+nnoremap <silent> <leader>gg :GFiles?<CR>
 let g:which_key_map['g']['g'] = 'Status'
 nnoremap <silent> <leader>go :CocCommand git.showCommit<CR>
 let g:which_key_map['g']['o'] = 'Commit log'
@@ -283,13 +309,17 @@ nmap <silent> <leader>lF <Plug>(coc-format)
 let g:which_key_map['l']['F'] = 'Format buffer'
 nmap <silent> <leader>ly <Plug>(coc-type-definition)
 let g:which_key_map['l']['y'] = 'Type definition'
-nnoremap <silent> <leader>le :CocList diagnostics<CR>
+" nnoremap <silent> <leader>le :CocList diagnostics<CR>
+nnoremap <silent> <leader>le :CocFzfList diagnostics --current-buf<CR>
 let g:which_key_map['l']['e'] = 'Diagnostics'
+nnoremap <silent> <leader>lE :CocFzfList diagnostics<CR>
+let g:which_key_map['l']['E'] = 'All diagnostics'
 nmap <silent> <leader>lq <Plug>(coc-fix-current)
 let g:which_key_map['l']['q'] = 'Quickfix'
 nmap <silent> <leader>ln <Plug>(coc-rename)
 let g:which_key_map['l']['n'] = 'Rename'
-nnoremap <silent> <leader>ls :CocList snippets<CR>
+" nnoremap <silent> <leader>ls :CocList snippets<CR>
+nnoremap <silent> <leader>ls :CocFzfList snippets<CR>
 let g:which_key_map['l']['s'] = 'snippets'
 
 " Register which key map

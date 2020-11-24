@@ -45,8 +45,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   " Auto change CWD
   Plug 'airblade/vim-rooter'
   " Search, now use coc instead
-  " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  " Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+  Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
   " Git
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb'
