@@ -135,6 +135,8 @@ nnoremap <silent> <leader>tm :ToggleStripWhitespaceOnSave<CR>
 let g:which_key_map['t']['m'] = 'Trim whitespaces'
 nnoremap <silent> <leader>tw :execute('setlocal wrap! breakindent! colorcolumn='.(&colorcolumn == '' ? &textwidth : ''))<CR>
 let g:which_key_map['t']['w'] = 'Line wrap'
+nnoremap <silent> <leader>ts :AutoSaveToggle<CR>
+let g:which_key_map['t']['s'] = 'Auto save'
 nnoremap <silent> <leader>tk :CocCommand bookmark.toggle<CR>
 let g:which_key_map['t']['k'] = 'Bookmark'
 nnoremap <silent> <leader>tK :CocCommand bookmark.annotate<CR>
