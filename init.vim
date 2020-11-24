@@ -44,10 +44,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug '907th/vim-auto-save'
   " Auto change CWD
   Plug 'airblade/vim-rooter'
-  " Search, now use coc instead
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
-  Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
   " Git
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb'
@@ -65,6 +61,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   " Other lang
   Plug 'neoclide/jsonc.vim'
   Plug 'sheerun/vim-polyglot'
+  " Search, now use coc instead
+  " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  " Plug 'junegunn/fzf.vim'
+  " Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 
 call plug#end()
 
