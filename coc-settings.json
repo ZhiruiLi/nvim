@@ -24,16 +24,5 @@
     "D": "expr:GetDeleteAction"
   },
   "session.directory": "~/.local/share/nvim/sessions",
-  "languageserver": {
-    // "ccls": {
-    //   "command": "ccls",
-    //   "filetypes": ["c", "cpp", "objc", "objcpp"],
-    //   "rootPatterns": [".ccls-root", "compile_commands.json"],
-    //   "initializationOptions": {
-    //      "cache": {
-    //        "directory": "/tmp/ccls"
-    //      }
-    //    }
-    // }
-  }
+  "languageserver": {}
 }
