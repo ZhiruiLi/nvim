@@ -22,5 +22,6 @@ let g:startify_lists = [
 let g:startify_bookmarks = [
       \ {'n': '~/OneDrive/notes/index.md'},
       \ {'i': '~/.config/nvim/init.vim'},
+      \ {'l': '~/.local/etc/local.sh'},
       \ {'z': '~/.local/dotfiles/zsh/zshrc'},
       \ ]
