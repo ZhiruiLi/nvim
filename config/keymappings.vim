@@ -187,9 +187,9 @@ nnoremap <silent> <leader>wK :wincmd K<CR>
 let g:which_key_map['w']['K'] = 'Move to up'
 nnoremap <silent> <leader>wL :wincmd L<CR>
 let g:which_key_map['w']['L'] = 'Move to right'
-nnoremap <silent> <leader>wv :bel vsplit \| CocList files<CR>
+nnoremap <silent> <leader>wv :bel vsplit \| CocList mru -A<CR>
 let g:which_key_map['w']['v'] = 'VSplit'
-nnoremap <silent> <leader>ws :bel split \| CocList files<CR>
+nnoremap <silent> <leader>ws :bel split \| CocList mru -A<CR>
 let g:which_key_map['w']['s'] = 'HSplit'
 nnoremap <silent> <leader>wd :close<CR>
 let g:which_key_map['w']['d'] = 'Close current'
@@ -358,6 +358,8 @@ vnoremap <silent> D :<C-u>exe 'Dash '.GetSelectedText(visualmode())<CR>
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>
+
+nmap ` <Plug>(choosewin)<CR>
 
 " Terminal to normal mode
 tnoremap <ESC> <C-\><C-n>
