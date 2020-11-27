@@ -42,6 +42,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'kana/vim-textobj-entire'
   Plug 'vim-scripts/matchit.zip'
   Plug '907th/vim-auto-save'
+  Plug 't9md/vim-choosewin'
   " Auto change CWD
   Plug 'airblade/vim-rooter'
   " Git
@@ -54,7 +55,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'google/vim-maktaba'
   Plug 'bazelbuild/vim-bazel'
   " Docs
-  Plug 'Shougo/echodoc.vim'
+  " Plug 'Shougo/echodoc.vim'
   Plug 'rizzatti/dash.vim'
   " Notes
   Plug 'mtth/scratch.vim'

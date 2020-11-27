@@ -1,8 +1,8 @@
 " Plugin list
+" 'coc-clangd',
 let g:coc_global_extensions = [
   \ 'coc-actions',
   \ 'coc-bookmark',
-  \ 'coc-clangd',
   \ 'coc-css',
   \ 'coc-eslint',
   \ 'coc-explorer',
@@ -54,6 +54,9 @@ autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | end
 
 " Highlight current symbol
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Show help
+autocmd CursorHoldI * silent call CocActionAsync('showSignatureHelp')
 
 " Snippets
 " Use <C-o> for trigger snippet expand.

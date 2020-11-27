@@ -359,6 +359,8 @@ vnoremap <silent> D :<C-u>exe 'Dash '.GetSelectedText(visualmode())<CR>
 " Use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>
 
+nmap ` <Plug>(choosewin)<CR>
+
 " Terminal to normal mode
 tnoremap <ESC> <C-\><C-n>
 tnoremap <C-[> <C-\><C-n>
