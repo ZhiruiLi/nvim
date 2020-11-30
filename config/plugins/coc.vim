@@ -60,14 +60,14 @@ autocmd CursorHoldI * silent call CocActionAsync('showSignatureHelp')
 
 " Snippets
 " Use <C-o> for trigger snippet expand.
-" For tmux, use <C-l> as command key
+" For tmux, use <C-j> as command key
 imap <C-o> <Plug>(coc-snippets-expand)
 " Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
+vmap <C-n> <Plug>(coc-snippets-select)
 " Use <C-j> for jump to next placeholder, default is <C-j>
-let g:coc_snippet_next = '<C-j>'
+let g:coc_snippet_next = '<C-n>'
 " Use <C-k> for jump to previous placeholder, default is <C-k>
-let g:coc_snippet_prev = '<C-k>'
+let g:coc_snippet_prev = '<C-p>'
 " Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
+imap <C-n> <Plug>(coc-snippets-expand-jump)
 
