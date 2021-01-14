@@ -1,39 +1,23 @@
 "==============================================================================
-" Global key mappings
+" Basic
 "==============================================================================
-
-" Leader key
+" Leader key {{{
 let mapleader = "\<Space>"
 nnoremap <Space> <Nop>
-
-" Map leader to which_key
-nnoremap <silent> <leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
-vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
-
-" Create map to add keys to
-let g:which_key_map =  {}
-
-" Not a fan of floating windows for this
-let g:which_key_use_floating_win = 0
-
-" Specific seperator
-let g:which_key_sep = ':'
-
-" Hide status line
-autocmd! FileType which_key
-autocmd  FileType which_key set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
-
-" Single mappings
-let g:which_key_map['.'] = [ ':CocList mru',         'Recent files in cwd' ]
-let g:which_key_map[','] = [ ':CocList buffers',     'List buffers' ]
-let g:which_key_map[':'] = [ ':CocList vimcommands', 'Vim commands' ]
-let g:which_key_map[';'] = [ ':CocListResume',       'Resume list' ]
-let g:which_key_map[']'] = [ ':CocNext',             'Next coc item' ]
-let g:which_key_map['['] = [ ':CocPrev',             'Previous coc item' ]
-let g:which_key_map['`'] = [ ':b#',                  'Switch recent buffer' ]
-let g:which_key_map['e'] = [ ':Scratch',             'Open scratch pad' ]
-
+" Local leader key
+let maplocalleader = "\,"
+" }}}
+"==============================================================================
+" Global key mappings
+"==============================================================================
+" Single key mappings {{{
+nnoremap <silent> <leader>. :lua require'telescope.builtin'.oldfiles{}<CR>
+nnoremap <silent> <leader>, :lua require'telescope.builtin'.buffers{}<CR>
+nnoremap <silent> <leader>: :lua require'telescope.builtin'.command_history{}<CR>
+" Switch recent buffer
+nnoremap <silent> <leader>` :b#<CR>
+" Open scratch pad
+nnoremap <silent> <leader>e :Scratch<CR>
 " Select buffer 1~9
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -46,299 +30,199 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 " Select last buffer
 nnoremap <silent> <leader>0 :exe "normal \<Plug>AirlineSelectTab1"<CR>:exe "normal \<Plug>AirlineSelectPrevTab"<CR>
-" Ignore them
-let g:which_key_map['1'] = 'which_key_ignore'
-let g:which_key_map['2'] = 'which_key_ignore'
-let g:which_key_map['3'] = 'which_key_ignore'
-let g:which_key_map['4'] = 'which_key_ignore'
-let g:which_key_map['5'] = 'which_key_ignore'
-let g:which_key_map['6'] = 'which_key_ignore'
-let g:which_key_map['7'] = 'which_key_ignore'
-let g:which_key_map['8'] = 'which_key_ignore'
-let g:which_key_map['9'] = 'which_key_ignore'
-let g:which_key_map['0'] = 'which_key_ignore'
-
-" Group mappings
-
-" b is for buffer
-let g:which_key_map['b'] = { 'name' : '+Buffer' }
-nnoremap <silent> <leader>bb :CocList buffers<CR>
-let g:which_key_map['b']['b'] = 'List buffers'
+" }}}
+" Key 'b' is for buffer {{{
+" List buffers
+nnoremap <silent> <leader>bb :lua require'telescope.builtin'.buffers{}<CR>
+" Delete current buffer
 nnoremap <silent> <leader>bd :bd<CR>
-let g:which_key_map['b']['d'] = 'Delete current'
+" Delete other buffers
 nnoremap <silent> <leader>bD :%bd\|e#\|bd#<CR>\|'"
-let g:which_key_map['b']['D'] = 'Delete other'
+" Home buffer: startify
 nnoremap <silent> <leader>bh :Startify<CR>
-let g:which_key_map['b']['h'] = 'Home'
 nnoremap <silent> <leader>bn :bnext<CR>
-let g:which_key_map['b']['n'] = 'Next'
 nnoremap <silent> <leader>bp :bprevious<CR>
-let g:which_key_map['b']['p'] = 'Previous'
+" New buffer
 nnoremap <silent> <leader>bN :enew<CR>
-let g:which_key_map['b']['N'] = 'New empty'
+" Reload buffer
 nnoremap <silent> <leader>br :edit!<CR>
-let g:which_key_map['b']['r'] = 'Reload current'
+" Save current buffer
 nnoremap <silent> <leader>bs :w<CR>
-let g:which_key_map['b']['s'] = 'Save current'
+" Save all buffers
 nnoremap <silent> <leader>bS :wa \| :echo 'All buffers saved'<CR>
-let g:which_key_map['b']['S'] = 'Save all'
-
-" f is for file
-let g:which_key_map['f'] = { 'name' : '+File' }
+" }}}
+" Key 'f' is for file {{{
+" Yank name with line no
 nnoremap <silent> <leader>fy :let @+=expand("%:t") . ":" . line(".")<CR>
-let g:which_key_map['f']['y'] = 'Yank name with line no'
+" Yank full path
 nnoremap <silent> <leader>fY :let @+=expand("%:p")<CR>
-let g:which_key_map['f']['Y'] = 'Yank full path'
-nnoremap <silent> <leader>ff :<C-u>exe 'CocList files '.expand('%:p:h')<CR>
-vnoremap <silent> <leader>ff :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' files '.expand('%:p:h')<CR>
-let g:which_key_map['f']['f'] = 'Find in current path'
-nnoremap <silent> <leader>fp :CocList files<CR>
-vnoremap <silent> <leader>fp :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' files'<CR>
-let g:which_key_map['f']['p'] = 'Find in current workspace'
-nnoremap <silent> <leader>fP :CocList files -W<CR>
-vnoremap <silent> <leader>fP :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' files -W'<CR>
-let g:which_key_map['f']['P'] = 'Find in all workspaces'
-nnoremap <silent> <leader>fg :CocList gfiles<CR>
-vnoremap <silent> <leader>fg :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' gfiles'<CR>
-let g:which_key_map['f']['g'] = 'Find with git filter'
-nnoremap <silent> <leader>f. :CocList files $HOME/.config/nvim<CR>
-vnoremap <silent> <leader>f. :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' files $HOME/.config/nvim'<CR>
-let g:which_key_map['f']["."] = 'Find in config path'
+" Find files in current path
+nnoremap <silent> <leader>ff :lua require'telescope.builtin'.find_files{ cwd = vim.fn.expand('%:p:h') }<CR>
+" Find files in project
+nnoremap <silent> <leader>fp :lua require'telescope.builtin'.find_files{}<CR>
+" Git files
+nnoremap <silent> <leader>fg :lua require'telescope.builtin'.git_files{}<CR>
+" Find in config path
+nnoremap <silent> <leader>f. :lua require'telescope.builtin'.find_files{ cwd = '~/.config/nvim' }<CR>
+" Reload config
 nnoremap <silent> <leader>fR :so $MYVIMRC \| :echo $MYVIMRC.' file has been sourced'<CR>
-let g:which_key_map['f']['R'] = 'Reload config'
-nnoremap <silent> <leader>fr :CocList mru -A<CR>
-vnoremap <silent> <leader>fr :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' mru -A'<CR>
-let g:which_key_map['f']['r'] = 'Find recent'
+" Delete file
 nnoremap <silent> <leader>fd :if GetBoolInput("Confirm delete file ? (y/n) ") \| echom "Delete ".expand('%:p') \| Delete \| else \| echo "Cancel delete" \| endif<CR>
-let g:which_key_map['f']['d'] = 'Delete current'
-nnoremap <silent> <leader>fs :CocCommand session.save<CR>
-let g:which_key_map['f']['s'] = 'Save session'
-nnoremap <silent> <leader>fl :CocList sessions<CR>
-let g:which_key_map['f']['l'] = 'Load session'
+" Sessions
+nnoremap <silent> <leader>fs :SSave!<CR>
+nnoremap <silent> <leader>fl :SLoad<CR>
 nnoremap <silent> <leader>fc :SClose<CR>
-let g:which_key_map['f']['c'] = 'Close session'
-
-" t is for toggle
-let g:which_key_map['t'] = { 'name' : '+Toggle' }
-nnoremap <silent> <leader>tl :CocList filetypes<CR>
-let g:which_key_map['t']['l'] = 'Language mode'
-nnoremap <silent> <leader>tc :CocList colors<CR>
-let g:which_key_map['t']['c'] = 'Colorscheme'
+" }}}
+" Key 't' is for toggle {{{
+" Language mode
+nnoremap <silent> <leader>tl :lua require'telescope.builtin'.filetypes{}<CR>
+" Colorscheme
+nnoremap <silent> <leader>tc :lua require'telescope.builtin'.colorscheme{}<CR>
+" Show number
 nnoremap <silent> <leader>tn :setlocal nonumber!<CR>
-let g:which_key_map['t']['n'] = 'Line numbers'
+" Relative number
 nnoremap <silent> <leader>tr :setlocal relativenumber!<CR>
-let g:which_key_map['t']['r'] = 'Relavive line numbers'
+" Spell check
 nnoremap <silent> <leader>tp :setlocal spell! spelllang=en_us<CR>
-let g:which_key_map['t']['p'] = 'Spell check'
+" Highlight
 nnoremap <silent> <leader>th :let @/ = ""<CR>
-let g:which_key_map['t']['h'] = 'Remove search highlight'
+" Trim whitespaces
 nnoremap <silent> <leader>tm :ToggleStripWhitespaceOnSave<CR>
-let g:which_key_map['t']['m'] = 'Trim whitespaces'
+" Line wrap
 nnoremap <silent> <leader>tw :execute('setlocal wrap! breakindent! colorcolumn='.(&colorcolumn == '' ? &textwidth : ''))<CR>
-let g:which_key_map['t']['w'] = 'Line wrap'
+" Auto save
 nnoremap <silent> <leader>ts :AutoSaveToggle<CR>
-let g:which_key_map['t']['s'] = 'Auto save'
-nnoremap <silent> <leader>tk :CocCommand bookmark.toggle<CR>
-let g:which_key_map['t']['k'] = 'Bookmark'
-nnoremap <silent> <leader>tK :CocCommand bookmark.annotate<CR>
-let g:which_key_map['t']['K'] = 'Bookmark annotate'
-nnoremap <silent> <leader>td :CocCommand bookmark.clearForCurrentFile<CR>
-let g:which_key_map['t']['d'] = 'Clear current file bookmarks'
-nnoremap <silent> <leader>tD :CocCommand bookmark.clearForAllFiles<CR>
-let g:which_key_map['t']['D'] = 'Clear all bookmarks'
-
-" o is for open
-let g:which_key_map['o'] = { 'name' : '+Open' }
+" }}}
+" Key 'o' is for open {{{
+" Terminal
 nnoremap <silent> <leader>ot :<C-u>exe 'Deol -split=hor -cwd='.getcwd()<CR>
-let g:which_key_map['o']['t'] = 'Terminal'
+" Terminal here
 nnoremap <silent> <leader>oT :<C-u>exe 'Deol -split=hor -cwd='.expand('%:p:h')<CR>
-let g:which_key_map['o']['T'] = 'Terminal here'
-nnoremap <silent> <leader>oe :CocCommand explorer --no-toggle<CR>
-let g:which_key_map['o']['e'] = 'File explorer'
-nnoremap <silent> <leader>ov :Vista<CR>
-let g:which_key_map['o']['v'] = 'Tag viewer'
-
-" oo is for open with external
-let g:which_key_map['o']['o'] = { 'name' : '+External' }
+" Undo tree
+nnoremap <silent> <leader>ou :UndotreeToggle<CR>
+" File explorer
+nnoremap <silent> <leader>oe :NvimTreeToggle<CR>
+" Tag viewer
+nnoremap <silent> <leader>ov :Vista!!<CR>
+" oo is for open with external {{{
 nnoremap <silent> <leader>oof :!open -a finder %:h<CR>
-let g:which_key_map['o']['o']['f'] = 'With finder'
 nnoremap <silent> <leader>ooy :!open -a yoink %:p<CR>
-let g:which_key_map['o']['o']['y'] = 'With yoink'
 nnoremap <silent> <leader>oom :!open -a typora %:p<CR>
-let g:which_key_map['o']['o']['m'] = 'With typora'
-
-" w is for window
-let g:which_key_map['w'] = { 'name' : '+Window' }
-nnoremap <silent> <leader>ww :CocList windows<CR>
-let g:which_key_map['w']['w'] = 'Select any'
+" }}}
+" }}}
+" Key 'w' is for window {{{
 nnoremap <silent> <leader>wh :wincmd h<CR>
-let g:which_key_map['w']['h'] = 'Select left'
 nnoremap <silent> <leader>wj :wincmd j<CR>
-let g:which_key_map['w']['j'] = 'Select bottom'
 nnoremap <silent> <leader>wk :wincmd k<CR>
-let g:which_key_map['w']['k'] = 'Select up'
 nnoremap <silent> <leader>wl :wincmd l<CR>
-let g:which_key_map['w']['l'] = 'Select right'
 nnoremap <silent> <leader>wH :wincmd H<CR>
-let g:which_key_map['w']['H'] = 'Move to left'
 nnoremap <silent> <leader>wJ :wincmd J<CR>
-let g:which_key_map['w']['J'] = 'Move to bottom'
 nnoremap <silent> <leader>wK :wincmd K<CR>
-let g:which_key_map['w']['K'] = 'Move to up'
 nnoremap <silent> <leader>wL :wincmd L<CR>
-let g:which_key_map['w']['L'] = 'Move to right'
-nnoremap <silent> <leader>wv :bel vsplit \| CocList mru -A<CR>
-let g:which_key_map['w']['v'] = 'VSplit'
-nnoremap <silent> <leader>ws :bel split \| CocList mru -A<CR>
-let g:which_key_map['w']['s'] = 'HSplit'
+nnoremap <silent> <leader>wv :bel vsplit<CR>
+nnoremap <silent> <leader>ws :bel split<CR>
 nnoremap <silent> <leader>wd :close<CR>
-let g:which_key_map['w']['d'] = 'Close current'
 nnoremap <silent> <leader>wD :only<CR>
-let g:which_key_map['w']['D'] = 'Close other'
 augroup restorezoom
-    au WinEnter * silent! :call ToggleZoom(v:false)
+  autocmd!
+  autocmd WinEnter * silent! :call ToggleZoom(v:false)
 augroup END
 nnoremap <silent> <leader>wo :call ToggleZoom(v:true)<CR>
-let g:which_key_map['w']['o'] = 'Maximize'
 nnoremap <silent> <leader>w= :wincmd =<CR>
-let g:which_key_map['w']['='] = 'Equal all'
 nnoremap <silent> <leader>wu :<C-u>call SwapWinBuffer()<CR>
-let g:which_key_map['w']['u'] = 'Swap'
-
-" s is for search
-let g:which_key_map['s'] = { 'name' : '+Search' }
-nnoremap <silent> <leader>sp :CocList -I -A grep<CR>
-vnoremap <silent> <leader>sp :<C-u>exe 'CocList -I -A --input='.GetSelectedText(visualmode()).' grep'<CR>
-let g:which_key_map['s']['p'] = 'In project'
-nnoremap <silent> <leader>ss :CocList -I -A lines<CR>
-vnoremap <silent> <leader>ss :<C-u>exe 'CocList -I -A --input='.GetSelectedText(visualmode()).' lines'<CR>
-let g:which_key_map['s']['s'] = 'In current buffer'
-nnoremap <silent> <leader>si :CocList -A outline<CR>
-vnoremap <silent> <leader>si :<C-u>exe 'CocList -A --input='.GetSelectedText(visualmode()).' outline'<CR>
-let g:which_key_map['s']['i'] = 'Outline'
-nnoremap <silent> <leader>so :CocList -I -A symbols<CR>
-vnoremap <silent> <leader>so :<C-u>exe 'CocList -I -A --input='.GetSelectedText(visualmode()).' symbols'<CR>
-let g:which_key_map['s']['o'] = 'Workspace symbols'
-nnoremap <silent> <leader>sy :CocList -A yank<CR>
-let g:which_key_map['s']['y'] = 'Yank'
-nnoremap <silent> <leader>sk :CocList -A bookmark<CR>
-let g:which_key_map['s']['k'] = 'Bookmarks'
-nnoremap <silent> <leader>sh :CocList helptags<CR>
-let g:which_key_map['s']['h'] = 'Help tags'
-nnoremap <silent> <leader>sm :CocList maps<CR>
-let g:which_key_map['s']['m'] = 'Keymapping'
-nnoremap <silent> <leader>sl :CocList links<CR>
-let g:which_key_map['s']['l'] = 'Links'
-nnoremap <silent> <leader>s: :CocList commands<CR>
-let g:which_key_map['s'][':'] = 'Coc commands'
-
-" g is for git
-let g:which_key_map['g'] = { 'name' : '+Git' }
-nnoremap <silent> <leader>gg :CocList gstatus<CR>
-let g:which_key_map['g']['g'] = 'Status'
-nnoremap <silent> <leader>go :CocCommand git.showCommit<CR>
-let g:which_key_map['g']['o'] = 'Commit log'
+" }}}
+" Key 's' is for search {{{
+" In project
+nnoremap <silent> <leader>sp :lua require'telescope.builtin'.live_grep{}<CR>
+" Outline
+nnoremap <silent> <leader>si :lua require'telescope.builtin'.treesitter{}<CR>
+" Workspace symbols
+nnoremap <silent> <leader>so :lua require'telescope.builtin'.lsp_workspace_symbols{}<CR>
+" Help tags
+nnoremap <silent> <leader>sh :lua require'telescope.builtin'.help_tags{}<CR>
+" Keymapping
+nnoremap <silent> <leader>sm :lua require'telescope.builtin'.keymaps{}<CR>
+" List commands
+nnoremap <silent> <leader>s: :lua require'telescope.builtin'.commands{}<CR>
+" Search current word
+nnoremap <leader>sl :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
+" }}}
+" Key 'g' is for git {{{
+" Status
+nnoremap <silent> <leader>go :lua require'telescope.builtin'.git_status{}<CR>
+" Commit log
+nnoremap <silent> <leader>gg :lua require'telescope.builtin'.git_commits{}<CR>
+" Add current
 nnoremap <silent> <leader>ga :Git add %<CR>
-let g:which_key_map['g']['a'] = 'Add current'
+" Add all
 nnoremap <silent> <leader>gA :Git add .<CR>
-let g:which_key_map['g']['A'] = 'Add all'
-nnoremap <silent> <leader>gb :Git blame<CR>
-let g:which_key_map['g']['b'] = 'Blame'
-nnoremap <silent> <leader>gB :CocCommand browserOpen<CR>
-let g:which_key_map['g']['B'] = 'Open browser'
+" Commit
 nnoremap <silent> <leader>gc :Gcommit<CR>
-let g:which_key_map['g']['c'] = 'Commit'
+" Commit all
 nnoremap <silent> <leader>gC :Gcommit --all<CR>
-let g:which_key_map['g']['C'] = 'Commit all'
+" Diff
 nnoremap <silent> <leader>gd :Gdiffsplit<CR>
-let g:which_key_map['g']['d'] = 'Diff'
-nnoremap <silent> <leader>gu :CocCommand git.chunkUndo<CR>
-let g:which_key_map['g']['u'] = 'Undo'
-nnoremap <silent> <leader>gy :CocCommand git.copyUrl<CR>
-let g:which_key_map['g']['y'] = 'Copy URL'
-nnoremap <silent> <leader>gp :CocCommand git.push<CR>
-let g:which_key_map['g']['p'] = 'Push'
+" Push
+nnoremap <silent> <leader>gp :Git push<CR>
+" Pull
 nnoremap <silent> <leader>gl :Git pull<CR>
-let g:which_key_map['g']['l'] = 'Pull'
-nnoremap <silent> <leader>gs :CocCommand git.chunkStage<CR>
-let g:which_key_map['g']['s'] = 'Stage chunk'
+" View buffer commits
 nnoremap <silent> <leader>gv :GV!<CR>
-let g:which_key_map['g']['v'] = 'View buffer commits'
+" View project commits
 nnoremap <silent> <leader>gV :GV<CR>
-let g:which_key_map['g']['V'] = 'View project commits'
-
-" l is for language
-let g:which_key_map['l'] = { 'name' : '+Language' }
-nmap <silent> <leader>ld <Plug>(coc-definition)
-let g:which_key_map['l']['d'] = 'Definition'
-nmap <silent> <leader>lD <Plug>(coc-declaration)
-let g:which_key_map['l']['D'] = 'Declaration'
-nmap <silent> <leader>ly <Plug>(coc-type-definition)
-let g:which_key_map['l']['y'] = 'Type definition'
-nmap <silent> <leader>li <Plug>(coc-implementation)
-let g:which_key_map['l']['i'] = 'Implementation'
-nmap <silent> <leader>lr <Plug>(coc-references)
-let g:which_key_map['l']['r'] = 'References'
-xmap <silent> <leader>lf <Plug>(coc-format-selected)
-nmap <silent> <leader>lf <Plug>(coc-format-selected)
-let g:which_key_map['l']['f'] = 'Format selected'
-nmap <silent> <leader>lF <Plug>(coc-format)
-let g:which_key_map['l']['F'] = 'Format buffer'
-nmap <silent> <leader>ly <Plug>(coc-type-definition)
-let g:which_key_map['l']['y'] = 'Type definition'
-nnoremap <silent> <leader>le :CocList diagnostics<CR>
-" nnoremap <silent> <leader>le :CocFzfList diagnostics --current-buf<CR>
-let g:which_key_map['l']['e'] = 'Diagnostics'
-" nnoremap <silent> <leader>lE :CocFzfList diagnostics<CR>
-" let g:which_key_map['l']['E'] = 'All diagnostics'
-nmap <silent> <leader>lq <Plug>(coc-fix-current)
-let g:which_key_map['l']['q'] = 'Quickfix'
-nmap <silent> <leader>ln <Plug>(coc-rename)
-let g:which_key_map['l']['n'] = 'Rename'
-nnoremap <silent> <leader>ls :CocList snippets<CR>
-" nnoremap <silent> <leader>ls :CocFzfList snippets<CR>
-let g:which_key_map['l']['s'] = 'snippets'
-
-" Register which key map
-call which_key#register('<Space>', "g:which_key_map")
-
+" }}}
+" Key 'l' is for language {{{
+" Code action
+nnoremap <silent> <leader>la :lua vim.lsp.buf.code_action()<CR>
+" Definition
+nnoremap <silent> <leader>ld :lua vim.lsp.buf.definition()<CR>
+" Declaration
+nnoremap <silent> <leader>lD :lua vim.lsp.buf.declaration()
+" Implementation
+nnoremap <silent> <leader>li :lua vim.lsp.buf.implementation()<CR>
+" References
+nnoremap <silent> <leader>lr :lua vim.lsp.buf.references()<CR>
+" Format selected
+xnoremap <silent> <leader>lf :lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> <leader>lf :lua vim.lsp.buf.formatting()<CR>
+" Type definition
+nnoremap <silent> <leader>ly lua vim.lsp.buf.type_definition()<CR>
+" Diagnostics
+nnoremap <silent> <leader>le :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+" Rename
+nnoremap <silent> <leader>ln :lua vim.lsp.buf.rename()<CR>
+" Signature help
+nnoremap <silent> <leader>lh :lua vim.lsp.buf.signature_help()<CR>
+" }}}
+" Commands of 'g'X {{{
 " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gD <Plug>(coc-declaration)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gl <Plug>(coc-openlink)
-
+nnoremap <silent> gd :lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gD :lua vim.lsp.buf.declaration()
+nnoremap <silent> gi :lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> gr :lua vim.lsp.buf.references()<CR>
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
+" }}}
+" Misc {{{
+nnoremap <silent> [e :lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <silent> ]e :lua vim.lsp.diagnostic.goto_next()<CR>
 " Easymotion
 nmap s <Plug>(easymotion-overwin-f2)
-xmap gj <Plug>(easymotion-j)
-nmap gj <Plug>(easymotion-j)
-xmap gk <Plug>(easymotion-k)
-nmap gk <Plug>(easymotion-k)
-
-" create text object for git chunks
-omap ig <Plug>(coc-git-chunk-inner)
-xmap ig <Plug>(coc-git-chunk-inner)
-omap ag <Plug>(coc-git-chunk-outer)
-xmap ag <Plug>(coc-git-chunk-outer)
-
-" Introduce function text object
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
-
+" Search in Dash
+nnoremap <silent> D :exe 'Dash '.expand('<cword>')<CR>
+vnoremap <silent> D :<C-u>exe 'Dash '.GetSelectedText(visualmode())<CR>
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+" Terminal to normal mode
+tnoremap <ESC> <C-\><C-n>
+tnoremap <C-[> <C-\><C-n>
+" Better indenting
+vnoremap < <gv
+vnoremap > >gv
+" You can't stop me
+cmap w!! w !sudo tee %
 " Search for selected text, forwards or backwards.
 " https://vim.fandom.com/wiki/Search_for_visually_selected_text
 vnoremap <silent> * :<C-U>
@@ -351,47 +235,13 @@ vnoremap <silent> # :<C-U>
   \gvy?<C-R>=&ic?'\c':'\C'<CR><C-R><C-R>=substitute(
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gVzv:call setreg('"', old_reg, old_regtype)<CR>
-
-" Search in Dash
-nnoremap <silent> D :exe 'Dash '.expand('<cword>')<CR>
-vnoremap <silent> D :<C-u>exe 'Dash '.GetSelectedText(visualmode())<CR>
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call ShowDocumentation()<CR>
-
-nmap ` <Plug>(choosewin)<CR>
-
-" Terminal to normal mode
-tnoremap <ESC> <C-\><C-n>
-tnoremap <C-[> <C-\><C-n>
-
-" Better indenting
-vnoremap < <gv
-vnoremap > >gv
-
-" You can't stop me
-cmap w!! w !sudo tee %
-
+" }}}
 "==============================================================================
 " Local key mappings
 "==============================================================================
-
-let maplocalleader = "\,"
-
-" Dummy empty map
-let g:which_key_map_local =  {}
-nnoremap <silent> <localleader> :silent <c-u> :silent WhichKey ','<CR>
-vnoremap <silent> <localleader> :silent <c-u> :silent WhichKeyVisual ','<CR>
-call which_key#register(',', "g:which_key_map_local")
-
-" C & C++
+" C & C++ {{{
 function! s:CppKeyMapping()
-  let b:which_key_map_local = {}
   nnoremap <buffer> <silent> <localleader>s :CocCommand clangd.switchSourceHeader<CR>
-  let b:which_key_map_local['s'] = 'Switch header source'
-  call which_key#register(',', "b:which_key_map_local")
 endfunction
-
 autocmd BufEnter *.c,*.cpp,*.h,*.hpp,*.cc call s:CppKeyMapping()
-  \| autocmd BufLeave <buffer> call which_key#register(',', "g:which_key_map_local")
-
+" }}}

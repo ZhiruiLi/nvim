@@ -107,7 +107,7 @@ pipinstallueberzug() { \
 }
 
 installonubuntu() { \
-  sudo apt install ripgrep fzf ranger  
+  sudo apt install ripgrep fzf ranger
   sudo apt install libjpeg8-dev zlib1g-dev python-dev python3-dev libxtst-dev
   pip3 install ueberzug
   pip3 install neovim-remote
@@ -141,7 +141,7 @@ which node > /dev/null && echo "node installed, moving on..." || asktoinstallnod
 pip3 list | grep pynvim > /dev/null && echo "pynvim installed, moving on..." || installpynvim
 
 # move old nvim directory if it exists
-[ -d "$HOME/.config/nvim" ] && moveoldnvim 
+[ -d "$HOME/.config/nvim" ] && moveoldnvim
 
 # clone config down
 cloneconfig
