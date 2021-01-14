@@ -197,7 +197,7 @@ nnoremap <silent> <leader>lh :lua vim.lsp.buf.signature_help()<CR>
 " Commands of 'g'X {{{
 " GoTo code navigation.
 nnoremap <silent> gd :lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gD :lua vim.lsp.buf.declaration()
+nnoremap <silent> gD :lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gi :lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> gr :lua vim.lsp.buf.references()<CR>
 " Start interactive EasyAlign in visual mode (e.g. vipga)
