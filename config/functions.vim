@@ -1,14 +1,14 @@
 " Turn spellcheck on for markdown/org files
 augroup autospellcheck
-  autocmd!
-  autocmd BufNewFile,BufRead *.md,README,Readme,*.org,*.markdown setlocal spell
-augroup END
+   autocmd!
+   autocmd BufNewFile,BufRead *.md,README,Readme,*.org,*.markdown setlocal spell
+ augroup END
 
-" " Auto center cursor
-" augroup autocenter
-"   autocmd!
-"   autocmd InsertEnter * normal zz
-" augroup END
+" Auto center cursor
+augroup autocenter
+  autocmd!
+  autocmd InsertEnter * normal zz
+augroup END
 
 " Clear output text
 function! ClearOutput()
@@ -33,7 +33,7 @@ function! ShowDocumentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
   else
-    lua vim.lsp.buf.hover()
+    call CocAction('doHover')
   endif
 endfunction
 

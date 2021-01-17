@@ -24,7 +24,7 @@ set shiftwidth=2                        " Change the number of space characters 
 set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
 set expandtab                           " Converts tabs to spaces
 set smartindent                         " Makes indenting smart
-set autoindent                          " Makes indenting auto
+set autoindent                          " Good auto indent
 set laststatus=2                        " Always display the status line
 set colorcolumn=+0                      " Column highlight at textwidth's max character-limit
 set display=lastline
@@ -35,13 +35,13 @@ set background=dark                     " tell vim what the background color loo
 set showtabline=2                       " Always show tabs
 set winwidth=30                         " Minimum width for active window
 set winminwidth=10                      " Minimum width for inactive windows
-set hidden                              " TextEdit might fail if hidden is not set.
-set nobackup                            " No backup files
-set nowritebackup                       " No backup files
-set noswapfile                          " No swap files
+set hidden                              " Coc: TextEdit might fail if hidden is not set.
+set nobackup                            " Coc: Some servers have issues with backup files, see #649.
+set nowritebackup                       " Coc: Some servers have issues with backup files, see #649.
+set shortmess+=c                        " Coc: Don't pass messages to |ins-completion-menu|.
+set signcolumn=yes                      " Coc: Always show the signcolumn, otherwise it would shift the text each time
 set undodir=~/.vim/undodir              " Undo dir
 set undofile                            " Persistent undo
-set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
 set updatetime=300                      " Faster completion
 set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set ignorecase                          " Search ignoring case
@@ -72,7 +72,7 @@ if has('guifont')
   set guifont=Iosevka:h16
 endif
 
-augroup VimFolding
+augroup vimfolding
   autocmd!
   autocmd BufEnter *.vim setlocal foldmethod=marker
 augroup end
