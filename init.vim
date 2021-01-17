@@ -34,7 +34,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'junegunn/vim-easy-align'
   Plug 'alvan/vim-closetag'
   Plug 'ntpeters/vim-better-whitespace'
-  Plug 'unblevable/quick-scope'
   Plug 'easymotion/vim-easymotion'
   Plug 'mbbill/undotree'
   Plug 'jiangmiao/auto-pairs'
