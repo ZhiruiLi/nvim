@@ -1,7 +1,6 @@
 " Plugin list
 let g:coc_global_extensions = [
   \ 'coc-actions',
-  \ 'coc-bookmark',
   \ 'coc-clangd',
   \ 'coc-css',
   \ 'coc-eslint',

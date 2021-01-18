@@ -43,6 +43,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'kana/vim-textobj-entire'
   Plug 'vim-scripts/matchit.zip'
   Plug '907th/vim-auto-save'
+  Plug 'MattesGroeger/vim-bookmarks'
   " Auto change CWD
   Plug 'airblade/vim-rooter'
   " Git

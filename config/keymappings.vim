@@ -1,30 +1,25 @@
 "==============================================================================
 " Global key mappings
 "==============================================================================
-
-" Leader key
+" Leader key {{{
 let mapleader = "\<Space>"
 nnoremap <Space> <Nop>
-
-" Map leader to which_key
+" }}}
+" Which key basic {{{
 nnoremap <silent> <leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
-
 " Create map to add keys to
 let g:which_key_map =  {}
-
 " Not a fan of floating windows for this
 let g:which_key_use_floating_win = 0
-
 " Specific seperator
 let g:which_key_sep = ':'
-
 " Hide status line
 autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
-
-" Single mappings
+" }}}
+" Single mappings {{{
 let g:which_key_map['.'] = [ ':CocList mru',         'Recent files in cwd' ]
 let g:which_key_map[','] = [ ':CocList buffers',     'List buffers' ]
 let g:which_key_map[':'] = [ ':CocList vimcommands', 'Vim commands' ]
@@ -33,7 +28,8 @@ let g:which_key_map[']'] = [ ':CocNext',             'Next coc item' ]
 let g:which_key_map['['] = [ ':CocPrev',             'Previous coc item' ]
 let g:which_key_map['`'] = [ ':b#',                  'Switch recent buffer' ]
 let g:which_key_map['e'] = [ ':Scratch',             'Open scratch pad' ]
-
+nmap <leader><enter> <Plug>BookmarkShowAll
+let g:which_key_map['<CR>'] = 'Show bookmarks'
 " Select buffer 1~9
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -57,10 +53,8 @@ let g:which_key_map['7'] = 'which_key_ignore'
 let g:which_key_map['8'] = 'which_key_ignore'
 let g:which_key_map['9'] = 'which_key_ignore'
 let g:which_key_map['0'] = 'which_key_ignore'
-
-" Group mappings
-
-" b is for buffer
+" }}}
+" b is for buffer {{{
 let g:which_key_map['b'] = { 'name' : '+Buffer' }
 nnoremap <silent> <leader>bb :CocList buffers<CR>
 let g:which_key_map['b']['b'] = 'List buffers'
@@ -82,8 +76,8 @@ nnoremap <silent> <leader>bs :w<CR>
 let g:which_key_map['b']['s'] = 'Save current'
 nnoremap <silent> <leader>bS :wa \| :echo 'All buffers saved'<CR>
 let g:which_key_map['b']['S'] = 'Save all'
-
-" f is for file
+" }}}
+" f is for file {{{
 let g:which_key_map['f'] = { 'name' : '+File' }
 nnoremap <silent> <leader>fy :let @+=expand("%:t") . ":" . line(".")<CR>
 let g:which_key_map['f']['y'] = 'Yank name with line no'
@@ -117,8 +111,8 @@ nnoremap <silent> <leader>fl :CocList sessions<CR>
 let g:which_key_map['f']['l'] = 'Load session'
 nnoremap <silent> <leader>fc :SClose<CR>
 let g:which_key_map['f']['c'] = 'Close session'
-
-" t is for toggle
+" }}}
+" t is for toggle {{{
 let g:which_key_map['t'] = { 'name' : '+Toggle' }
 nnoremap <silent> <leader>tl :CocList filetypes<CR>
 let g:which_key_map['t']['l'] = 'Language mode'
@@ -138,16 +132,16 @@ nnoremap <silent> <leader>tw :execute('setlocal wrap! breakindent! colorcolumn='
 let g:which_key_map['t']['w'] = 'Line wrap'
 nnoremap <silent> <leader>ts :AutoSaveToggle<CR>
 let g:which_key_map['t']['s'] = 'Auto save'
-nnoremap <silent> <leader>tk :CocCommand bookmark.toggle<CR>
+nmap <leader>tk <Plug>BookmarkToggle
 let g:which_key_map['t']['k'] = 'Bookmark'
-nnoremap <silent> <leader>tK :CocCommand bookmark.annotate<CR>
+nmap <leader>tK <Plug>BookmarkAnnotate
 let g:which_key_map['t']['K'] = 'Bookmark annotate'
-nnoremap <silent> <leader>td :CocCommand bookmark.clearForCurrentFile<CR>
+nmap <leader>td <Plug>BookmarkClear
 let g:which_key_map['t']['d'] = 'Clear current file bookmarks'
-nnoremap <silent> <leader>tD :CocCommand bookmark.clearForAllFiles<CR>
+nmap <leader>tD <Plug>BookmarkClearAll
 let g:which_key_map['t']['D'] = 'Clear all bookmarks'
-
-" o is for open
+" }}}
+" o is for open {{{
 let g:which_key_map['o'] = { 'name' : '+Open' }
 nnoremap <silent> <leader>ot :<C-u>exe 'Deol -split=hor -cwd='.getcwd()<CR>
 let g:which_key_map['o']['t'] = 'Terminal'
@@ -159,17 +153,17 @@ nnoremap <silent> <leader>oe :CocCommand explorer --no-toggle<CR>
 let g:which_key_map['o']['e'] = 'File explorer'
 nnoremap <silent> <leader>ov :Vista<CR>
 let g:which_key_map['o']['v'] = 'Tag viewer'
-
-" oo is for open with external
-let g:which_key_map['o']['o'] = { 'name' : '+External' }
-nnoremap <silent> <leader>oof :!open -a finder %:h<CR>
-let g:which_key_map['o']['o']['f'] = 'With finder'
-nnoremap <silent> <leader>ooy :!open -a yoink %:p<CR>
-let g:which_key_map['o']['o']['y'] = 'With yoink'
-nnoremap <silent> <leader>oom :!open -a typora %:p<CR>
-let g:which_key_map['o']['o']['m'] = 'With typora'
-
-" w is for window
+" oo is for open with external {{{
+  let g:which_key_map['o']['o'] = { 'name' : '+External' }
+  nnoremap <silent> <leader>oof :!open -a finder %:h<CR>
+  let g:which_key_map['o']['o']['f'] = 'With finder'
+  nnoremap <silent> <leader>ooy :!open -a yoink %:p<CR>
+  let g:which_key_map['o']['o']['y'] = 'With yoink'
+  nnoremap <silent> <leader>oom :!open -a typora %:p<CR>
+  let g:which_key_map['o']['o']['m'] = 'With typora'
+" }}}
+" }}}
+" w is for window {{{
 let g:which_key_map['w'] = { 'name' : '+Window' }
 nnoremap <silent> <leader>ww :CocList windows<CR>
 let g:which_key_map['w']['w'] = 'Select any'
@@ -206,8 +200,8 @@ nnoremap <silent> <leader>w= :wincmd =<CR>
 let g:which_key_map['w']['='] = 'Equal all'
 nnoremap <silent> <leader>wu :<C-u>call SwapWinBuffer()<CR>
 let g:which_key_map['w']['u'] = 'Swap'
-
-" s is for search
+" }}}
+" s is for search {{{
 let g:which_key_map['s'] = { 'name' : '+Search' }
 nnoremap <silent> <leader>sp :CocList -I -A grep<CR>
 vnoremap <silent> <leader>sp :<C-u>exe 'CocList -I -A --input='.GetSelectedText(visualmode()).' grep'<CR>
@@ -223,8 +217,6 @@ vnoremap <silent> <leader>so :<C-u>exe 'CocList -I -A --input='.GetSelectedText(
 let g:which_key_map['s']['o'] = 'Workspace symbols'
 nnoremap <silent> <leader>sy :CocList -A yank<CR>
 let g:which_key_map['s']['y'] = 'Yank'
-nnoremap <silent> <leader>sk :CocList -A bookmark<CR>
-let g:which_key_map['s']['k'] = 'Bookmarks'
 nnoremap <silent> <leader>sh :CocList helptags<CR>
 let g:which_key_map['s']['h'] = 'Help tags'
 nnoremap <silent> <leader>sm :CocList maps<CR>
@@ -233,8 +225,8 @@ nnoremap <silent> <leader>sl :CocList links<CR>
 let g:which_key_map['s']['l'] = 'Links'
 nnoremap <silent> <leader>s: :CocList commands<CR>
 let g:which_key_map['s'][':'] = 'Coc commands'
-
-" g is for git
+" }}}
+" g is for git {{{
 let g:which_key_map['g'] = { 'name' : '+Git' }
 nnoremap <silent> <leader>gg :CocList gstatus<CR>
 let g:which_key_map['g']['g'] = 'Status'
@@ -268,8 +260,8 @@ nnoremap <silent> <leader>gv :GV!<CR>
 let g:which_key_map['g']['v'] = 'View buffer commits'
 nnoremap <silent> <leader>gV :GV<CR>
 let g:which_key_map['g']['V'] = 'View project commits'
-
-" l is for language
+" }}}
+" l is for language {{{
 let g:which_key_map['l'] = { 'name' : '+Language' }
 nmap <silent> <leader>ld <Plug>(coc-definition)
 let g:which_key_map['l']['d'] = 'Definition'
@@ -300,36 +292,33 @@ let g:which_key_map['l']['n'] = 'Rename'
 nnoremap <silent> <leader>ls :CocList snippets<CR>
 " nnoremap <silent> <leader>ls :CocFzfList snippets<CR>
 let g:which_key_map['l']['s'] = 'snippets'
-
-" Register which key map
+" }}}
+" Register which key map {{{
 call which_key#register('<Space>', "g:which_key_map")
-
-" GoTo code navigation.
+" }}}
+" gX commands {{{
+" GoTo code navigation {{{
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gD <Plug>(coc-declaration)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gl <Plug>(coc-openlink)
-
-" Start interactive EasyAlign in visual mode (e.g. vipga)
+" }}}
+" EasyAlign {{{
 xmap ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-" Easymotion
+" }}}
+" }}}
+" Easymotion {{{
 nmap s <Plug>(easymotion-overwin-f2)
-xmap gj <Plug>(easymotion-j)
-nmap gj <Plug>(easymotion-j)
-xmap gk <Plug>(easymotion-k)
-nmap gk <Plug>(easymotion-k)
-
+" }}}
+" Text objects {{{
 " create text object for git chunks
 omap ig <Plug>(coc-git-chunk-inner)
 xmap ig <Plug>(coc-git-chunk-inner)
 omap ag <Plug>(coc-git-chunk-outer)
 xmap ag <Plug>(coc-git-chunk-outer)
-
 " Introduce function text object
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xmap if <Plug>(coc-funcobj-i)
@@ -340,8 +329,8 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
-
-" Search for selected text, forwards or backwards.
+" }}}
+" Search for selected text, forwards or backwards. {{{
 " https://vim.fandom.com/wiki/Search_for_visually_selected_text
 vnoremap <silent> * :<C-U>
   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
@@ -353,38 +342,35 @@ vnoremap <silent> # :<C-U>
   \gvy?<C-R>=&ic?'\c':'\C'<CR><C-R><C-R>=substitute(
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gVzv:call setreg('"', old_reg, old_regtype)<CR>
-
-" Search in Dash
+" }}}
+" Search in Dash {{{
 nnoremap <silent> D :exe 'Dash '.expand('<cword>')<CR>
 vnoremap <silent> D :<C-u>exe 'Dash '.GetSelectedText(visualmode())<CR>
-
+"}}}
+" Preview Document {{{
 " Use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>
-
-" Terminal to normal mode
+"}}}
+" Terminal to normal mode {{{
 tnoremap <ESC> <C-\><C-n>
 tnoremap <C-[> <C-\><C-n>
-
-" Better indenting
+" }}}
+" Better indenting {{{
 vnoremap < <gv
 vnoremap > >gv
-
-" You can't stop me
-cmap w!! w !sudo tee %
-
+" }}}
 "==============================================================================
 " Local key mappings
 "==============================================================================
-
+" Localleader Key {{{
 let maplocalleader = "\,"
-
 " Dummy empty map
 let g:which_key_map_local =  {}
 nnoremap <silent> <localleader> :silent <c-u> :silent WhichKey ','<CR>
 vnoremap <silent> <localleader> :silent <c-u> :silent WhichKeyVisual ','<CR>
 call which_key#register(',', "g:which_key_map_local")
-
-" C & C++
+" }}}
+" C & C++ {{{
 function! s:CppKeyMapping()
   let b:which_key_map_local = {}
   nnoremap <buffer> <silent> <localleader>s :CocCommand clangd.switchSourceHeader<CR>
@@ -394,4 +380,5 @@ endfunction
 
 autocmd BufEnter *.c,*.cpp,*.h,*.hpp,*.cc call s:CppKeyMapping()
   \| autocmd BufLeave <buffer> call which_key#register(',', "g:which_key_map_local")
+" }}}
 
