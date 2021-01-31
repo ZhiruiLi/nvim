@@ -52,7 +52,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'junegunn/gv.vim'
   " Terminals
   Plug 'Shougo/deol.nvim'
-  " Bazel
+  " Build
+  Plug 'skywind3000/asynctasks.vim'
+  Plug 'skywind3000/asyncrun.vim'
   Plug 'google/vim-maktaba'
   Plug 'bazelbuild/vim-bazel'
   " Docs

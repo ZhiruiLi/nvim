@@ -281,17 +281,21 @@ let g:which_key_map['l']['F'] = 'Format buffer'
 nmap <silent> <leader>ly <Plug>(coc-type-definition)
 let g:which_key_map['l']['y'] = 'Type definition'
 nnoremap <silent> <leader>le :CocList diagnostics<CR>
-" nnoremap <silent> <leader>le :CocFzfList diagnostics --current-buf<CR>
 let g:which_key_map['l']['e'] = 'Diagnostics'
-" nnoremap <silent> <leader>lE :CocFzfList diagnostics<CR>
-" let g:which_key_map['l']['E'] = 'All diagnostics'
 nmap <silent> <leader>lq <Plug>(coc-fix-current)
 let g:which_key_map['l']['q'] = 'Quickfix'
 nmap <silent> <leader>ln <Plug>(coc-rename)
 let g:which_key_map['l']['n'] = 'Rename'
 nnoremap <silent> <leader>ls :CocList snippets<CR>
-" nnoremap <silent> <leader>ls :CocFzfList snippets<CR>
 let g:which_key_map['l']['s'] = 'snippets'
+nnoremap <silent> <leader>lb :AsyncTask build<CR>
+let g:which_key_map['l']['b'] = 'build'
+nnoremap <silent> <leader>lx :AsyncTask execute<CR>
+let g:which_key_map['l']['x'] = 'execute'
+nnoremap <silent> <leader>lt :AsyncTask test<CR>
+let g:which_key_map['l']['t'] = 'test'
+nnoremap <silent> <leader>lg :AsyncTask codegen<CR>
+let g:which_key_map['l']['t'] = 'codegen'
 " }}}
 " Register which key map {{{
 call which_key#register('<Space>', "g:which_key_map")
