@@ -111,7 +111,7 @@ nnoremap <silent> <leader>fl :CocList sessions<CR>
 let g:which_key_map['f']['l'] = 'Load session'
 nnoremap <silent> <leader>fc :SClose<CR>
 let g:which_key_map['f']['c'] = 'Close session'
-nnoremap <silent> <leader>fn :call RenameFile<CR>
+nnoremap <silent> <leader>fn :call RenameFile()<CR>
 let g:which_key_map['f']['n'] = 'Rename'
 " }}}
 " t is for toggle {{{
