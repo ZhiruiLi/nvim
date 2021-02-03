@@ -316,8 +316,14 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 " }}}
 " }}}
-" Easymotion {{{
+" Moving {{{
 nmap s <Plug>(easymotion-overwin-f2)
+nmap <silent> [e <Plug>(coc-diagnostic-prev)
+nmap <silent> ]e <Plug>(coc-diagnostic-next)
+nmap <silent> [g <Plug>(coc-git-prevchunk)
+nmap <silent> ]g <Plug>(coc-git-nextchunk)
+nmap <silent> [c <Plug>(coc-git-prevconflict)
+nmap <silent> ]c <Plug>(coc-git-nextconflict)
 " }}}
 " Text objects {{{
 " create text object for git chunks
