@@ -2,7 +2,7 @@
   // auto select the first item
   "suggest.noselect": false,
   // autoformat
-  "coc.preferences.formatOnSaveFiletypes": ["go", "markdown", "xml", "json"],
+  "coc.preferences.formatOnSaveFiletypes": ["go", "c", "cpp", "markdown", "xml", "json"],
   // snippets
   "snippets.ultisnips.directories": ["~/.config/nvim/snips"],
   // explorer
