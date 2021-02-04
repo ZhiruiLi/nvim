@@ -375,22 +375,22 @@ vnoremap > >gv
 " Local key mappings
 "==============================================================================
 " Localleader Key {{{
-let maplocalleader = "\,"
+let maplocalleader = "\<Space>\<Space>"
 " Dummy empty map
 let g:which_key_map_local =  {}
-nnoremap <silent> <localleader> :silent <c-u> :silent WhichKey ','<CR>
-vnoremap <silent> <localleader> :silent <c-u> :silent WhichKeyVisual ','<CR>
-call which_key#register(',', "g:which_key_map_local")
+nnoremap <silent> <localleader> :silent <c-u> :silent WhichKey '  '<CR>
+vnoremap <silent> <localleader> :silent <c-u> :silent WhichKeyVisual '  '<CR>
+call which_key#register('  ', "g:which_key_map_local")
 " }}}
 " C & C++ {{{
 function! s:CppKeyMapping()
   let b:which_key_map_local = {}
   nnoremap <buffer> <silent> <localleader>s :CocCommand clangd.switchSourceHeader<CR>
   let b:which_key_map_local['s'] = 'Switch header source'
-  call which_key#register(',', "b:which_key_map_local")
+  call which_key#register('  ', "b:which_key_map_local")
 endfunction
 
 autocmd BufEnter *.c,*.cpp,*.h,*.hpp,*.cc call s:CppKeyMapping()
-  \| autocmd BufLeave <buffer> call which_key#register(',', "g:which_key_map_local")
+  \| autocmd BufLeave <buffer> call which_key#register('  ', "g:which_key_map_local")
 " }}}
 
