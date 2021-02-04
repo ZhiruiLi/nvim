@@ -76,3 +76,8 @@ augroup vimfolding
   autocmd!
   autocmd BufEnter *.vim setlocal foldmethod=marker
 augroup end
+
+augroup closequickfix
+  autocmd!
+  autocmd WinEnter * if winnr('$') == 1 && &buftype == "quickfix" | q | endif
+augroup END
