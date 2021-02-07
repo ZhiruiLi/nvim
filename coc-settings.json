@@ -23,6 +23,8 @@
     "S": "action:split",
     "D": "expr:GetDeleteAction"
   },
+  "list.source.files.args": ["--hidden", "--files"],
   "session.directory": "~/.local/share/nvim/sessions",
-  "languageserver": {}
+  "languageserver": {},
+  "clangd.path": ""
 }

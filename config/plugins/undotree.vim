@@ -1,1 +1,1 @@
-g:undotree_SetFocusWhenToggle = 1
+set g:undotree_SetFocusWhenToggle = 1
