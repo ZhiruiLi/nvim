@@ -242,9 +242,9 @@ nnoremap <silent> <leader>gb :Git blame<CR>
 let g:which_key_map['g']['b'] = 'Blame'
 nnoremap <silent> <leader>gB :CocCommand browserOpen<CR>
 let g:which_key_map['g']['B'] = 'Open browser'
-nnoremap <silent> <leader>gc :Gcommit<CR>
+nnoremap <silent> <leader>gc :Git commit<CR>
 let g:which_key_map['g']['c'] = 'Commit'
-nnoremap <silent> <leader>gC :Gcommit --all<CR>
+nnoremap <silent> <leader>gC :Git commit --all<CR>
 let g:which_key_map['g']['C'] = 'Commit all'
 nnoremap <silent> <leader>gd :Gdiffsplit<CR>
 let g:which_key_map['g']['d'] = 'Diff'
