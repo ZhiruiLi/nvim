@@ -151,7 +151,7 @@ nnoremap <silent> <leader>ou :UndotreeToggle<CR>
 let g:which_key_map['o']['t'] = 'Undo tree'
 nnoremap <silent> <leader>oT :<C-u>exe 'Deol -split=hor -cwd='.expand('%:p:h')<CR>
 let g:which_key_map['o']['T'] = 'Terminal here'
-nnoremap <silent> <leader>oe :CocCommand explorer --no-toggle<CR>
+nnoremap <silent> <leader>oe :CocCommand explorer<CR>
 let g:which_key_map['o']['e'] = 'File explorer'
 nnoremap <silent> <leader>ov :Vista<CR>
 let g:which_key_map['o']['v'] = 'Tag viewer'
