@@ -58,7 +58,7 @@ let g:which_key_map['0'] = 'which_key_ignore'
 let g:which_key_map['b'] = { 'name' : '+Buffer' }
 nnoremap <silent> <leader>bb :CocList buffers<CR>
 let g:which_key_map['b']['b'] = 'List buffers'
-nnoremap <silent> <leader>bd :bd<CR>
+nnoremap <silent> <leader>bd :bp<bar>sp<bar>bn<bar>bd<CR>
 let g:which_key_map['b']['d'] = 'Delete current'
 nnoremap <silent> <leader>bD :%bd\|e#\|bd#<CR>\|'"
 let g:which_key_map['b']['D'] = 'Delete other'
