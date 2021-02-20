@@ -24,5 +24,14 @@
     "D": "expr:GetDeleteAction"
   },
   "session.directory": "~/.local/share/nvim/sessions",
-  "languageserver": {},
+  "list.source.files.excludePatterns": [
+    "**/.git/**", "**/.svn/**", "**/.hg/**",                // Version control
+    "**/.cabal-sandbox/**", "**/target/**", "**/dist/**",   // Build
+    "*.exe", "*.dll", "*.pyc",                              // Binary
+    "*.zip", "*.7z", "*.gz", "*.tar",                       // Compress
+    "**/.DS_Store", "Thumbs.db",                            // System
+    "**/.idea/**", "**/.clangd/**", "**/.ccls-cache/**"     // IDE
+  ],
+  "list.source.files.args": ["--hidden", "--files"],
+  "languageserver": {}
 }
