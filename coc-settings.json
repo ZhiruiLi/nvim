@@ -25,5 +25,4 @@
   },
   "session.directory": "~/.local/share/nvim/sessions",
   "languageserver": {},
-  "clangd.path": ""
 }
