@@ -10,6 +10,12 @@ augroup autocenter
   autocmd InsertEnter * normal zz
 augroup END
 
+" Set language
+augroup setlang
+  autocmd!
+  autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
+augroup END
+
 " Clear output text
 function! ClearOutput()
   echon "\r\r"
