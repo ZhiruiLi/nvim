@@ -1,5 +1,5 @@
-" Use coc to provide tags by default
-let g:vista_default_executive = 'coc'
+" Use nvim_lsp to provide tags by default
+let g:vista_default_executive = 'nvim_lsp'
 
 " Don't use icon
 let g:vista#renderer#enable_icon = 0

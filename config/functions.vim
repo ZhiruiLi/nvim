@@ -39,7 +39,8 @@ function! ShowDocumentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
   else
-    call CocAction('doHover')
+    " lua vim.lsp.buf.signature_help()
+    lua vim.lsp.buf.hover()
   endif
 endfunction
 

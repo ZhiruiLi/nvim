@@ -35,11 +35,7 @@ set background=dark                     " tell vim what the background color loo
 set showtabline=2                       " Always show tabs
 set winwidth=30                         " Minimum width for active window
 set winminwidth=10                      " Minimum width for inactive windows
-set hidden                              " Coc: TextEdit might fail if hidden is not set.
-set nobackup                            " Coc: Some servers have issues with backup files, see #649.
-set nowritebackup                       " Coc: Some servers have issues with backup files, see #649.
-set shortmess+=c                        " Coc: Don't pass messages to |ins-completion-menu|.
-set signcolumn=yes                      " Coc: Always show the signcolumn, otherwise it would shift the text each time
+set hidden                              " Don't close file when switch buffer
 set undodir=~/.vim/undodir              " Undo dir
 set undofile                            " Persistent undo
 set updatetime=300                      " Faster completion

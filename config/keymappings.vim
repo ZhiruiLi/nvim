@@ -20,12 +20,6 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 " }}}
 " Single mappings {{{
-let g:which_key_map['.'] = [ ':CocList mru',         'Recent files in cwd' ]
-let g:which_key_map[','] = [ ':CocList buffers',     'List buffers' ]
-let g:which_key_map[':'] = [ ':CocList vimcommands', 'Vim commands' ]
-let g:which_key_map[';'] = [ ':CocListResume',       'Resume list' ]
-let g:which_key_map[']'] = [ ':CocNext',             'Next coc item' ]
-let g:which_key_map['['] = [ ':CocPrev',             'Previous coc item' ]
 let g:which_key_map['`'] = [ ':b#',                  'Switch recent buffer' ]
 let g:which_key_map['e'] = [ ':Scratch',             'Open scratch pad' ]
 nmap <leader><enter> <Plug>BookmarkShowAll
@@ -56,7 +50,7 @@ let g:which_key_map['0'] = 'which_key_ignore'
 " }}}
 " b is for buffer {{{
 let g:which_key_map['b'] = { 'name' : '+Buffer' }
-nnoremap <silent> <leader>bb :CocList buffers<CR>
+nnoremap <leader>bb :lua require('telescope.builtin').buffers()<CR>
 let g:which_key_map['b']['b'] = 'List buffers'
 nnoremap <silent> <leader>bd :bp<bar>sp<bar>bn<bar>bd<CR>
 let g:which_key_map['b']['d'] = 'Delete current'
@@ -77,48 +71,40 @@ let g:which_key_map['b']['s'] = 'Save current'
 nnoremap <silent> <leader>bS :wa \| :echo 'All buffers saved'<CR>
 let g:which_key_map['b']['S'] = 'Save all'
 " }}}
+" p is for project {{{
+let g:which_key_map['p'] = { 'name' : '+Project' }
+nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
+" nnoremap <leader>vrc :lua require('theprimeagen.telescope').search_dotfiles()<CR>
+" nnoremap <leader>va :lua require('theprimeagen.telescope').anime_selector()<CR>
+" }}}
 " f is for file {{{
 let g:which_key_map['f'] = { 'name' : '+File' }
 nnoremap <silent> <leader>fy :let @+=expand("%:t") . ":" . line(".")<CR>
 let g:which_key_map['f']['y'] = 'Yank name with line no'
 nnoremap <silent> <leader>fY :let @+=expand("%:p")<CR>
 let g:which_key_map['f']['Y'] = 'Yank full path'
-nnoremap <silent> <leader>ff :<C-u>exe 'CocList files '.expand('%:p:h')<CR>
-vnoremap <silent> <leader>ff :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' files '.expand('%:p:h')<CR>
+nnoremap <leader>ff :lua require('zhiruili.telescope').search_dirfiles()<CR>
 let g:which_key_map['f']['f'] = 'Find in current path'
-nnoremap <silent> <leader>fp :CocList files<CR>
-vnoremap <silent> <leader>fp :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' files'<CR>
+nnoremap <leader>fp :lua require('telescope.builtin').find_files()<CR>
 let g:which_key_map['f']['p'] = 'Find in current workspace'
-nnoremap <silent> <leader>fP :CocList files -W<CR>
-vnoremap <silent> <leader>fP :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' files -W'<CR>
-let g:which_key_map['f']['P'] = 'Find in all workspaces'
-nnoremap <silent> <leader>fg :CocList gfiles<CR>
-vnoremap <silent> <leader>fg :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' gfiles'<CR>
-let g:which_key_map['f']['g'] = 'Find with git filter'
-nnoremap <silent> <leader>f. :CocList files $HOME/.config/nvim<CR>
-vnoremap <silent> <leader>f. :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' files $HOME/.config/nvim'<CR>
+nnoremap <leader>fi :lua require('telescope.builtin').git_files()<CR>
+let g:which_key_map['f']['i'] = 'Find with git filter'
+nnoremap <leader>f. :lua require('zhiruili.telescope').search_dotfiles()<CR>
 let g:which_key_map['f']["."] = 'Find in config path'
 nnoremap <silent> <leader>fR :so $MYVIMRC \| :echo $MYVIMRC.' file has been sourced'<CR>
 let g:which_key_map['f']['R'] = 'Reload config'
-nnoremap <silent> <leader>fr :CocList mru -A<CR>
-vnoremap <silent> <leader>fr :<C-u>exe 'CocList --input='.GetSelectedText(visualmode()).' mru -A'<CR>
+nnoremap <leader>fr <CMD>lua require('telescope.builtin').oldfiles()<CR>
 let g:which_key_map['f']['r'] = 'Find recent'
 nnoremap <silent> <leader>fd :if GetBoolInput("Confirm delete file ? (y/n) ") \| echom "Delete ".expand('%:p') \| Delete \| else \| echo "Cancel delete" \| endif<CR>
 let g:which_key_map['f']['d'] = 'Delete current'
-nnoremap <silent> <leader>fs :CocCommand session.save<CR>
-let g:which_key_map['f']['s'] = 'Save session'
-nnoremap <silent> <leader>fl :CocList sessions<CR>
-let g:which_key_map['f']['l'] = 'Load session'
-nnoremap <silent> <leader>fc :SClose<CR>
-let g:which_key_map['f']['c'] = 'Close session'
 nnoremap <silent> <leader>fn :call RenameFile()<CR>
 let g:which_key_map['f']['n'] = 'Rename'
 " }}}
 " t is for toggle {{{
 let g:which_key_map['t'] = { 'name' : '+Toggle' }
-nnoremap <silent> <leader>tl :CocList filetypes<CR>
+nnoremap <leader>tl <CMD>lua require('telescope.builtin').filetypes()<CR>
 let g:which_key_map['t']['l'] = 'Language mode'
-nnoremap <silent> <leader>tc :CocList colors<CR>
+nnoremap <leader>tc <CMD>lua require('telescope.builtin').colorscheme()<CR>
 let g:which_key_map['t']['c'] = 'Colorscheme'
 nnoremap <silent> <leader>tn :setlocal nonumber!<CR>
 let g:which_key_map['t']['n'] = 'Line numbers'
@@ -151,7 +137,7 @@ nnoremap <silent> <leader>ou :UndotreeToggle<CR>
 let g:which_key_map['o']['t'] = 'Undo tree'
 nnoremap <silent> <leader>oT :<C-u>exe 'Deol -split=hor -cwd='.expand('%:p:h')<CR>
 let g:which_key_map['o']['T'] = 'Terminal here'
-nnoremap <silent> <leader>oe :CocCommand explorer<CR>
+nnoremap <silent> <leader>oe <CMD>NERDTreeToggle<CR>
 let g:which_key_map['o']['e'] = 'File explorer'
 nnoremap <silent> <leader>ov :Vista<CR>
 let g:which_key_map['o']['v'] = 'Tag viewer'
@@ -167,8 +153,6 @@ let g:which_key_map['o']['v'] = 'Tag viewer'
 " }}}
 " w is for window {{{
 let g:which_key_map['w'] = { 'name' : '+Window' }
-nnoremap <silent> <leader>ww :CocList windows<CR>
-let g:which_key_map['w']['w'] = 'Select any'
 nnoremap <silent> <leader>wh :wincmd h<CR>
 let g:which_key_map['w']['h'] = 'Select left'
 nnoremap <silent> <leader>wj :wincmd j<CR>
@@ -185,9 +169,9 @@ nnoremap <silent> <leader>wK :wincmd K<CR>
 let g:which_key_map['w']['K'] = 'Move to up'
 nnoremap <silent> <leader>wL :wincmd L<CR>
 let g:which_key_map['w']['L'] = 'Move to right'
-nnoremap <silent> <leader>wv :bel vsplit \| CocList mru -A<CR>
+nnoremap <silent> <leader>wv <CMD>bel vsplit \| lua require('telescope.builtin').oldfiles()<CR>
 let g:which_key_map['w']['v'] = 'VSplit'
-nnoremap <silent> <leader>ws :bel split \| CocList mru -A<CR>
+nnoremap <silent> <leader>ws <CMD>bel split \| lua require('telescope.builtin').oldfiles()<CR>
 let g:which_key_map['w']['s'] = 'HSplit'
 nnoremap <silent> <leader>wd :close<CR>
 let g:which_key_map['w']['d'] = 'Close current'
@@ -205,58 +189,52 @@ let g:which_key_map['w']['u'] = 'Swap'
 " }}}
 " s is for search {{{
 let g:which_key_map['s'] = { 'name' : '+Search' }
-nnoremap <silent> <leader>sp :CocList -I -A grep<CR>
-vnoremap <silent> <leader>sp :<C-u>exe 'CocList -I -A --input='.GetSelectedText(visualmode()).' grep'<CR>
+nnoremap <leader>sp <CMD>lua require('telescope.builtin').live_grep()<CR>
 let g:which_key_map['s']['p'] = 'In project'
-nnoremap <silent> <leader>ss :CocList -I -A lines<CR>
-vnoremap <silent> <leader>ss :<C-u>exe 'CocList -I -A --input='.GetSelectedText(visualmode()).' lines'<CR>
+nnoremap <leader>sk <CMD>lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
+let g:which_key_map['s']['k'] = 'Current word'
+nnoremap <leader>ss <CMD>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>
 let g:which_key_map['s']['s'] = 'In current buffer'
-nnoremap <silent> <leader>si :CocList -A outline<CR>
-vnoremap <silent> <leader>si :<C-u>exe 'CocList -A --input='.GetSelectedText(visualmode()).' outline'<CR>
+nnoremap <leader>si <CMD>lua require('telescope.builtin').treesitter()<CR>
 let g:which_key_map['s']['i'] = 'Outline'
-nnoremap <silent> <leader>so :CocList -I -A symbols<CR>
-vnoremap <silent> <leader>so :<C-u>exe 'CocList -I -A --input='.GetSelectedText(visualmode()).' symbols'<CR>
+nnoremap <leader>so <CMD>lua require('telescope.builtin').lsp_workspace_symbols()<CR>
 let g:which_key_map['s']['o'] = 'Workspace symbols'
-nnoremap <silent> <leader>sy :CocList -A yank<CR>
-let g:which_key_map['s']['y'] = 'Yank'
-nnoremap <silent> <leader>sh :CocList helptags<CR>
+nnoremap <leader>sh <CMD>lua require('telescope.builtin').help_tags()<CR>
 let g:which_key_map['s']['h'] = 'Help tags'
-nnoremap <silent> <leader>sm :CocList maps<CR>
+nnoremap <leader>sm <CMD>lua require('telescope.builtin').keymaps()<CR>
 let g:which_key_map['s']['m'] = 'Keymapping'
-nnoremap <silent> <leader>sl :CocList links<CR>
-let g:which_key_map['s']['l'] = 'Links'
-nnoremap <silent> <leader>s: :CocList commands<CR>
-let g:which_key_map['s'][':'] = 'Coc commands'
+nnoremap <leader>sm <CMD>lua require('telescope.builtin').commands()<CR>
+let g:which_key_map['s'][':'] = 'Commands'
 " }}}
 " g is for git {{{
 let g:which_key_map['g'] = { 'name' : '+Git' }
-nnoremap <silent> <leader>gg :CocList gstatus<CR>
+nnoremap <leader>gg <CMD>lua require('telescope.builtin').git_status()<CR>
 let g:which_key_map['g']['g'] = 'Status'
-nnoremap <silent> <leader>go :CocCommand git.showCommit<CR>
-let g:which_key_map['g']['o'] = 'Commit log'
+nnoremap <leader>go <CMD>lua require('telescope.builtin').git_bcommits()<CR>
+let g:which_key_map['g']['o'] = 'Buffer commit log'
+nnoremap <leader>gO <CMD>lua require('telescope.builtin').git_commits()<CR>
+let g:which_key_map['g']['O'] = 'Project commit log'
 nnoremap <silent> <leader>ga :Git add %<CR>
 let g:which_key_map['g']['a'] = 'Add current'
 nnoremap <silent> <leader>gA :Git add .<CR>
 let g:which_key_map['g']['A'] = 'Add all'
-nnoremap <silent> <leader>gb :Git blame<CR>
-let g:which_key_map['g']['b'] = 'Blame'
-nnoremap <silent> <leader>gB :CocCommand browserOpen<CR>
-let g:which_key_map['g']['B'] = 'Open browser'
+nnoremap <leader>gb :lua require('zhiruili.telescope').git_branches()<CR>
+let g:which_key_map['g']['b'] = 'Branch'
+nnoremap <silent> <leader>gB :Git blame<CR>
+let g:which_key_map['g']['B'] = 'Blame'
 nnoremap <silent> <leader>gc :Git commit<CR>
 let g:which_key_map['g']['c'] = 'Commit'
 nnoremap <silent> <leader>gC :Git commit --all<CR>
 let g:which_key_map['g']['C'] = 'Commit all'
 nnoremap <silent> <leader>gd :Gdiffsplit<CR>
 let g:which_key_map['g']['d'] = 'Diff'
-nnoremap <silent> <leader>gu :CocCommand git.chunkUndo<CR>
+nmap <leader>gu <Plug>(GitGutterUndoHunk)
 let g:which_key_map['g']['u'] = 'Undo'
-nnoremap <silent> <leader>gy :CocCommand git.copyUrl<CR>
-let g:which_key_map['g']['y'] = 'Copy URL'
-nnoremap <silent> <leader>gp :CocCommand git.push<CR>
+nnoremap <silent> <leader>gp :Git push<CR>
 let g:which_key_map['g']['p'] = 'Push'
 nnoremap <silent> <leader>gl :Git pull<CR>
 let g:which_key_map['g']['l'] = 'Pull'
-nnoremap <silent> <leader>gs :CocCommand git.chunkStage<CR>
+nmap <leader>gs <Plug>(GitGutterStageHunk)
 let g:which_key_map['g']['s'] = 'Stage chunk'
 nnoremap <silent> <leader>gv :GV!<CR>
 let g:which_key_map['g']['v'] = 'View buffer commits'
@@ -265,31 +243,25 @@ let g:which_key_map['g']['V'] = 'View project commits'
 " }}}
 " l is for language {{{
 let g:which_key_map['l'] = { 'name' : '+Language' }
-nmap <silent> <leader>ld <Plug>(coc-definition)
+nnoremap <leader>la <CMD>lua require('telescope.builtin').lsp_code_actions()<CR>
+let g:which_key_map['l']['a'] = 'Actions'
+nnoremap <leader>ld <CMD>lua vim.lsp.buf.definition()<CR>
 let g:which_key_map['l']['d'] = 'Definition'
-nmap <silent> <leader>lD <Plug>(coc-declaration)
+nnoremap <leader>lD <CMD>lua vim.lsp.buf.declaration()<CR>
 let g:which_key_map['l']['D'] = 'Declaration'
-nmap <silent> <leader>ly <Plug>(coc-type-definition)
-let g:which_key_map['l']['y'] = 'Type definition'
-nmap <silent> <leader>li <Plug>(coc-implementation)
+nnoremap <leader>li <CMD>lua vim.lsp.buf.implementation()<CR>
 let g:which_key_map['l']['i'] = 'Implementation'
-nmap <silent> <leader>lr <Plug>(coc-references)
+nnoremap <leader>lr <CMD>lua require('telescope.builtin').lsp_references()<CR>
 let g:which_key_map['l']['r'] = 'References'
-xmap <silent> <leader>lf <Plug>(coc-format-selected)
-nmap <silent> <leader>lf <Plug>(coc-format-selected)
+vnoremap <leader>lf <CMD>lua vim.lsp.buf.range_formatting()<CR>
+nnoremap <leader>lf <CMD>lua vim.lsp.buf.formatting()<CR>
 let g:which_key_map['l']['f'] = 'Format selected'
-nmap <silent> <leader>lF <Plug>(coc-format)
-let g:which_key_map['l']['F'] = 'Format buffer'
-nmap <silent> <leader>ly <Plug>(coc-type-definition)
-let g:which_key_map['l']['y'] = 'Type definition'
-nnoremap <silent> <leader>le :CocList diagnostics<CR>
-let g:which_key_map['l']['e'] = 'Diagnostics'
-nmap <silent> <leader>lq <Plug>(coc-fix-current)
-let g:which_key_map['l']['q'] = 'Quickfix'
-nmap <silent> <leader>ln <Plug>(coc-rename)
+nnoremap <leader>le <CMD>lua require('telescope.builtin').lsp_document_diagnostics()<CR>
+let g:which_key_map['l']['e'] = 'Document diagnostics'
+nnoremap <leader>lE <CMD>lua require('telescope.builtin').lsp_workspace_diagnostics()<CR>
+let g:which_key_map['l']['E'] = 'Project diagnostics'
+nnoremap <CMD>lua vim.lsp.buf.rename()<CR>
 let g:which_key_map['l']['n'] = 'Rename'
-nnoremap <silent> <leader>ls :CocList snippets<CR>
-let g:which_key_map['l']['s'] = 'snippets'
 nnoremap <silent> <leader>lb :AsyncTask build<CR>
 let g:which_key_map['l']['b'] = 'build'
 nnoremap <silent> <leader>lx :AsyncTask execute<CR>
@@ -304,12 +276,10 @@ call which_key#register('<Space>', "g:which_key_map")
 " }}}
 " gX commands {{{
 " GoTo code navigation {{{
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gD <Plug>(coc-declaration)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gl <Plug>(coc-openlink)
+nnoremap gd <CMD>lua vim.lsp.buf.definition()<CR>
+nnoremap gD <CMD>lua vim.lsp.buf.declaration()<CR>
+nnoremap gi <CMD>lua vim.lsp.buf.implementation()<CR>
+nnoremap gr <CMD>lua vim.lsp.buf.references()<CR>
 " }}}
 " EasyAlign {{{
 xmap ga <Plug>(EasyAlign)
@@ -318,29 +288,10 @@ nmap ga <Plug>(EasyAlign)
 " }}}
 " Moving {{{
 nmap s <Plug>(easymotion-overwin-f2)
-nmap <silent> [e <Plug>(coc-diagnostic-prev)
-nmap <silent> ]e <Plug>(coc-diagnostic-next)
-nmap <silent> [g <Plug>(coc-git-prevchunk)
-nmap <silent> ]g <Plug>(coc-git-nextchunk)
-nmap <silent> [c <Plug>(coc-git-prevconflict)
-nmap <silent> ]c <Plug>(coc-git-nextconflict)
-" }}}
-" Text objects {{{
-" create text object for git chunks
-omap ig <Plug>(coc-git-chunk-inner)
-xmap ig <Plug>(coc-git-chunk-inner)
-omap ag <Plug>(coc-git-chunk-outer)
-xmap ag <Plug>(coc-git-chunk-outer)
-" Introduce function text object
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
+nnoremap [e <CMD>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap ]e <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap [c <Plug>(GitGutterPrevHunk)
 " }}}
 " Search for selected text, forwards or backwards. {{{
 " https://vim.fandom.com/wiki/Search_for_visually_selected_text
@@ -371,6 +322,12 @@ tnoremap <C-[> <C-\><C-n>
 vnoremap < <gv
 vnoremap > >gv
 " }}}
+" Text Objects {{{
+omap ig <Plug>(GitGutterTextObjectInnerPending)
+omap ag <Plug>(GitGutterTextObjectOuterPending)
+xmap ig <Plug>(GitGutterTextObjectInnerVisual)
+xmap ag <Plug>(GitGutterTextObjectOuterVisual)
+" }}}
 "==============================================================================
 " Local key mappings
 "==============================================================================
@@ -383,14 +340,14 @@ vnoremap <silent> <localleader> :silent <c-u> :silent WhichKeyVisual '  '<CR>
 call which_key#register('  ', "g:which_key_map_local")
 " }}}
 " C & C++ {{{
-function! s:CppKeyMapping()
-  let b:which_key_map_local = {}
-  nnoremap <buffer> <silent> <localleader>s :CocCommand clangd.switchSourceHeader<CR>
-  let b:which_key_map_local['s'] = 'Switch header source'
-  call which_key#register('  ', "b:which_key_map_local")
-endfunction
-
-autocmd BufEnter *.c,*.cpp,*.h,*.hpp,*.cc call s:CppKeyMapping()
-  \| autocmd BufLeave <buffer> call which_key#register('  ', "g:which_key_map_local")
+" function! s:CppKeyMapping()
+"   let b:which_key_map_local = {}
+"   nnoremap <buffer> <silent> <localleader>s :CocCommand clangd.switchSourceHeader<CR>
+"   let b:which_key_map_local['s'] = 'Switch header source'
+"   call which_key#register('  ', "b:which_key_map_local")
+" endfunction
+"
+" autocmd BufEnter *.c,*.cpp,*.h,*.hpp,*.cc call s:CppKeyMapping()
+"   \| autocmd BufLeave <buffer> call which_key#register('  ', "g:which_key_map_local")
 " }}}
 

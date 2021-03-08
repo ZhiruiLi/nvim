@@ -10,8 +10,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
   " Keybinding hint
   Plug 'liuchengxu/vim-which-key'
-  " Intellisense
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " UI
   Plug 'morhetz/gruvbox'
   Plug 'joshdick/onedark.vim'
@@ -20,6 +18,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'liuchengxu/vista.vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'preservim/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
   " Convert binary, hex, etc..: crd(10) crx(16) crb(2) cro(8)
   Plug 'glts/vim-magnum'
   Plug 'glts/vim-radical'
@@ -30,6 +30,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-sleuth'
+  Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
   Plug 'junegunn/vim-easy-align'
   Plug 'alvan/vim-closetag'
@@ -49,6 +50,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   " Git
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb'
+  Plug 'airblade/vim-gitgutter'
   Plug 'junegunn/gv.vim'
   " Terminals
   Plug 'Shougo/deol.nvim'
@@ -66,11 +68,19 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   " Other lang
   Plug 'neoclide/jsonc.vim'
   Plug 'sheerun/vim-polyglot'
-  " Search, now use coc instead
-  " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  " Plug 'junegunn/fzf.vim'
-  " Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
-
+  " Telescope requirements...
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-fzy-native.nvim'
+  " Lsp Plugins
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-lua/completion-nvim'
+  Plug 'tjdevries/nlua.nvim'
+  Plug 'tjdevries/lsp_extensions.nvim'
+  " Neovim Tree shitter
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/playground'
 call plug#end()
 
 " Automatically install missing plugins on startup

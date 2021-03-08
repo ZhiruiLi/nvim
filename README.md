@@ -99,29 +99,6 @@ let g:node_host_prog = expand("~/.nvm/versions/node/v12.16.1/bin/neovim-node-hos
 
 Explanations and installation instruction can be found on my blog
 
-## Language Servers
-
-Since CoC doesn't support all languages in there extensions
-I recommend installing some language servers from scratch
-and adding them to your `coc-settings.json` file
-
-Example:
-
-- bash
-
-  `npm i -g bash-language-server`
-
-  ```
-  "languageserver": {
-  "bash": {
-    "command": "bash-language-server",
-    "args": ["start"],
-    "filetypes": ["sh"],
-    "ignoredRootPaths": ["~"]
-    }
-  }
-  ```
-
 ## TODO
 
 - People asked about vimwiki I kinda hate it but maybe I'll add it
@@ -130,10 +107,8 @@ Example:
 - setup custom paths
 - install script envsubst is your friend
 - add better whitespace plugin and a toggle, video about clean code maybe
-- snippets (coc snippets)
 - git messenger
 - neovide
-- setup global coc extensions to auto install
 
 ## VSCode integration
 

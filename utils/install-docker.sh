@@ -3,29 +3,6 @@
 set -o nounset    # error when referencing undefined variable
 set -o errexit    # exit when command fails
 
-installnodemac() { \
-  brew install node
-}
-
-installnodeubuntu() { \
-  sudo apt install nodejs
-  sudo apt install npm
-}
-
-installnodearch() { \
-  sudo pacman -S nodejs
-  sudo pacman -S npm
-}
-
-installnode() { \
-  echo "Installing node..."
-  [ "$(uname)" == "Darwin" ] && installnodemac
-  [  -n "$(uname -a | grep Ubuntu)" ] && installnodeubuntu
-  [ -f "/etc/arch-release" ] && installnodearch
-  [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ] && echo "Windows not currently supported"
-  sudo npm i -g neovim
-}
-
 installpiponmac() { \
   sudo curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
   python3 get-pip.py
@@ -53,16 +30,6 @@ installpynvim() { \
   pip3 install pynvim
 }
 
-installcocextensions() { \
-  # Install extensions
-  mkdir -p ~/.config/coc/extensions
-  cd ~/.config/coc/extensions
-  [ ! -f package.json ] && echo '{"dependencies":{}}'> package.json
-  # Change extension names to the extensions you need
-  # sudo npm install coc-explorer coc-snippets coc-json coc-actions --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
-  npm install coc-explorer coc-snippets coc-json coc-actions --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
-}
-
 cloneconfig() { \
   echo "Cloning Nvim configuration"
   git clone https://github.com/zhiruili/nvim.git ~/.config/nvim
@@ -80,13 +47,6 @@ installplugins() { \
   nvim --headless +PlugInstall +qall > /dev/null 2>&1
   mv $HOME/.config/nvim/init.vim $HOME/.config/nvim/utils/init.vim
   mv $HOME/.config/nvim/init.vim.tmp $HOME/.config/nvim/init.vim
-}
-
-asktoinstallnode() { \
-  echo "node not found"
-  echo -n "Would you like to install node now (y/n)? "
-  read answer
-  [ "$answer" != "${answer#[Yy]}" ] && installnode && installcocextensions
 }
 
 asktoinstallpip() { \
@@ -133,10 +93,6 @@ echo 'Installing Nvim'
 # install pip
 which pip3 > /dev/null && echo "pip installed, moving on..." || asktoinstallpip
 
-# install node and neovim support
-which node > /dev/null && echo "node installed, moving on..." || asktoinstallnode
-
-
 # install pynvim
 pip3 list | grep pynvim > /dev/null && echo "pynvim installed, moving on..." || installpynvim
 
@@ -153,8 +109,6 @@ cloneconfig
 
 # install plugins
 which nvim > /dev/null && installplugins
-
-installcocextensions
 
 echo "I recommend you also install and activate a font from here: https://github.com/ryanoasis/nerd-fonts"
 
