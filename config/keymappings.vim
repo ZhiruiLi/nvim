@@ -93,7 +93,7 @@ nnoremap <leader>f. :lua require('zhiruili.telescope').search_dotfiles()<CR>
 let g:which_key_map['f']["."] = 'Find in config path'
 nnoremap <leader>fR :so $MYVIMRC \| :echo $MYVIMRC.' file has been sourced'<CR>
 let g:which_key_map['f']['R'] = 'Reload config'
-nnoremap <leader>fr <CMD>lua require('telescope.builtin').oldfiles()<CR>
+nnoremap <leader>fr :lua require('telescope.builtin').oldfiles()<CR>
 let g:which_key_map['f']['r'] = 'Find recent'
 nnoremap <leader>fd :if GetBoolInput("Confirm delete file ? (y/n) ") \| echom "Delete ".expand('%:p') \| Delete \| else \| echo "Cancel delete" \| endif<CR>
 let g:which_key_map['f']['d'] = 'Delete current'
@@ -102,9 +102,9 @@ let g:which_key_map['f']['n'] = 'Rename'
 " }}}
 " t is for toggle {{{
 let g:which_key_map['t'] = { 'name' : '+Toggle' }
-nnoremap <leader>tl <CMD>lua require('telescope.builtin').filetypes()<CR>
+nnoremap <leader>tl :lua require('telescope.builtin').filetypes()<CR>
 let g:which_key_map['t']['l'] = 'Language mode'
-nnoremap <leader>tc <CMD>lua require('telescope.builtin').colorscheme()<CR>
+nnoremap <leader>tc :lua require('telescope.builtin').colorscheme()<CR>
 let g:which_key_map['t']['c'] = 'Colorscheme'
 nnoremap <leader>tn :setlocal nonumber!<CR>
 let g:which_key_map['t']['n'] = 'Line numbers'
@@ -137,7 +137,7 @@ nnoremap <leader>oT :<C-u>exe 'Deol -split=hor -cwd='.expand('%:p:h')<CR>
 let g:which_key_map['o']['T'] = 'Terminal here'
 nnoremap <leader>ou :UndotreeToggle<CR>
 let g:which_key_map['o']['u'] = 'Undo tree'
-nnoremap <leader>oe <CMD>NERDTreeToggle<CR>
+nnoremap <leader>oe :NERDTreeToggle<CR>
 let g:which_key_map['o']['e'] = 'File explorer'
 " oo is for open with external {{{
   let g:which_key_map['o']['o'] = { 'name' : '+External' }
@@ -169,9 +169,9 @@ nnoremap <leader>wK :wincmd K<CR>
 let g:which_key_map['w']['K'] = 'Move to up'
 nnoremap <leader>wL :wincmd L<CR>
 let g:which_key_map['w']['L'] = 'Move to right'
-nnoremap <leader>wv <CMD>bel vsplit \| lua require('telescope.builtin').oldfiles()<CR>
+nnoremap <leader>wv :bel vsplit \| lua require('telescope.builtin').oldfiles()<CR>
 let g:which_key_map['w']['v'] = 'VSplit'
-nnoremap <leader>ws <CMD>bel split \| lua require('telescope.builtin').oldfiles()<CR>
+nnoremap <leader>ws :bel split \| lua require('telescope.builtin').oldfiles()<CR>
 let g:which_key_map['w']['s'] = 'HSplit'
 nnoremap <leader>wd :close<CR>
 let g:which_key_map['w']['d'] = 'Close current'
@@ -187,30 +187,30 @@ let g:which_key_map['w']['='] = 'Equal all'
 " }}}
 " s is for search {{{
 let g:which_key_map['s'] = { 'name' : '+Search' }
-nnoremap <leader>sp <CMD>lua require('telescope.builtin').live_grep()<CR>
+nnoremap <leader>sp :lua require('telescope.builtin').live_grep()<CR>
 let g:which_key_map['s']['p'] = 'In project'
-nnoremap <leader>sk <CMD>lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
+nnoremap <leader>sk :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
 let g:which_key_map['s']['k'] = 'Current word'
-nnoremap <leader>ss <CMD>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>
+nnoremap <leader>ss :lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>
 let g:which_key_map['s']['s'] = 'In current buffer'
-nnoremap <leader>si <CMD>lua require('telescope.builtin').treesitter()<CR>
+nnoremap <leader>si :lua require('telescope.builtin').treesitter()<CR>
 let g:which_key_map['s']['i'] = 'Outline'
-nnoremap <leader>so <CMD>lua require('telescope.builtin').lsp_workspace_symbols()<CR>
+nnoremap <leader>so :lua require('telescope.builtin').lsp_workspace_symbols()<CR>
 let g:which_key_map['s']['o'] = 'Workspace symbols'
-nnoremap <leader>sh <CMD>lua require('telescope.builtin').help_tags()<CR>
+nnoremap <leader>sh :lua require('telescope.builtin').help_tags()<CR>
 let g:which_key_map['s']['h'] = 'Help tags'
-nnoremap <leader>sm <CMD>lua require('telescope.builtin').keymaps()<CR>
+nnoremap <leader>sm :lua require('telescope.builtin').keymaps()<CR>
 let g:which_key_map['s']['m'] = 'Keymapping'
-nnoremap <leader>sm <CMD>lua require('telescope.builtin').commands()<CR>
+nnoremap <leader>sm :lua require('telescope.builtin').commands()<CR>
 let g:which_key_map['s'][':'] = 'Commands'
 " }}}
 " g is for git {{{
 let g:which_key_map['g'] = { 'name' : '+Git' }
-nnoremap <leader>gg <CMD>lua require('telescope.builtin').git_status()<CR>
+nnoremap <leader>gg :lua require('telescope.builtin').git_status()<CR>
 let g:which_key_map['g']['g'] = 'Status'
-nnoremap <leader>go <CMD>lua require('telescope.builtin').git_bcommits()<CR>
+nnoremap <leader>go :lua require('telescope.builtin').git_bcommits()<CR>
 let g:which_key_map['g']['o'] = 'Buffer commit log'
-nnoremap <leader>gO <CMD>lua require('telescope.builtin').git_commits()<CR>
+nnoremap <leader>gO :lua require('telescope.builtin').git_commits()<CR>
 let g:which_key_map['g']['O'] = 'Project commit log'
 nnoremap <leader>ga :Git add %<CR>
 let g:which_key_map['g']['a'] = 'Add current'
@@ -241,24 +241,24 @@ let g:which_key_map['g']['V'] = 'View project commits'
 " }}}
 " l is for language {{{
 let g:which_key_map['l'] = { 'name' : '+Language' }
-nnoremap <leader>la <CMD>lua require('telescope.builtin').lsp_code_actions()<CR>
+nnoremap <leader>la :lua require('telescope.builtin').lsp_code_actions()<CR>
 let g:which_key_map['l']['a'] = 'Actions'
-nnoremap <leader>ld <CMD>lua vim.lsp.buf.definition()<CR>
+nnoremap <leader>ld :lua vim.lsp.buf.definition()<CR>
 let g:which_key_map['l']['d'] = 'Definition'
-nnoremap <leader>lD <CMD>lua vim.lsp.buf.declaration()<CR>
+nnoremap <leader>lD :lua vim.lsp.buf.declaration()<CR>
 let g:which_key_map['l']['D'] = 'Declaration'
-nnoremap <leader>li <CMD>lua vim.lsp.buf.implementation()<CR>
+nnoremap <leader>li :lua vim.lsp.buf.implementation()<CR>
 let g:which_key_map['l']['i'] = 'Implementation'
-nnoremap <leader>lr <CMD>lua require('telescope.builtin').lsp_references()<CR>
+nnoremap <leader>lr :lua require('telescope.builtin').lsp_references()<CR>
 let g:which_key_map['l']['r'] = 'References'
-vnoremap <leader>lf <CMD>lua vim.lsp.buf.range_formatting()<CR>
-nnoremap <leader>lf <CMD>lua vim.lsp.buf.formatting()<CR>
+vnoremap <leader>lf :lua vim.lsp.buf.range_formatting()<CR>
+nnoremap <leader>lf :lua vim.lsp.buf.formatting()<CR>
 let g:which_key_map['l']['f'] = 'Format selected'
-nnoremap <leader>le <CMD>lua require('telescope.builtin').lsp_document_diagnostics()<CR>
+nnoremap <leader>le :lua require('telescope.builtin').lsp_document_diagnostics()<CR>
 let g:which_key_map['l']['e'] = 'Document diagnostics'
-nnoremap <leader>lE <CMD>lua require('telescope.builtin').lsp_workspace_diagnostics()<CR>
+nnoremap <leader>lE :lua require('telescope.builtin').lsp_workspace_diagnostics()<CR>
 let g:which_key_map['l']['E'] = 'Project diagnostics'
-nnoremap <CMD>lua vim.lsp.buf.rename()<CR>
+nnoremap :lua vim.lsp.buf.rename()<CR>
 let g:which_key_map['l']['n'] = 'Rename'
 nnoremap <leader>lb :AsyncTask build<CR>
 let g:which_key_map['l']['b'] = 'build'
@@ -274,10 +274,10 @@ call which_key#register('<Space>', "g:which_key_map")
 " }}}
 " gX commands {{{
 " GoTo code navigation {{{
-nnoremap gd <CMD>lua vim.lsp.buf.definition()<CR>
-nnoremap gD <CMD>lua vim.lsp.buf.declaration()<CR>
-nnoremap gi <CMD>lua vim.lsp.buf.implementation()<CR>
-nnoremap gr <CMD>lua require('telescope.builtin').lsp_references()<CR>
+nnoremap gd :lua vim.lsp.buf.definition()<CR>
+nnoremap gD :lua vim.lsp.buf.declaration()<CR>
+nnoremap gi :lua vim.lsp.buf.implementation()<CR>
+nnoremap gr :lua require('telescope.builtin').lsp_references()<CR>
 " }}}
 " EasyAlign {{{
 xmap ga <Plug>(EasyAlign)
@@ -286,8 +286,8 @@ nmap ga <Plug>(EasyAlign)
 " }}}
 " Moving {{{
 nmap s <Plug>(easymotion-overwin-f2)
-nnoremap [e <CMD>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap ]e <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap [e :lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap ]e :lua vim.lsp.diagnostic.goto_next()<CR>
 nmap ]c <Plug>(GitGutterNextHunk)
 nmap [c <Plug>(GitGutterPrevHunk)
 " }}}
