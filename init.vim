@@ -15,7 +15,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'joshdick/onedark.vim'
   Plug 'yggdroot/indentline'
   Plug 'mhinz/vim-startify'
-  Plug 'liuchengxu/vista.vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'preservim/nerdtree'

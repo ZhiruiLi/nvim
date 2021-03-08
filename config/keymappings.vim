@@ -133,14 +133,12 @@ let g:which_key_map['t']['D'] = 'Clear all bookmarks'
 let g:which_key_map['o'] = { 'name' : '+Open' }
 nnoremap <leader>ot :<C-u>exe 'Deol -split=hor -cwd='.getcwd()<CR>
 let g:which_key_map['o']['t'] = 'Terminal'
-nnoremap <leader>ou :UndotreeToggle<CR>
-let g:which_key_map['o']['t'] = 'Undo tree'
 nnoremap <leader>oT :<C-u>exe 'Deol -split=hor -cwd='.expand('%:p:h')<CR>
 let g:which_key_map['o']['T'] = 'Terminal here'
+nnoremap <leader>ou :UndotreeToggle<CR>
+let g:which_key_map['o']['u'] = 'Undo tree'
 nnoremap <leader>oe <CMD>NERDTreeToggle<CR>
 let g:which_key_map['o']['e'] = 'File explorer'
-nnoremap <leader>ov :Vista<CR>
-let g:which_key_map['o']['v'] = 'Tag viewer'
 " oo is for open with external {{{
   let g:which_key_map['o']['o'] = { 'name' : '+External' }
   nnoremap <leader>oof :!open -a finder %:h<CR>
@@ -279,7 +277,7 @@ call which_key#register('<Space>', "g:which_key_map")
 nnoremap gd <CMD>lua vim.lsp.buf.definition()<CR>
 nnoremap gD <CMD>lua vim.lsp.buf.declaration()<CR>
 nnoremap gi <CMD>lua vim.lsp.buf.implementation()<CR>
-nnoremap gr <CMD>lua vim.lsp.buf.references()<CR>
+nnoremap gr <CMD>lua require('telescope.builtin').lsp_references()<CR>
 " }}}
 " EasyAlign {{{
 xmap ga <Plug>(EasyAlign)
