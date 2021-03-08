@@ -188,6 +188,7 @@ let g:which_key_map['w']['='] = 'Equal all'
 " s is for search {{{
 let g:which_key_map['s'] = { 'name' : '+Search' }
 nnoremap <leader>sp :lua require('telescope.builtin').live_grep()<CR>
+vnoremap <leader>sp :lua require('telescope.builtin').grep_string { search = vim.fn.GetSelectedText("v") }<CR>
 let g:which_key_map['s']['p'] = 'In project'
 nnoremap <leader>sk :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
 let g:which_key_map['s']['k'] = 'Current word'
