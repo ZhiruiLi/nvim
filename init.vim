@@ -29,8 +29,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-sleuth'
-  Plug 'SirVer/ultisnips'
-  Plug 'honza/vim-snippets'
   Plug 'junegunn/vim-easy-align'
   Plug 'alvan/vim-closetag'
   Plug 'ntpeters/vim-better-whitespace'
@@ -75,8 +73,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   " Lsp Plugins
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/completion-nvim'
-  Plug 'tjdevries/nlua.nvim'
-  Plug 'tjdevries/lsp_extensions.nvim'
   " Neovim Tree shitter
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/playground'
