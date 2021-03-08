@@ -36,8 +36,6 @@ set showtabline=2                       " Always show tabs
 set winwidth=30                         " Minimum width for active window
 set winminwidth=10                      " Minimum width for inactive windows
 set hidden                              " Don't close file when switch buffer
-set undodir=~/.vim/undodir              " Undo dir
-set undofile                            " Persistent undo
 set updatetime=300                      " Faster completion
 set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set ignorecase                          " Search ignoring case
