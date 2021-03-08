@@ -1,6 +1,6 @@
 " Persistent undo
 set undofile
 " Undo dir
-set undodir=$XDG_CACHE_HOME/undo
+set undodir=~/.cache/vim/undo
 
 let g:undotree_SetFocusWhenToggle = 1
