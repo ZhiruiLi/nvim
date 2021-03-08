@@ -11,44 +11,42 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   " Keybinding hint
   Plug 'liuchengxu/vim-which-key'
   " UI
-  Plug 'morhetz/gruvbox'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'joshdick/onedark.vim'
-  Plug 'yggdroot/indentline'
   Plug 'mhinz/vim-startify'
+  Plug 'morhetz/gruvbox'
+  Plug 'preservim/nerdtree'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'preservim/nerdtree'
-  Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'yggdroot/indentline'
   " Convert binary, hex, etc..: crd(10) crx(16) crb(2) cro(8)
   Plug 'glts/vim-magnum'
   Plug 'glts/vim-radical'
   " Unix command helper: :Move, :Delete...
   Plug 'tpope/vim-eunuch'
   " Editing
-  Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-repeat'
-  Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-sleuth'
-  Plug 'junegunn/vim-easy-align'
-  Plug 'alvan/vim-closetag'
-  Plug 'ntpeters/vim-better-whitespace'
-  Plug 'easymotion/vim-easymotion'
-  Plug 'mbbill/undotree'
-  Plug 'jiangmiao/auto-pairs'
-  Plug 'terryma/vim-expand-region'
-  Plug 'kana/vim-textobj-user'
-  Plug 'kana/vim-textobj-line'
-  Plug 'kana/vim-textobj-entire'
-  Plug 'vim-scripts/matchit.zip'
   Plug '907th/vim-auto-save'
   Plug 'MattesGroeger/vim-bookmarks'
+  Plug 'alvan/vim-closetag'
+  Plug 'easymotion/vim-easymotion'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'junegunn/vim-easy-align'
+  Plug 'mbbill/undotree'
+  Plug 'ntpeters/vim-better-whitespace'
+  Plug 'terryma/vim-expand-region'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-sleuth'
+  Plug 'tpope/vim-surround'
+  Plug 'vim-scripts/matchit.zip'
+  Plug 'kana/vim-textobj-user'
+  Plug 'kana/vim-textobj-entire'
+  Plug 'kana/vim-textobj-line'
   " Auto change CWD
   Plug 'airblade/vim-rooter'
   " Git
   Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-rhubarb'
   Plug 'airblade/vim-gitgutter'
-  Plug 'junegunn/gv.vim'
   " Terminals
   Plug 'Shougo/deol.nvim'
   " Build
@@ -59,13 +57,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   " Docs
   Plug 'Shougo/echodoc.vim'
   Plug 'rizzatti/dash.vim'
-  Plug 'dbeniamine/cheat.sh-vim'
   " Notes
   Plug 'mtth/scratch.vim'
   " Other lang
   Plug 'neoclide/jsonc.vim'
   Plug 'sheerun/vim-polyglot'
-  " Telescope requirements...
+  " Telescope requirements
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
