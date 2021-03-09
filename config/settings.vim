@@ -4,7 +4,7 @@ set fileformats=unix,dos,mac            " Use Unix as the standard file type
 set textwidth=80                        " Text width maximum chars before wrapping
 set nowrap                              " No wrap by default
 set linebreak                           " Break long lines at 'breakat'
-set breakat=\ \	;:,!?                   " Long lines break chars
+set breakat=\ \	;:,!?。，；：！？       " Long lines break chars
 set nostartofline                       " Cursor in same column for few commands
 set whichwrap+=h,l,<,>,[,],~            " Move to following line on certain keys
 set backspace=indent,eol,start          " Intuitive backspacing in insert mode
