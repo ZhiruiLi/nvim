@@ -229,10 +229,6 @@ nnoremap <leader>gl :Git pull<CR>
 let g:which_key_map['g']['l'] = 'Pull'
 nmap <leader>gs <Plug>(GitGutterStageHunk)
 let g:which_key_map['g']['s'] = 'Stage chunk'
-nnoremap <leader>gv :GV!<CR>
-let g:which_key_map['g']['v'] = 'View buffer commits'
-nnoremap <leader>gV :GV<CR>
-let g:which_key_map['g']['V'] = 'View project commits'
 " }}}
 " l is for language {{{
 let g:which_key_map['l'] = { 'name' : '+Language' }
