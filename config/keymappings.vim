@@ -250,7 +250,7 @@ nnoremap <silent> <leader>le :lua require('telescope.builtin').lsp_document_diag
 let g:which_key_map['l']['e'] = 'Document diagnostics'
 nnoremap <silent> <leader>lE :lua require('telescope.builtin').lsp_workspace_diagnostics()<CR>
 let g:which_key_map['l']['E'] = 'Project diagnostics'
-nnoremap :lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> <leader>ln :lua vim.lsp.buf.rename()<CR>
 let g:which_key_map['l']['n'] = 'Rename'
 nnoremap <silent> <leader>lb :AsyncTask build<CR>
 let g:which_key_map['l']['b'] = 'build'
