@@ -258,7 +258,7 @@ let g:which_key_map['l']['x'] = 'execute'
 nnoremap <leader>lt :AsyncTask test<CR>
 let g:which_key_map['l']['t'] = 'test'
 nnoremap <leader>lg :AsyncTask codegen<CR>
-let g:which_key_map['l']['t'] = 'codegen'
+let g:which_key_map['l']['g'] = 'codegen'
 " }}}
 " Register which key map {{{
 call which_key#register('<Space>', "g:which_key_map")
