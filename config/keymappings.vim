@@ -22,20 +22,20 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 " Single mappings {{{
 let g:which_key_map['`'] = [ ':b#',                  'Switch recent buffer' ]
 let g:which_key_map['e'] = [ ':Scratch',             'Open scratch pad' ]
-nmap <leader><enter> <Plug>BookmarkShowAll
+nmap <silent> <leader><enter> <Plug>BookmarkShowAll
 let g:which_key_map['<CR>'] = 'Show bookmarks'
 " Select buffer 1~9
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <silent> <leader>1 <Plug>AirlineSelectTab1
+nmap <silent> <leader>2 <Plug>AirlineSelectTab2
+nmap <silent> <leader>3 <Plug>AirlineSelectTab3
+nmap <silent> <leader>4 <Plug>AirlineSelectTab4
+nmap <silent> <leader>5 <Plug>AirlineSelectTab5
+nmap <silent> <leader>6 <Plug>AirlineSelectTab6
+nmap <silent> <leader>7 <Plug>AirlineSelectTab7
+nmap <silent> <leader>8 <Plug>AirlineSelectTab8
+nmap <silent> <leader>9 <Plug>AirlineSelectTab9
 " Select last buffer
-nnoremap <leader>0 :exe "normal \<Plug>AirlineSelectTab1"<CR>:exe "normal \<Plug>AirlineSelectPrevTab"<CR>
+nnoremap <silent> <leader>0 :exe "normal \<Plug>AirlineSelectTab1"<CR>:exe "normal \<Plug>AirlineSelectPrevTab"<CR>
 " Ignore them
 let g:which_key_map['1'] = 'which_key_ignore'
 let g:which_key_map['2'] = 'which_key_ignore'
@@ -96,168 +96,168 @@ let g:which_key_map['f']['n'] = 'Rename'
 " }}}
 " t is for toggle {{{
 let g:which_key_map['t'] = { 'name' : '+Toggle' }
-nnoremap <leader>tl :lua require('telescope.builtin').filetypes()<CR>
+nnoremap <silent> <leader>tl :lua require('telescope.builtin').filetypes()<CR>
 let g:which_key_map['t']['l'] = 'Language mode'
-nnoremap <leader>tc :lua require('telescope.builtin').colorscheme()<CR>
+nnoremap <silent> <leader>tc :lua require('telescope.builtin').colorscheme()<CR>
 let g:which_key_map['t']['c'] = 'Colorscheme'
-nnoremap <leader>tn :setlocal nonumber!<CR>
+nnoremap <silent> <leader>tn :setlocal nonumber!<CR>
 let g:which_key_map['t']['n'] = 'Line numbers'
-nnoremap  <leader>tr :setlocal relativenumber!<CR>
+nnoremap <silent> <leader>tr :setlocal relativenumber!<CR>
 let g:which_key_map['t']['r'] = 'Relavive line numbers'
-nnoremap <leader>tp :setlocal spell! spelllang=en_us<CR>
+nnoremap <silent> <leader>tp :setlocal spell! spelllang=en_us<CR>
 let g:which_key_map['t']['p'] = 'Spell check'
-nnoremap <leader>th :let @/ = ""<CR>
+nnoremap <silent> <leader>th :let @/ = ""<CR>
 let g:which_key_map['t']['h'] = 'Remove search highlight'
-nnoremap <leader>tm :ToggleStripWhitespaceOnSave<CR>
+nnoremap <silent> <leader>tm :ToggleStripWhitespaceOnSave<CR>
 let g:which_key_map['t']['m'] = 'Trim whitespaces'
-nnoremap <leader>tw :execute('setlocal wrap! breakindent! colorcolumn='.(&colorcolumn == '' ? &textwidth : ''))<CR>
+nnoremap <silent> <leader>tw :execute('setlocal wrap! breakindent! colorcolumn='.(&colorcolumn == '' ? &textwidth : ''))<CR>
 let g:which_key_map['t']['w'] = 'Line wrap'
-nnoremap <leader>ts :AutoSaveToggle<CR>
+nnoremap <silent> <leader>ts :AutoSaveToggle<CR>
 let g:which_key_map['t']['s'] = 'Auto save'
-nmap <leader>tk <Plug>BookmarkToggle
+nmap <silent> <leader>tk <Plug>BookmarkToggle
 let g:which_key_map['t']['k'] = 'Bookmark'
-nmap <leader>tK <Plug>BookmarkAnnotate
+nmap <silent> <leader>tK <Plug>BookmarkAnnotate
 let g:which_key_map['t']['K'] = 'Bookmark annotate'
-nmap <leader>td <Plug>BookmarkClear
+nmap <silent> <leader>td <Plug>BookmarkClear
 let g:which_key_map['t']['d'] = 'Clear current file bookmarks'
-nmap <leader>tD <Plug>BookmarkClearAll
+nmap <silent> <leader>tD <Plug>BookmarkClearAll
 let g:which_key_map['t']['D'] = 'Clear all bookmarks'
 " }}}
 " o is for open {{{
 let g:which_key_map['o'] = { 'name' : '+Open' }
-nnoremap <leader>ot :<C-u>exe 'Deol -split=hor -cwd='.getcwd()<CR>
+nnoremap <silent> <leader>ot :<C-u>exe 'Deol -split=hor -cwd='.getcwd()<CR>
 let g:which_key_map['o']['t'] = 'Terminal'
-nnoremap <leader>oT :<C-u>exe 'Deol -split=hor -cwd='.expand('%:p:h')<CR>
+nnoremap <silent> <leader>oT :<C-u>exe 'Deol -split=hor -cwd='.expand('%:p:h')<CR>
 let g:which_key_map['o']['T'] = 'Terminal here'
-nnoremap <leader>ou :UndotreeToggle<CR>
+nnoremap <silent> <leader>ou :UndotreeToggle<CR>
 let g:which_key_map['o']['u'] = 'Undo tree'
-nnoremap <leader>oe :NERDTreeToggle<CR>
+nnoremap <silent> <leader>oe :NERDTreeToggle<CR>
 let g:which_key_map['o']['e'] = 'File explorer'
 " oo is for open with external {{{
   let g:which_key_map['o']['o'] = { 'name' : '+External' }
-  nnoremap <leader>oof :!open -a finder %:h<CR>
+  nnoremap <silent> <leader>oof :!open -a finder %:h<CR>
   let g:which_key_map['o']['o']['f'] = 'With finder'
-  nnoremap <leader>ooy :!open -a yoink %:p<CR>
+  nnoremap <silent> <leader>ooy :!open -a yoink %:p<CR>
   let g:which_key_map['o']['o']['y'] = 'With yoink'
-  nnoremap <leader>oom :!open -a typora %:p<CR>
+  nnoremap <silent> <leader>oom :!open -a typora %:p<CR>
   let g:which_key_map['o']['o']['m'] = 'With typora'
 " }}}
 " }}}
 " w is for window {{{
 let g:which_key_map['w'] = { 'name' : '+Window' }
-nnoremap <leader>ww :<C-u>call SwapWinBuffer()<CR>
+nnoremap <silent> <leader>ww :<C-u>call SwapWinBuffer()<CR>
 let g:which_key_map['w']['w'] = 'Swap'
-nnoremap <leader>wh :wincmd h<CR>
+nnoremap <silent> <leader>wh :wincmd h<CR>
 let g:which_key_map['w']['h'] = 'Select left'
-nnoremap <leader>wj :wincmd j<CR>
+nnoremap <silent> <leader>wj :wincmd j<CR>
 let g:which_key_map['w']['j'] = 'Select bottom'
-nnoremap <leader>wk :wincmd k<CR>
+nnoremap <silent> <leader>wk :wincmd k<CR>
 let g:which_key_map['w']['k'] = 'Select up'
-nnoremap <leader>wl :wincmd l<CR>
+nnoremap <silent> <leader>wl :wincmd l<CR>
 let g:which_key_map['w']['l'] = 'Select right'
-nnoremap <leader>wH :wincmd H<CR>
+nnoremap <silent> <leader>wH :wincmd H<CR>
 let g:which_key_map['w']['H'] = 'Move to left'
-nnoremap <leader>wJ :wincmd J<CR>
+nnoremap <silent> <leader>wJ :wincmd J<CR>
 let g:which_key_map['w']['J'] = 'Move to bottom'
-nnoremap <leader>wK :wincmd K<CR>
+nnoremap <silent> <leader>wK :wincmd K<CR>
 let g:which_key_map['w']['K'] = 'Move to up'
-nnoremap <leader>wL :wincmd L<CR>
+nnoremap <silent> <leader>wL :wincmd L<CR>
 let g:which_key_map['w']['L'] = 'Move to right'
-nnoremap <leader>wv :bel vsplit \| lua require('telescope.builtin').oldfiles()<CR>
+nnoremap <silent> <leader>wv :bel vsplit \| lua require('telescope.builtin').oldfiles()<CR>
 let g:which_key_map['w']['v'] = 'VSplit'
-nnoremap <leader>ws :bel split \| lua require('telescope.builtin').oldfiles()<CR>
+nnoremap <silent> <leader>ws :bel split \| lua require('telescope.builtin').oldfiles()<CR>
 let g:which_key_map['w']['s'] = 'HSplit'
-nnoremap <leader>wd :close<CR>
+nnoremap <silent> <leader>wd :close<CR>
 let g:which_key_map['w']['d'] = 'Close current'
-nnoremap <leader>wD :only<CR>
+nnoremap <silent> <leader>wD :only<CR>
 let g:which_key_map['w']['D'] = 'Close other'
 augroup restorezoom
     au WinEnter * silent! :call ToggleZoom(v:false)
 augroup END
-nnoremap <leader>wo :call ToggleZoom(v:true)<CR>
+nnoremap <silent> <leader>wo :call ToggleZoom(v:true)<CR>
 let g:which_key_map['w']['o'] = 'Maximize'
-nnoremap <leader>w= :wincmd =<CR>
+nnoremap <silent> <leader>w= :wincmd =<CR>
 let g:which_key_map['w']['='] = 'Equal all'
 " }}}
 " s is for search {{{
 let g:which_key_map['s'] = { 'name' : '+Search' }
-nnoremap <leader>sp :lua require('telescope.builtin').live_grep()<CR>
-vnoremap <leader>sp :lua require('telescope.builtin').grep_string { search = vim.fn.GetSelectedText("v") }<CR>
+nnoremap <silent> <leader>sp :lua require('telescope.builtin').live_grep()<CR>
+vnoremap <silent> <leader>sp :lua require('telescope.builtin').grep_string { search = vim.fn.GetSelectedText("v") }<CR>
 let g:which_key_map['s']['p'] = 'In project'
-nnoremap <leader>sk :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
+nnoremap <silent> <leader>sk :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
 let g:which_key_map['s']['k'] = 'Current word'
-nnoremap <leader>ss :lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>
+nnoremap <silent> <leader>ss :lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>
 let g:which_key_map['s']['s'] = 'In current buffer'
-nnoremap <leader>si :lua require('telescope.builtin').treesitter()<CR>
+nnoremap <silent> <leader>si :lua require('telescope.builtin').treesitter()<CR>
 let g:which_key_map['s']['i'] = 'Outline'
-nnoremap <leader>so :lua require('telescope.builtin').lsp_workspace_symbols()<CR>
+nnoremap <silent> <leader>so :lua require('telescope.builtin').lsp_workspace_symbols()<CR>
 let g:which_key_map['s']['o'] = 'Workspace symbols'
-nnoremap <leader>sh :lua require('telescope.builtin').help_tags()<CR>
+nnoremap <silent> <leader>sh :lua require('telescope.builtin').help_tags()<CR>
 let g:which_key_map['s']['h'] = 'Help tags'
-nnoremap <leader>sm :lua require('telescope.builtin').keymaps()<CR>
+nnoremap <silent> <leader>sm :lua require('telescope.builtin').keymaps()<CR>
 let g:which_key_map['s']['m'] = 'Keymapping'
-nnoremap <leader>s: :lua require('telescope.builtin').commands()<CR>
+nnoremap <silent> <leader>s: :lua require('telescope.builtin').commands()<CR>
 let g:which_key_map['s'][':'] = 'Commands'
 " }}}
 " g is for git {{{
 let g:which_key_map['g'] = { 'name' : '+Git' }
-nnoremap <leader>gg :lua require('telescope.builtin').git_status()<CR>
+nnoremap <silent> <leader>gg :lua require('telescope.builtin').git_status()<CR>
 let g:which_key_map['g']['g'] = 'Status'
-nnoremap <leader>go :lua require('telescope.builtin').git_bcommits()<CR>
+nnoremap <silent> <leader>go :lua require('telescope.builtin').git_bcommits()<CR>
 let g:which_key_map['g']['o'] = 'Buffer commit log'
-nnoremap <leader>gO :lua require('telescope.builtin').git_commits()<CR>
+nnoremap <silent> <leader>gO :lua require('telescope.builtin').git_commits()<CR>
 let g:which_key_map['g']['O'] = 'Project commit log'
-nnoremap <leader>ga :Git add %<CR>
+nnoremap <silent> <leader>ga :Git add %<CR>
 let g:which_key_map['g']['a'] = 'Add current'
-nnoremap <leader>gA :Git add .<CR>
+nnoremap <silent> <leader>gA :Git add .<CR>
 let g:which_key_map['g']['A'] = 'Add all'
-nnoremap <leader>gb :lua require('zhiruili.telescope').git_branches()<CR>
+nnoremap <silent> <leader>gb :lua require('zhiruili.telescope').git_branches()<CR>
 let g:which_key_map['g']['b'] = 'Branch'
-nnoremap <leader>gB :Git blame<CR>
+nnoremap <silent> <leader>gB :Git blame<CR>
 let g:which_key_map['g']['B'] = 'Blame'
-nnoremap <leader>gc :Git commit<CR>
+nnoremap <silent> <leader>gc :Git commit<CR>
 let g:which_key_map['g']['c'] = 'Commit'
-nnoremap <leader>gC :Git commit --all<CR>
+nnoremap <silent> <leader>gC :Git commit --all<CR>
 let g:which_key_map['g']['C'] = 'Commit all'
-nnoremap <leader>gd :Gdiffsplit<CR>
+nnoremap <silent> <leader>gd :Gdiffsplit<CR>
 let g:which_key_map['g']['d'] = 'Diff'
-nmap <leader>gu <Plug>(GitGutterUndoHunk)
+nmap <silent> <leader>gu <Plug>(GitGutterUndoHunk)
 let g:which_key_map['g']['u'] = 'Undo'
-nnoremap <leader>gp :Git push<CR>
+nnoremap <silent> <leader>gp :Git push<CR>
 let g:which_key_map['g']['p'] = 'Push'
-nnoremap <leader>gl :Git pull<CR>
+nnoremap <silent> <leader>gl :Git pull<CR>
 let g:which_key_map['g']['l'] = 'Pull'
-nmap <leader>gs <Plug>(GitGutterStageHunk)
+nmap <silent> <leader>gs <Plug>(GitGutterStageHunk)
 let g:which_key_map['g']['s'] = 'Stage chunk'
 " }}}
 " l is for language {{{
 let g:which_key_map['l'] = { 'name' : '+Language' }
-nnoremap <leader>la :lua require('telescope.builtin').lsp_code_actions()<CR>
+nnoremap <silent> <leader>la :lua require('telescope.builtin').lsp_code_actions()<CR>
 let g:which_key_map['l']['a'] = 'Actions'
-nnoremap <leader>ld :lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <leader>ld :lua vim.lsp.buf.definition()<CR>
 let g:which_key_map['l']['d'] = 'Definition'
-nnoremap <leader>lD :lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> <leader>lD :lua vim.lsp.buf.declaration()<CR>
 let g:which_key_map['l']['D'] = 'Declaration'
-nnoremap <leader>li :lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <leader>li :lua vim.lsp.buf.implementation()<CR>
 let g:which_key_map['l']['i'] = 'Implementation'
-nnoremap <leader>lr :lua require('telescope.builtin').lsp_references()<CR>
+nnoremap <silent> <leader>lr :lua require('telescope.builtin').lsp_references()<CR>
 let g:which_key_map['l']['r'] = 'References'
-vnoremap <leader>lf :lua vim.lsp.buf.range_formatting()<CR>
-nnoremap <leader>lf :lua vim.lsp.buf.formatting()<CR>
+vnoremap <silent> <leader>lf :lua vim.lsp.buf.range_formatting()<CR>
+nnoremap <silent> <leader>lf :lua vim.lsp.buf.formatting()<CR>
 let g:which_key_map['l']['f'] = 'Format selected'
-nnoremap <leader>le :lua require('telescope.builtin').lsp_document_diagnostics()<CR>
+nnoremap <silent> <leader>le :lua require('telescope.builtin').lsp_document_diagnostics()<CR>
 let g:which_key_map['l']['e'] = 'Document diagnostics'
-nnoremap <leader>lE :lua require('telescope.builtin').lsp_workspace_diagnostics()<CR>
+nnoremap <silent> <leader>lE :lua require('telescope.builtin').lsp_workspace_diagnostics()<CR>
 let g:which_key_map['l']['E'] = 'Project diagnostics'
 nnoremap :lua vim.lsp.buf.rename()<CR>
 let g:which_key_map['l']['n'] = 'Rename'
-nnoremap <leader>lb :AsyncTask build<CR>
+nnoremap <silent> <leader>lb :AsyncTask build<CR>
 let g:which_key_map['l']['b'] = 'build'
-nnoremap <leader>lx :AsyncTask execute<CR>
+nnoremap <silent> <leader>lx :AsyncTask execute<CR>
 let g:which_key_map['l']['x'] = 'execute'
-nnoremap <leader>lt :AsyncTask test<CR>
+nnoremap <silent> <leader>lt :AsyncTask test<CR>
 let g:which_key_map['l']['t'] = 'test'
-nnoremap <leader>lg :AsyncTask codegen<CR>
+nnoremap <silent> <leader>lg :AsyncTask codegen<CR>
 let g:which_key_map['l']['g'] = 'codegen'
 " }}}
 " Register which key map {{{
@@ -265,14 +265,14 @@ call which_key#register('<Space>', "g:which_key_map")
 " }}}
 " gX commands {{{
 " GoTo code navigation {{{
-nnoremap gd :lua vim.lsp.buf.definition()<CR>
-nnoremap gD :lua vim.lsp.buf.declaration()<CR>
-nnoremap gi :lua vim.lsp.buf.implementation()<CR>
-nnoremap gr :lua require('telescope.builtin').lsp_references()<CR>
+nnoremap <silent> gd :lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gD :lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gi :lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> gr :lua require('telescope.builtin').lsp_references()<CR>
 " }}}
 " EasyAlign {{{
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+xmap <silent> ga <Plug>(EasyAlign)
+nmap <silent> ga <Plug>(EasyAlign)
 " }}}
 " }}}
 " Moving {{{
@@ -296,12 +296,12 @@ vnoremap <silent> # :<C-U>
   \gVzv:call setreg('"', old_reg, old_regtype)<CR>
 " }}}
 " Search in Dash {{{
-nnoremap D :exe 'Dash '.expand('<cword>')<CR>
-vnoremap D :<C-u>exe 'Dash '.GetSelectedText(visualmode())<CR>
+nnoremap <silent> D :exe 'Dash '.expand('<cword>')<CR>
+vnoremap <silent> D :<C-u>exe 'Dash '.GetSelectedText(visualmode())<CR>
 "}}}
 " Preview Document {{{
 " Use K to show documentation in preview window
-nnoremap K :call ShowDocumentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
 "}}}
 " Terminal to normal mode {{{
 tnoremap <ESC> <C-\><C-n>
