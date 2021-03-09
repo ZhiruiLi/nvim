@@ -50,48 +50,48 @@ let g:which_key_map['0'] = 'which_key_ignore'
 " }}}
 " b is for buffer {{{
 let g:which_key_map['b'] = { 'name' : '+Buffer' }
-nnoremap <leader>bb :lua require('telescope.builtin').buffers()<CR>
+nnoremap <silent> <leader>bb :lua require('telescope.builtin').buffers()<CR>
 let g:which_key_map['b']['b'] = 'List buffers'
-nnoremap <leader>bd :bp<bar>sp<bar>bn<bar>bd<CR>
+nnoremap <silent> <leader>bd :bp<bar>sp<bar>bn<bar>bd<CR>
 let g:which_key_map['b']['d'] = 'Delete current'
-nnoremap <leader>bD :%bd\|e#\|bd#<CR>\|'"
+nnoremap <silent> <leader>bD :%bd\|e#\|bd#<CR>\|'"
 let g:which_key_map['b']['D'] = 'Delete other'
-nnoremap <leader>bh :Startify<CR>
+nnoremap <silent> <leader>bh :Startify<CR>
 let g:which_key_map['b']['h'] = 'Home'
-nnoremap <leader>bn :bnext<CR>
+nnoremap <silent> <leader>bn :bnext<CR>
 let g:which_key_map['b']['n'] = 'Next'
-nnoremap <leader>bp :bprevious<CR>
+nnoremap <silent> <leader>bp :bprevious<CR>
 let g:which_key_map['b']['p'] = 'Previous'
-nnoremap <leader>bN :enew<CR>
+nnoremap <silent> <leader>bN :enew<CR>
 let g:which_key_map['b']['N'] = 'New empty'
-nnoremap <leader>br :edit!<CR>
+nnoremap <silent> <leader>br :edit!<CR>
 let g:which_key_map['b']['r'] = 'Reload current'
-nnoremap <leader>bs :w<CR>
+nnoremap <silent> <leader>bs :w<CR>
 let g:which_key_map['b']['s'] = 'Save current'
-nnoremap <leader>bS :wa \| :echo 'All buffers saved'<CR>
+nnoremap <silent> <leader>bS :wa \| :echo 'All buffers saved'<CR>
 let g:which_key_map['b']['S'] = 'Save all'
 " }}}
 " f is for file {{{
 let g:which_key_map['f'] = { 'name' : '+File' }
-nnoremap <leader>fy :let @+=expand("%:t") . ":" . line(".")<CR>
+nnoremap <silent> <leader>fy :let @+=expand("%:t") . ":" . line(".")<CR>
 let g:which_key_map['f']['y'] = 'Yank name with line no'
-nnoremap <leader>fY :let @+=expand("%:p")<CR>
+nnoremap <silent> <leader>fY :let @+=expand("%:p")<CR>
 let g:which_key_map['f']['Y'] = 'Yank full path'
-nnoremap <leader>ff :lua require('zhiruili.telescope').search_dirfiles()<CR>
+nnoremap <silent> <leader>ff :lua require('zhiruili.telescope').search_dirfiles()<CR>
 let g:which_key_map['f']['f'] = 'Find in current path'
-nnoremap <leader>fp :lua require('telescope.builtin').find_files()<CR>
+nnoremap <silent> <leader>fp :lua require('telescope.builtin').find_files()<CR>
 let g:which_key_map['f']['p'] = 'Find in current workspace'
-nnoremap <leader>fi :lua require('telescope.builtin').git_files()<CR>
+nnoremap <silent> <leader>fi :lua require('telescope.builtin').git_files()<CR>
 let g:which_key_map['f']['i'] = 'Find with git filter'
-nnoremap <leader>f. :lua require('zhiruili.telescope').search_dotfiles()<CR>
+nnoremap <silent> <leader>f. :lua require('zhiruili.telescope').search_dotfiles()<CR>
 let g:which_key_map['f']["."] = 'Find in config path'
-nnoremap <leader>fR :so $MYVIMRC \| :echo $MYVIMRC.' file has been sourced'<CR>
+nnoremap <silent> <leader>fR :so $MYVIMRC \| :echo $MYVIMRC.' file has been sourced'<CR>
 let g:which_key_map['f']['R'] = 'Reload config'
-nnoremap <leader>fr :lua require('telescope.builtin').oldfiles()<CR>
+nnoremap <silent> <leader>fr :lua require('telescope.builtin').oldfiles()<CR>
 let g:which_key_map['f']['r'] = 'Find recent'
-nnoremap <leader>fd :if GetBoolInput("Confirm delete file ? (y/n) ") \| echom "Delete ".expand('%:p') \| Delete \| else \| echo "Cancel delete" \| endif<CR>
+nnoremap <silent> <leader>fd :if GetBoolInput("Confirm delete file ? (y/n) ") \| echom "Delete ".expand('%:p') \| Delete \| else \| echo "Cancel delete" \| endif<CR>
 let g:which_key_map['f']['d'] = 'Delete current'
-nnoremap <leader>fn :call RenameFile()<CR>
+nnoremap <silent> <leader>fn :call RenameFile()<CR>
 let g:which_key_map['f']['n'] = 'Rename'
 " }}}
 " t is for toggle {{{
