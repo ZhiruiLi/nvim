@@ -1,21 +1,3 @@
-" Turn spellcheck on for markdown/org files
-augroup autospellcheck
-   autocmd!
-   autocmd BufNewFile,BufRead *.md,README,Readme,*.org,*.markdown setlocal spell
- augroup END
-
-" Auto center cursor
-augroup autocenter
-  autocmd!
-  autocmd InsertEnter * normal zz
-augroup END
-
-" Set language
-augroup setlang
-  autocmd!
-  autocmd! BufNewFile,BufRead *.vs,*.fs set ft=glsl
-augroup END
-
 " Clear output text
 function! ClearOutput()
   echon "\r\r"

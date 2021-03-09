@@ -172,7 +172,8 @@ let g:which_key_map['w']['d'] = 'Close current'
 nnoremap <silent> <leader>wD :only<CR>
 let g:which_key_map['w']['D'] = 'Close other'
 augroup restorezoom
-    au WinEnter * silent! :call ToggleZoom(v:false)
+  autocmd!
+  autocmd WinEnter * silent! :call ToggleZoom(v:false)
 augroup END
 nnoremap <silent> <leader>wo :call ToggleZoom(v:true)<CR>
 let g:which_key_map['w']['o'] = 'Maximize'
@@ -182,7 +183,7 @@ let g:which_key_map['w']['='] = 'Equal all'
 " s is for search {{{
 let g:which_key_map['s'] = { 'name' : '+Search' }
 nnoremap <silent> <leader>sp :lua require('telescope.builtin').live_grep()<CR>
-vnoremap <silent> <leader>sp :lua require('telescope.builtin').grep_string { search = vim.fn.GetSelectedText("v") }<CR>
+vnoremap <silent> <leader>sp :lua require('telescope.builtin').grep_string { search = vim.fn.GetSelectedText(vim.fn.visualmode()) }<CR>
 let g:which_key_map['s']['p'] = 'In project'
 nnoremap <silent> <leader>sk :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
 let g:which_key_map['s']['k'] = 'Current word'
