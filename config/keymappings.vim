@@ -196,7 +196,7 @@ nnoremap <leader>sh :lua require('telescope.builtin').help_tags()<CR>
 let g:which_key_map['s']['h'] = 'Help tags'
 nnoremap <leader>sm :lua require('telescope.builtin').keymaps()<CR>
 let g:which_key_map['s']['m'] = 'Keymapping'
-nnoremap <leader>sm :lua require('telescope.builtin').commands()<CR>
+nnoremap <leader>s: :lua require('telescope.builtin').commands()<CR>
 let g:which_key_map['s'][':'] = 'Commands'
 " }}}
 " g is for git {{{
