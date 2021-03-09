@@ -71,12 +71,6 @@ let g:which_key_map['b']['s'] = 'Save current'
 nnoremap <leader>bS :wa \| :echo 'All buffers saved'<CR>
 let g:which_key_map['b']['S'] = 'Save all'
 " }}}
-" p is for project {{{
-let g:which_key_map['p'] = { 'name' : '+Project' }
-nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
-" nnoremap <leader>vrc :lua require('theprimeagen.telescope').search_dotfiles()<CR>
-" nnoremap <leader>va :lua require('theprimeagen.telescope').anime_selector()<CR>
-" }}}
 " f is for file {{{
 let g:which_key_map['f'] = { 'name' : '+File' }
 nnoremap <leader>fy :let @+=expand("%:t") . ":" . line(".")<CR>
