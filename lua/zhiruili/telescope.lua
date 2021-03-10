@@ -35,5 +35,12 @@ M.search_dotfiles = function()
   })
 end
 
+M.current_dir_browser = function()
+  require("telescope.builtin").file_browser({
+    prompt_title = "< Current Dir >",
+    cwd = vim.fn.expand("%:p:h"),
+  })
+end
+
 return M
 

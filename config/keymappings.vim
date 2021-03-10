@@ -77,8 +77,10 @@ nnoremap <silent> <leader>fy :let @+=expand("%:t") . ":" . line(".")<CR>
 let g:which_key_map['f']['y'] = 'Yank name with line no'
 nnoremap <silent> <leader>fY :let @+=expand("%:p")<CR>
 let g:which_key_map['f']['Y'] = 'Yank full path'
-nnoremap <silent> <leader>ff :lua require('telescope.builtin').file_browser()<CR>
-let g:which_key_map['f']['f'] = 'Find in current path'
+nnoremap <silent> <leader>ff :lua require('zhiruili.telescope').current_dir_browser()<CR>
+let g:which_key_map['f']['f'] = 'File in current path'
+nnoremap <silent> <leader>fF :lua require('telescope.builtin').file_browser()<CR>
+let g:which_key_map['f']['F'] = 'File in project'
 nnoremap <silent> <leader>fp :lua require('telescope.builtin').find_files()<CR>
 let g:which_key_map['f']['p'] = 'Find in current workspace'
 nnoremap <silent> <leader>fi :lua require('telescope.builtin').git_files()<CR>
