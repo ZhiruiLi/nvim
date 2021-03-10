@@ -212,7 +212,7 @@ nnoremap <silent> <leader>ga :Git add %<CR>
 let g:which_key_map['g']['a'] = 'Add current'
 nnoremap <silent> <leader>gA :Git add .<CR>
 let g:which_key_map['g']['A'] = 'Add all'
-nnoremap <silent> <leader>gb :lua require('zhiruili.telescope').git_branches()<CR>
+nnoremap <silent> <leader>gb :lua require('telescope.builtin').git_branches()<CR>
 let g:which_key_map['g']['b'] = 'Branch'
 nnoremap <silent> <leader>gB :Git blame<CR>
 let g:which_key_map['g']['B'] = 'Blame'
