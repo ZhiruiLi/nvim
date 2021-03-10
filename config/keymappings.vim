@@ -77,7 +77,7 @@ nnoremap <silent> <leader>fy :let @+=expand("%:t") . ":" . line(".")<CR>
 let g:which_key_map['f']['y'] = 'Yank name with line no'
 nnoremap <silent> <leader>fY :let @+=expand("%:p")<CR>
 let g:which_key_map['f']['Y'] = 'Yank full path'
-nnoremap <silent> <leader>ff :lua require('zhiruili.telescope').search_dirfiles()<CR>
+nnoremap <silent> <leader>ff :lua require('telescope.builtin').file_browser()<CR>
 let g:which_key_map['f']['f'] = 'Find in current path'
 nnoremap <silent> <leader>fp :lua require('telescope.builtin').find_files()<CR>
 let g:which_key_map['f']['p'] = 'Find in current workspace'
@@ -131,7 +131,7 @@ nnoremap <silent> <leader>oT :<C-u>exe 'Deol -split=hor -cwd='.expand('%:p:h')<C
 let g:which_key_map['o']['T'] = 'Terminal here'
 nnoremap <silent> <leader>ou :UndotreeToggle<CR>
 let g:which_key_map['o']['u'] = 'Undo tree'
-nnoremap <silent> <leader>oe :lua require('telescope.builtin').file_browser()<CR>
+nnoremap <silent> <leader>oe :NERDTreeToggle<CR>
 let g:which_key_map['o']['e'] = 'File explorer'
 " oo is for open with external {{{
   let g:which_key_map['o']['o'] = { 'name' : '+External' }

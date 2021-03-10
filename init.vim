@@ -17,6 +17,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'yggdroot/indentline'
+  Plug 'preservim/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
   " Convert binary, hex, etc..: crd(10) crx(16) crb(2) cro(8)
   Plug 'glts/vim-magnum'
   Plug 'glts/vim-radical'
