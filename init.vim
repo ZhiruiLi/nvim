@@ -11,11 +11,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   " Keybinding hint
   Plug 'liuchengxu/vim-which-key'
   " UI
-  Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'joshdick/onedark.vim'
   Plug 'mhinz/vim-startify'
   Plug 'morhetz/gruvbox'
-  Plug 'preservim/nerdtree'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'yggdroot/indentline'

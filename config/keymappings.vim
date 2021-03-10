@@ -131,7 +131,7 @@ nnoremap <silent> <leader>oT :<C-u>exe 'Deol -split=hor -cwd='.expand('%:p:h')<C
 let g:which_key_map['o']['T'] = 'Terminal here'
 nnoremap <silent> <leader>ou :UndotreeToggle<CR>
 let g:which_key_map['o']['u'] = 'Undo tree'
-nnoremap <silent> <leader>oe :NERDTreeToggle<CR>
+nnoremap <silent> <leader>oe :lua require('telescope.builtin').file_browser()<CR>
 let g:which_key_map['o']['e'] = 'File explorer'
 " oo is for open with external {{{
   let g:which_key_map['o']['o'] = { 'name' : '+External' }
