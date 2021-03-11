@@ -1,19 +1,19 @@
-local actions = require('telescope.actions')
+local actions = require("telescope.actions")
 
-require('telescope').setup {
+require("telescope").setup {
   defaults = {
-    file_sorter = require('telescope.sorters').get_fzy_sorter,
-    prompt_prefix = ' >',
+    file_sorter = require("telescope.sorters").get_fzy_sorter,
+    prompt_prefix = " >",
     color_devicons = true,
 
-    file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
-    grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
-    qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+    file_previewer   = require("telescope.previewers").vim_buffer_cat.new,
+    grep_previewer   = require("telescope.previewers").vim_buffer_vimgrep.new,
+    qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 
     mappings = {
       i = {
-        ['<C-x>'] = false,
-        ['<C-l>'] = actions.send_to_qflist,
+        ["<C-x>"] = false,
+        ["<C-l>"] = actions.send_to_qflist,
       },
     }
   },
@@ -25,20 +25,20 @@ require('telescope').setup {
    }
 }
 
-require('telescope').load_extension('fzy_native')
+require("telescope").load_extension("fzy_native")
 
 local M = {}
 M.search_dotfiles = function()
-  require('telescope.builtin').find_files({
-    prompt_title = '< VimRC >',
-    cwd = '$HOME/.config/nvim/',
+  require("telescope.builtin").find_files({
+    prompt_title = "< VimRC >",
+    cwd = "$HOME/.config/nvim/",
   })
 end
 
 M.current_dir_browser = function()
-  require('telescope.builtin').file_browser({
-    prompt_title = '< Current Dir >',
-    cwd = vim.fn.expand('%:p:h'),
+  require("telescope.builtin").file_browser({
+    prompt_title = "< Current Dir >",
+    cwd = vim.fn.expand("%:p:h"),
   })
 end
 
