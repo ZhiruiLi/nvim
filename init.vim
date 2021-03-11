@@ -62,6 +62,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   " Other lang
   Plug 'neoclide/jsonc.vim'
   Plug 'sheerun/vim-polyglot'
+  Plug 'jceb/vim-orgmode'
   " Telescope requirements
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
@@ -72,6 +73,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'nvim-lua/completion-nvim'
   " Neovim Tree shitter
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   Plug 'nvim-treesitter/playground'
 call plug#end()
 
