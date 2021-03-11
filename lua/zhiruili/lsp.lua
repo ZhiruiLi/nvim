@@ -1,10 +1,10 @@
-local nvim_lsp = require('lspconfig')
+local nvim_lsp = require("lspconfig")
 
 local on_attach = function(client, bufnr)
-    require('completion').on_attach(client, bufnr)
+    require("completion").on_attach(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local opts = { noremap=true, silent=true }
-    buf_set_keymap('n', '<leader>si', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>', opts)
+    buf_set_keymap("n", "<leader>si", '<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>', opts)
 end
 
 -- Use a loop to conveniently both setup defined servers
