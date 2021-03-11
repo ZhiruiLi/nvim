@@ -92,6 +92,8 @@ nnoremap <silent> <leader>fp :lua require('telescope.builtin').find_files()<CR>
 let g:which_key_map['f']['p'] = 'Find in current workspace'
 nnoremap <silent> <leader>fi :lua require('telescope.builtin').git_files()<CR>
 let g:which_key_map['f']['i'] = 'Find with git filter'
+nnoremap <silent> <leader>fo :lua require('zhiruili.telescope').search_notes()<CR>
+let g:which_key_map['f']["o"] = 'Find in note path'
 nnoremap <silent> <leader>f. :lua require('zhiruili.telescope').search_dotfiles()<CR>
 let g:which_key_map['f']["."] = 'Find in config path'
 nnoremap <silent> <leader>fR :so $MYVIMRC \| :echo $MYVIMRC.' file has been sourced'<CR>
