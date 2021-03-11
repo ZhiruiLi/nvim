@@ -26,7 +26,7 @@ imap <s-tab> <Plug>(completion_smart_s_tab)
 "   see https://github.com/nvim-lua/completion-nvim#changing-completion-confirm-key
 " José Luis Lafuente @jlesquembre Jan 29 21:11
 "   thanks for the info @ttys3 , I also found https://github.com/windwp/nvim-autopairs
-let g:completion_confirm_key = ''
-imap <expr> <cr> pumvisible() ? complete_info()['selected'] != '-1' ?
-                 \ '\<Plug>(completion_confirm_completion)'  : '\<c-e>\<CR>' :  '\<CR>'
+let g:completion_confirm_key = ""
+imap <expr> <cr> pumvisible() ? complete_info()["selected"] != "-1" ?
+                 \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
 
