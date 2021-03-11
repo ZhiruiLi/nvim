@@ -14,9 +14,9 @@ let g:startify_session_dir = '~/.local/share/nvim/sessions'
 
 " Specific block list
 let g:startify_lists = [
-          \ { 'type': 'files',     'header': ['  Recent Files'] },
-          \ { 'type': 'dir',       'header': ['  '.getcwd()] },
           \ { 'type': 'sessions',  'header': ['  Sessions'] },
+          \ { 'type': 'dir',       'header': ['  '.getcwd()] },
+          \ { 'type': 'files',     'header': ['  Recent Files'] },
           \ { 'type': 'bookmarks', 'header': ['  Bookmarks'] },
           \ ]
 
