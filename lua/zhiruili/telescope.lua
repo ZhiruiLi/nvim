@@ -12,8 +12,8 @@ require('telescope').setup {
 
     mappings = {
       i = {
-        ["<C-x>"] = false,
-        ["<C-l>"] = actions.send_to_qflist,
+        ['<C-x>'] = false,
+        ['<C-l>'] = actions.send_to_qflist,
       },
     }
   },
@@ -29,16 +29,16 @@ require('telescope').load_extension('fzy_native')
 
 local M = {}
 M.search_dotfiles = function()
-  require("telescope.builtin").find_files({
-    prompt_title = "< VimRC >",
-    cwd = "$HOME/.config/nvim/",
+  require('telescope.builtin').find_files({
+    prompt_title = '< VimRC >',
+    cwd = '$HOME/.config/nvim/',
   })
 end
 
 M.current_dir_browser = function()
-  require("telescope.builtin").file_browser({
-    prompt_title = "< Current Dir >",
-    cwd = vim.fn.expand("%:p:h"),
+  require('telescope.builtin').file_browser({
+    prompt_title = '< Current Dir >',
+    cwd = vim.fn.expand('%:p:h'),
   })
 end
 

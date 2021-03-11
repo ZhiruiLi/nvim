@@ -65,7 +65,7 @@ augroup end
 " Auto close last quick fix window
 augroup closequickfix
   autocmd!
-  autocmd WinEnter * if winnr('$') == 1 && &buftype == "quickfix" | q | endif
+  autocmd WinEnter * if winnr('$') == 1 && &buftype == 'quickfix' | q | endif
 augroup END
 
 " Turn spellcheck on for markdown/org files
