@@ -2,7 +2,10 @@
 let g:scratch_no_mappings = 1
 
 " Specific scratch file path
-let g:scratch_persistence_file = '~/.local/share/nvim/scratch.vim'
+let g:scratch_persistence_file = '~/.local/share/nvim/scratch'
+
+" File type
+let g:scratch_filetype = "markdown"
 
 " Disable auto hide
 let g:scratch_insert_autohide = 0

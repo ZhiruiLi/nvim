@@ -20,8 +20,15 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 " }}}
 " Single mappings {{{
-let g:which_key_map['`'] = [ ':b#',                  'Switch recent buffer' ]
-let g:which_key_map['e'] = [ ':Scratch',             'Open scratch pad' ]
+nnoremap <silent> <leader>, :lua require('telescope.builtin').buffers()<CR>
+let g:which_key_map[','] = 'List buffers'
+nnoremap <silent> <leader>. :lua require('telescope.builtin').git_files()<CR>
+let g:which_key_map['.'] = 'List git files'
+nnoremap <silent> <leader>` :b#<CR>
+let g:which_key_map['`'] = 'Switch recent buffer'
+nnoremap <silent> <leader>e :Scratch<CR>
+vnoremap <silent> <leader>e :ScratchSelection<CR>
+let g:which_key_map['e'] = 'Open scratch pad'
 nmap <silent> <leader><enter> <Plug>BookmarkShowAll
 let g:which_key_map['<CR>'] = 'Show bookmarks'
 " Select buffer 1~9
@@ -194,6 +201,7 @@ let g:which_key_map['s']['s'] = 'In current buffer'
 nnoremap <silent> <leader>si :lua require('telescope.builtin').treesitter()<CR>
 let g:which_key_map['s']['i'] = 'Outline'
 nnoremap <silent> <leader>so :lua require('telescope.builtin').lsp_workspace_symbols()<CR>
+vnoremap <silent> <leader>so :lua require('telescope.builtin').lsp_workspace_symbols { query = vim.fn.GetSelectedText(vim.fn.visualmode()) }<CR>
 let g:which_key_map['s']['o'] = 'Workspace symbols'
 nnoremap <silent> <leader>sh :lua require('telescope.builtin').help_tags()<CR>
 let g:which_key_map['s']['h'] = 'Help tags'
