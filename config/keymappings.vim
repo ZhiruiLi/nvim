@@ -345,7 +345,7 @@ call which_key#register('  ', "g:which_key_map_local")
 function! s:CppKeyMapping()
   let b:which_key_map_local = {}
   nnoremap <buffer> <localleader>s :ClangdSwitchSourceHeader<CR>
-  let b:which_key_map_local['s'] = 'Switch header source'
+  let b:which_key_map_local['s'] = "Switch header source"
   call which_key#register('  ', "b:which_key_map_local")
 endfunction
 
