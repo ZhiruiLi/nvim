@@ -13,20 +13,12 @@ imap <s-tab> <Plug>(completion_smart_s_tab)
 
 " Fix auto pair
 "
-" Gitter:
-" ttys3 @ttys3 Jan 23 00:48
-"   but jiangmiao/auto-pairs 's AutoPairsReturn also need imap <cr>, conflict with complete-nvim
-"   with complete-nvim enabled, jiangmiao/auto-pairs 's AutoPairsReturn can not indent correctly
-"   if remap complete-nvim confirm-key to <c-y> , this wil lwork
-" ttys3 @ttys3 Jan 23 00:56
-"   use this config works good with jiangmiao/auto-pairs
-"   let g:completion_confirm_key = ""
-"   imap <expr> <cr> pumvisible() ? complete_info()["selected"] != "-1" ?
-"                    \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
-"   see https://github.com/nvim-lua/completion-nvim#changing-completion-confirm-key
-" José Luis Lafuente @jlesquembre Jan 29 21:11
-"   thanks for the info @ttys3 , I also found https://github.com/windwp/nvim-autopairs
+" https://github.com/nvim-lua/completion-nvim
+"
+"   By default <CR> is used to confirm completion and expand snippets, change it by
+"   let g:completion_confirm_key = "\<C-y>"
+"   Make sure to use " " and add escape key \ to avoid parsing issues.
+"   If the confirm key has a fallback mapping, for example when using the auto pairs plugin, it maps to <CR>. You can avoid using the default confirm key option and use a mapping like this instead.
 let g:completion_confirm_key = ""
-imap <expr> <cr> pumvisible() ? complete_info()["selected"] != "-1" ?
+imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
                  \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
-
