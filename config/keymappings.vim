@@ -290,6 +290,7 @@ nmap <silent> ga <Plug>(EasyAlign)
 " }}}
 " Moving {{{
 nmap s <Plug>(easymotion-overwin-f2)
+nmap go <Plug>(easymotion-overwin-line)
 nnoremap [e :lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap ]e :lua vim.lsp.diagnostic.goto_next()<CR>
 nmap ]c <Plug>(GitGutterNextHunk)
