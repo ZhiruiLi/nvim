@@ -327,6 +327,9 @@ tnoremap <C-[> <C-\><C-n>
 vnoremap < <gv
 vnoremap > >gv
 " }}}
+" Don't override register on paste {{{
+xnoremap p pgvy
+" }}}
 " Text Objects {{{
 omap ig <Plug>(GitGutterTextObjectInnerPending)
 omap ag <Plug>(GitGutterTextObjectOuterPending)

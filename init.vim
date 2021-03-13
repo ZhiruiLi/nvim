@@ -17,8 +17,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'yggdroot/indentline'
-  Plug 'preservim/nerdtree'
-  Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+  Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
   " Convert binary, hex, etc..: crd(10) crx(16) crb(2) cro(8)
   Plug 'glts/vim-magnum'
   Plug 'glts/vim-radical'
@@ -27,11 +27,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   " Editing
   Plug '907th/vim-auto-save'
   Plug 'MattesGroeger/vim-bookmarks'
-  Plug 'alvan/vim-closetag'
+  Plug 'alvan/vim-closetag', { 'for': [ 'xml', 'html', 'vue', 'jsx' ] }
   Plug 'easymotion/vim-easymotion'
   Plug 'jiangmiao/auto-pairs'
   Plug 'junegunn/vim-easy-align'
-  Plug 'mbbill/undotree'
+  Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'terryma/vim-expand-region'
   Plug 'tpope/vim-commentary'
@@ -48,21 +48,21 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'tpope/vim-fugitive'
   Plug 'airblade/vim-gitgutter'
   " Terminals
-  Plug 'Shougo/deol.nvim'
+  Plug 'Shougo/deol.nvim', { 'on': 'Deol' }
   " Build
-  Plug 'skywind3000/asynctasks.vim'
-  Plug 'skywind3000/asyncrun.vim'
-  Plug 'google/vim-maktaba'
-  Plug 'bazelbuild/vim-bazel'
+  Plug 'skywind3000/asynctasks.vim', { 'on': 'AsyncTask' }
+  Plug 'skywind3000/asyncrun.vim', { 'on': 'AsyncTask' }
+  Plug 'google/vim-maktaba', { 'on': 'Bazel' }
+  Plug 'bazelbuild/vim-bazel', { 'on': 'Bazel' }
   " Docs
   Plug 'Shougo/echodoc.vim'
-  Plug 'rizzatti/dash.vim'
+  Plug 'rizzatti/dash.vim', { 'on': 'Dash' }
   " Notes
-  Plug 'mtth/scratch.vim'
+  Plug 'mtth/scratch.vim', { 'on': [ 'Scratch', 'ScratchSelection' ] }
   " Other lang
-  Plug 'neoclide/jsonc.vim'
+  Plug 'neoclide/jsonc.vim', { 'for': [ 'json', 'jsonc' ] }
   Plug 'sheerun/vim-polyglot'
-  Plug 'jceb/vim-orgmode'
+  Plug 'jceb/vim-orgmode', { 'for': 'org' }
   " Telescope requirements
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
@@ -72,9 +72,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/completion-nvim'
   " Neovim Tree shitter
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-  Plug 'nvim-treesitter/playground'
 call plug#end()
 
 " Automatically install missing plugins on startup
