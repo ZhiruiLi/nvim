@@ -4,12 +4,18 @@ function! ClearOutput()
   echon ''
 endfunction
 
-" Get boolean input from user
-function! GetBoolInput(hint)
+" Get string input from user
+function! GetStringInput(hint)
   call inputsave()
   let input = input(a:hint)
   call inputrestore()
   call ClearOutput()
+  return input
+endfunction
+
+" Get boolean input from user
+function! GetBoolInput(hint)
+  let input = GetStringInput()
   if input ==? "y"
     return 1
   endif

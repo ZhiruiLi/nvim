@@ -50,5 +50,18 @@ M.current_dir_browser = function()
   })
 end
 
+M.search_current_project = function()
+  require("telescope.builtin").find_files({
+    prompt_title = "< Current Project >",
+  })
+end
+
+M.search_all_projects = function()
+  require("telescope.builtin").find_files({
+    prompt_title = "< All Projects >",
+    cwd = "$HOME/projects/",
+  })
+end
+
 return M
 

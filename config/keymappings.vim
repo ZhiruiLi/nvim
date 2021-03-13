@@ -88,8 +88,10 @@ nnoremap <silent> <leader>ff :lua require('zhiruili.telescope').current_dir_brow
 let g:which_key_map['f']['f'] = 'File in current path'
 nnoremap <silent> <leader>fF :lua require('telescope.builtin').file_browser()<CR>
 let g:which_key_map['f']['F'] = 'File in project'
-nnoremap <silent> <leader>fp :lua require('telescope.builtin').find_files()<CR>
-let g:which_key_map['f']['p'] = 'Find in current workspace'
+nnoremap <silent> <leader>fp :lua require('zhiruili.telescope').search_current_project()<CR>
+let g:which_key_map['f']['p'] = 'Find in current project'
+nnoremap <silent> <leader>fP :lua require('zhiruili.telescope').search_all_projects()<CR>
+let g:which_key_map['f']['P'] = 'Find in all projects'
 nnoremap <silent> <leader>fi :lua require('telescope.builtin').git_files()<CR>
 let g:which_key_map['f']['i'] = 'Find with git filter'
 nnoremap <silent> <leader>fo :lua require('zhiruili.telescope').search_notes()<CR>
@@ -202,7 +204,7 @@ nnoremap <silent> <leader>ss :lua require('telescope.builtin').current_buffer_fu
 let g:which_key_map['s']['s'] = 'In current buffer'
 nnoremap <silent> <leader>si :lua require('telescope.builtin').treesitter()<CR>
 let g:which_key_map['s']['i'] = 'Outline'
-nnoremap <silent> <leader>so :lua require('telescope.builtin').lsp_workspace_symbols()<CR>
+nnoremap <silent> <leader>so :lua require('telescope.builtin').lsp_workspace_symbols { query = vim.fn.GetStringInput("Symbol: ") }<CR>
 vnoremap <silent> <leader>so :lua require('telescope.builtin').lsp_workspace_symbols { query = vim.fn.GetSelectedText(vim.fn.visualmode()) }<CR>
 let g:which_key_map['s']['o'] = 'Workspace symbols'
 nnoremap <silent> <leader>sh :lua require('telescope.builtin').help_tags()<CR>
